@@ -1,0 +1,36 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Link from "../components/Link.astro";
+import { Image } from "astro:assets";
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
+import Button from "../components/Button.astro";
+import MenuCard from "../components/MenuCard.astro";
+---
+
+<MainLayout title="Menu">
+  <!-- Denne linje under betyder gappet mellem sektioner 40px/mobil og 80px/desktop (Jeg har lavet den)-->
+  <!-- flex flex-col gap-s md:gap-l  -->
+
+  <!-- Denne linje under betyder padding på x-aksen 20px/mobil og 100px/desktop (Jeg har lavet den) -->
+  <!-- px-2xs md:px-xl -->
+
+  <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
+  <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
+  <main class="my-s md:my-l">
+    <div class="flex flex-col gap-s md:gap-l">
+      <section class="bg-red-500 px-2xs md:px-xl">
+        <p>Menu</p>
+      </section>
+
+      <section class="bg-orange-500 px-2xs md:px-xl">
+        <p>Menucard</p>
+        <MenuCard />
+        <MenuCard />
+        <MenuCard />
+        <MenuCard />
+        <MenuCard />
+      </section>
+    </div>
+  </main>
+</MainLayout>

@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
@@ -6,45 +6,114 @@
 @import "tailwindcss-intersect";
 
 @font-face {
-  font-family: 'Honk';
-  src: url('/fonts/Honk-Regular-VariableFont_MORF,SHLN.ttf') format('truetype');
+  font-family: "Honk";
+  src: url("/fonts/Honk-Regular-VariableFont_MORF,SHLN.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Quicksand';
-  src: url('/fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
+  font-family: "Quicksand";
+  src: url("/fonts/Quicksand-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Domine';
-  src: url('/fonts/Domine-Regular.ttf') format('truetype');
+  font-family: "Domine";
+  src: url("/fonts/Domine-Regular.ttf") format("truetype");
 }
 
 @theme {
-  /* Her tilføjes theme variable // tokens */
-
+  /********************************************** Start Primitives **********************************************/
   /*Farver */
-  --color-primary-400: #00E4F5;
-  --color-primary-500: #006269;
-  --color-primary-600: #006D75;
-  --color-secondary-400: #F5E400;
-  --color-secondary-500: #F5A600;
-  --color-secondary-600: #F57A00;
 
-  /*Typografi */
-  --font-display: 'Honk', monospace;
-  --font-sans: 'Quicksand', sans-serif;
-  --font-serif: 'Domine', serif;
+  /* Base */
+  --color-base: #ece7d2;
+
+  /* Red */
+  --color-red-50: #fef1f1;
+  --color-red-100: #fedee0;
+  --color-red-200: #fdbcbf;
+  --color-red-300: #fc9da2;
+  --color-red-400: #ff757d;
+  --color-red-500: #fd4051;
+  --color-red-600: #df2038;
+  --color-red-700: #b5182a;
+  --color-red-800: #8f0d1f;
+  --color-red-900: #6a0716;
+  --color-red-950: #400409;
+
+  /* Beige */
+  --color-beige-50: #f5f4eb;
+  --color-beige-100: #ece7d2;
+  --color-beige-200: #cec9b8;
+  --color-beige-300: #b0ae9e;
+  --color-beige-400: #959386;
+  --color-beige-500: #7c7a6e;
+  --color-beige-600: #636157;
+  --color-beige-700: #48473f;
+  --color-beige-800: #31302d;
+  --color-beige-900: #1c1c18;
+  --color-beige-950: #11110e;
+
+  /* Spacing */
+  --spacing-0: 0px;
+  --spacing-5xs: 5px;
+  --spacing-4xs: 10px;
+  --spacing-3xs: 15px;
+  --spacing-2xs: 20px;
+  --spacing-xs: 30px;
+  --spacing-s: 40px;
+  --spacing-m: 50px;
+  --spacing-l: 80px;
+  --spacing-xl: 100px;
+  --spacing-2xl: 150px;
+
+  /* Stroke */
+  --stroke-xs: 2px;
+  --stroke-s: 4px;
+
+  /* Border Radius */
+  --radius-xs: 6px;
+  /********************************************** End Primitives **********************************************/
+
+  /********************************************** Start Tokens **********************************************/
+  /* PRIMARY TOKENS */
+  --color-primary-beige: var(--color-beige-100);
+  --color-primary-red: var(--color-red-900);
+
+  /* SEMANTIC TOKENS */
+  --color-background-primary: var(--color-base);
+
+  --color-text-dark: var(--color-primary-red);
+  --color-text-light: var(--color-primary-beige);
+
+  --color-header: var(--color-primary-beige);
+  --color-footer: var(--color-primary-beige);
+
+  --color-cta-primary: var(--color-primary-red);
+  --color-cta-secondary: var(--color-primary-beige);
+
+  --color-primary-line: var(--color-primary-red);
+
+  --color-logo-1: var(--color-primary-red);
+  --color-logo-2: var(--color-primary-beige);
+
+  --color-arrow-dark: var(--color-primary-red);
+  --color-arrow-light: var(--color-primary-beige);
+
+  --color-icon: var(--color-primary-red);
+  /********************************************** End Tokens **********************************************/
+
+  /********************************************** Start Typografi **********************************************/
+  --font-display: "Honk", monospace;
+  --font-sans: "Quicksand", sans-serif;
+  --font-serif: "Domine", serif;
+  /********************************************** End Typografi **********************************************/
 }
 
 @layer base {
-
 }
 
-@layer components{
-
+@layer components {
 }
 
-@layer utilities{
-  
+@layer utilities {
 }

@@ -6,12 +6,11 @@ import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
 import Button from "../components/Button.astro";
 import TextImgLeft from "../components/TextImgLeft.astro";
-import TextImgRight from "../components/TextImgRight.astro";
-import EventCardIndex from "../components/EventCardIndex.astro";
-import Socials from "../components/Socials.astro";
+import EventCard from "../components/EventCard.astro";
+import Faq from "../components/Faq.astro";
 ---
 
-<MainLayout title="Pool CPH">
+<MainLayout title="Event">
   <!-- Denne linje under betyder gappet mellem sektioner 40px/mobil og 80px/desktop (Jeg har lavet den)-->
   <!-- flex flex-col gap-s md:gap-l  -->
 
@@ -20,43 +19,29 @@ import Socials from "../components/Socials.astro";
 
   <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
   <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
-  <main class="mb-s md:mb-l">
+  <main class="my-s md:my-l">
     <div class="flex flex-col gap-s md:gap-l">
       <section class="bg-red-500 px-2xs md:px-xl">
-        <p>Hero</p>
+        <p>Events</p>
+        <TextImgLeft />
       </section>
 
       <section class="bg-orange-500 px-2xs md:px-xl">
-        <p>Welcome</p>
-        <TextImgRight />
+        <p>All events</p>
+        <EventCard />
+        <EventCard />
+        <EventCard />
+        <EventCard />
       </section>
 
       <section class="bg-yellow-500 px-2xs md:px-xl">
-        <p>Prices</p>
+        <p>Looking to host an event?</p>
         <TextImgLeft />
       </section>
 
       <section class="bg-green-500 px-2xs md:px-xl">
-        <p>Events</p>
-        <Heading htmlheading="h2" size="medium" stylingclasses="text-text-dark"
-          >Events</Heading
-        >
-        <EventCardIndex />
-      </section>
-
-      <section class="bg-blue-500 px-2xs md:px-xl">
-        <p>Menu</p>
-        <TextImgLeft />
-      </section>
-
-      <section class="bg-purple-500">
-        <p>Socials</p>
-        <Heading
-          htmlheading="h2"
-          size="medium"
-          stylingclasses="px-2xs md:px-xl text-text-dark">Socials</Heading
-        >
-        <Socials />
+        <p>FAQ</p>
+        <Faq />
       </section>
     </div>
   </main>

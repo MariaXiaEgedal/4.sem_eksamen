@@ -1,13 +1,33 @@
 ---
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+import { Image } from "astro:assets";
+import welcomeImage from "../assets/images/welcomeimage.jpg";
+import welcomeLogo from "../assets/images/welcomelogo.svg";
 
+const {
+  heading = "Overskrift",
+  text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
+  image = welcomeImage,
+  imageAlt = "",
+  logo = welcomeLogo,
+  logoAlt = "Pool Cph logo",
+} = Astro.props;
 ---
 
-<!-- Her er der lavet det rigtige grid til mobil og desktop :) 
- Man kan i inspectoren se det ved at klikke på denne "div" hvor der er 
- skevet "test" i og så klikke på "grid" i inspectoren, så kommer kolonnerne 
- frem ligsom i figma. Og så skal man bare sige til Chatten at man 
- gerne vi have et element til at være fra kolonne xx til kolonne xx-->
-<div class="grid grid-cols-4 md:grid-cols-12 gap-2xs">
-  <p>Test</p>
-  <!-- Lav her -->
+<div
+  class="grid grid-cols-4 md:grid-cols-12 gap-2xs items-start md:items-center"
+>
+  <div class="col-start-1 col-end-5 md:col-end-6 text-text-dark">
+    <Heading htmlheading="h1" size="large">{heading}</Heading>
+    <Text teksttype="brødtekst" stylingclasses="mt-4xs max-w-[38rem]">
+      {text}
+    </Text>
+
+    <img src={logo.src} alt={logoAlt} class="mt-xs" />
+  </div>
+
+  <div class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end">
+    <Image src={image} alt={imageAlt} class="w-full h-auto" />
+  </div>
 </div>

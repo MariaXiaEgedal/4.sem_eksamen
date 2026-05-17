@@ -1,0 +1,124 @@
+<article class="">
+  <div class="timelineelementerinview hidden md:grid md:grid-cols-5">
+    <div class="timelineelementer1">
+      <img src="/img/timeline1.png" alt="timeline 1" class="" />
+    </div>
+    <div class="timelineelementer2">
+      <img src="/img/timeline2.png" alt="timeline 2" class="" />
+    </div>
+    <div class="timelineelementer3">
+      <img src="/img/timeline3.png" alt="timeline 3" class="" />
+    </div>
+    <div class="timelineelementer4">
+      <img src="/img/timeline4.png" alt="timeline 4" class="r" />
+    </div>
+    <div class="timelineelementer5">
+      <img src="/img/timeline5.png" alt="timeline 5" class="" />
+    </div>
+    <div class="timelineelementer6">
+      <img src="/img/timeline6.png" alt="timeline 6" class="" />
+    </div>
+    <div class="timelineelementer7">
+      <img src="/img/timeline7.png" alt="timeline 7" class="" />
+    </div>
+    <div class="timelineelementer8">
+      <img src="/img/timeline8.png" alt="timeline 8" class="" />
+    </div>
+    <div class="timelineelementer9">
+      <img src="/img/timeline9.png" alt="timeline 9" class="" />
+    </div>
+    <div class="timelineelementer10">
+      <img src="/img/timeline10.png" alt="timeline 10" class="" />
+    </div>
+  </div>
+
+  <!-- Mobil scroll gallery -->
+  <div
+    class="timelineelementerinview-mobile md:hidden flex overflow-x-auto max-h-80"
+  >
+    <div class="timelineelementer1 flex-shrink-0">
+      <img
+        src="/img/mobil-timeline1.png"
+        alt="mobil timeline 1"
+        class="h-80 object-cover"
+      />
+    </div>
+    <div class="timelineelementer2 flex-shrink-0">
+      <img
+        src="/img/mobil-timeline2.png"
+        alt="mobil timeline 2"
+        class="h-80 object-cover"
+      />
+    </div>
+    <div class="timelineelementer3 flex-shrink-0">
+      <img
+        src="/img/mobil-timeline3.png"
+        alt="mobil timeline 3"
+        class="h-80 object-cover"
+      />
+    </div>
+    <div class="timelineelementer4 flex-shrink-0">
+      <img
+        src="/img/mobil-timeline4.png"
+        alt="mobil timeline 4"
+        class="h-80 object-cover"
+      />
+    </div>
+    <div class="timelineelementer5 flex-shrink-0">
+      <img
+        src="/img/mobil-timeline5.png"
+        alt="mobil timeline 5"
+        class="h-80 object-cover"
+      />
+    </div>
+  </div>
+</article>
+
+<script>
+  import { animate, inView } from "motion";
+
+  inView(".timelineelementerinview", () => {
+    animate(
+      ".timelineelementer1",
+      { x: [-2000, 0], y: [-50, 0] },
+      { duration: 1 },
+    );
+    animate(
+      ".timelineelementer2",
+      { x: [-1500, 0], y: [-100, 0] },
+      { duration: 3 },
+    );
+    animate(
+      ".timelineelementer3",
+      { x: [-1000, 0], y: [-150, 0] },
+      { duration: 3 },
+    );
+    animate(".timelineelementer4", { x: [1750, 0] }, { duration: 2 });
+    animate(
+      ".timelineelementer5",
+      { x: [-2000, 0], y: [-100, 0] },
+      { duration: 1 },
+    );
+    animate(".timelineelementer6", { x: [2000, 0] }, { duration: 2 });
+    animate(
+      ".timelineelementer7",
+      { x: [1500, 0], y: [50, 0] },
+      { duration: 3 },
+    );
+    animate(
+      ".timelineelementer8",
+      { x: [1000, 0], y: [150, 0] },
+      { duration: 2 },
+    );
+    animate(
+      ".timelineelementer9",
+      { x: [1500, 0], y: [0, 0] },
+      { duration: 1 },
+    );
+    animate(
+      ".timelineelementer10",
+      { x: [2000, 0], y: [50, 0] },
+      { duration: 2 },
+    );
+  });
+</script>

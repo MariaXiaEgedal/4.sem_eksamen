@@ -1,13 +1,37 @@
 ---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+import Heading from "./Heading.astro";
+import fallbackImage from "../assets/images/welcomeimage.jpg";
 
+const {
+  image = fallbackImage,
+  imageAlt = "",
+  heading = "Overskrift",
+  text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  ctaLabel = "CTA primary",
+} = Astro.props;
 ---
 
-<!-- Her er der lavet det rigtige grid til mobil og desktop :) 
- Man kan i inspectoren se det ved at klikke på denne "div" hvor der er 
- skevet "test" i og så klikke på "grid" i inspectoren, så kommer kolonnerne 
- frem ligsom i figma. Og så skal man bare sige til Chatten at man 
- gerne vi have et element til at være fra kolonne xx til kolonne xx-->
-<div class="grid grid-cols-4 md:grid-cols-12 gap-2xs">
-  <p>Test</p>
-  <!-- Lav her -->
+<div
+  class="grid grid-cols-4 md:grid-cols-12 gap-2xs items-start md:items-center"
+>
+  <div class="col-span-4 md:col-span-5">
+    <Image src={image} alt={imageAlt} class="w-full h-auto object-cover" />
+  </div>
+
+  <div class="col-span-4 md:col-span-6 md:col-start-7 text-text-dark">
+    <Heading htmlheading="h2" size="medium" font="serif" stylingclasses="leading-none">
+      {heading}
+    </Heading>
+
+    <Text teksttype="brødtekst" stylingclasses="mt-2xs">
+      {text}
+    </Text>
+
+    <div class="mt-xs">
+      <Button variant="primary" size="medium">{ctaLabel}</Button>
+    </div>
+  </div>
 </div>

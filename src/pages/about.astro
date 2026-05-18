@@ -23,9 +23,15 @@ import Socials from "../components/Socials.astro";
   <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="my-s md:my-l">
     <div class="flex flex-col gap-s md:gap-l">
-      <section class="bg-red-500 px-2xs md:px-xl">
-        <p>About us</p>
-        <TextImgRight />
+      <section class="bg-red-500 px-2xs md:px-xl whitespace-pre-line">
+        <TextImgRight
+          image="/img/aboutusbillede.svg"
+          imageAlt="About us billede"
+          heading="About us"
+          text={`At Pool Cph, everything is created with intention. From the interior and overall visual identity to the bar and what’s being served, every detail has been carefully considered. Nothing is random, everything is chosen to support the feeling of the place. 
+          
+          Our goal is to create the perfect setting for great nights. Whether you're here to play pool, have a drink, or just hang out, Pool Cph is designed to bring people together and make every visit feel special.`}
+        />
       </section>
 
       <section class="bg-orange-500 px-2xs md:px-xl">
@@ -48,9 +54,16 @@ import Socials from "../components/Socials.astro";
         <Faq />
       </section>
 
-      <section class="bg-blue-500 px-2xs md:px-xl">
-        <p>Location</p>
-        <TextImgLeft />
+      <section class="bg-blue-500 px-2xs md:px-xl whitespace-pre-line">
+        <TextImgLeft
+          heading="Location"
+          text={`You'll find POOL Cph right in the heart of Copenhagen at Gothersgade 8C, 1123 København, tucked away in a cozy and slightly hidden courtyard.
+          
+          Set back from the busy street, it feels like your own little oasis, offering a more relaxed and private atmosphere.`}
+          ctaLabel=""
+          mapSrc="https://maps.google.com/maps?q=Gothersgade%208C%2C%201123%20K%C3%B8benhavn&output=embed"
+          mapTitle="POOL Cph - Gothersgade 8C"
+        />
       </section>
 
       <section class="bg-purple-500">

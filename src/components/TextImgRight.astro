@@ -1,16 +1,13 @@
 ---
 import Heading from "./Heading.astro";
 import Text from "./Text.astro";
-import { Image } from "astro:assets";
-import welcomeImage from "../assets/images/welcomeimage.jpg";
-import welcomeLogo from "../assets/images/welcomelogo.svg";
 
 const {
   heading = "Overskrift",
   text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ",
-  image = welcomeImage,
+  image = "/img/welcomeimage.jpg",
   imageAlt = "",
-  logo = welcomeLogo,
+  logo = "/img/welcomelogo.svg",
   logoAlt = "Pool Cph logo",
 } = Astro.props;
 ---
@@ -24,10 +21,10 @@ const {
       {text}
     </Text>
 
-    <img src={logo.src} alt={logoAlt} class="mt-xs" />
+    <img src={logo} alt={logoAlt} class="mt-xs" />
   </div>
 
   <div class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end">
-    <Image src={image} alt={imageAlt} class="w-full h-auto" />
+    <img src={image} alt={imageAlt} class="w-full h-auto" />
   </div>
 </div>

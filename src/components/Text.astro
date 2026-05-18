@@ -9,6 +9,18 @@ const sizeClasses = {
   brødtekst_bold_italic: "text-[16px] md:text-[22px]",
   brødtekst_lille: "text-[15px] md:text-[15px]",
 };
+
+// Font-klasser for de forskellige tekst-typer
+const fontClasses = {
+  brødtekst: "font-sans font-normal",
+  brødtekst_bold: "font-sans font-bold",
+  brødtekst_bold_italic: "font-sans font-bold italic",
+  brødtekst_lille: "font-sans font-normal",
+};
 ---
 
-<p class:list={[sizeClasses[teksttype], stylingclasses]}><slot /></p>
+<p
+  class:list={[sizeClasses[teksttype], fontClasses[teksttype], stylingclasses]}
+>
+  <slot />
+</p>

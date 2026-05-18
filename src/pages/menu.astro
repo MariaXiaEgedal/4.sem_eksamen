@@ -6,6 +6,7 @@ import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
 import Button from "../components/Button.astro";
 import MenuCard from "../components/MenuCard.astro";
+import TextImgRight from "../components/TextImgRight.astro";
 ---
 
 <MainLayout title="Menu">
@@ -20,7 +21,14 @@ import MenuCard from "../components/MenuCard.astro";
   <main class="my-s md:my-l">
     <div class="flex flex-col gap-s md:gap-l">
       <section class="bg-red-500 px-2xs md:px-xl">
-        <p>Menu</p>
+        <TextImgRight
+          heading="Menu"
+          text={`Explore the menu at Pool CPH with everything from cold beers and cocktails to wine and salty snacks, perfect for a night of pool and good vibes.`}
+          logo=""
+          logoAlt=""
+          image="img/menu.gif"
+          imageAlt="Menu image"
+        />
       </section>
 
       <section class="bg-orange-500 px-2xs md:px-xl">

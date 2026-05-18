@@ -4,11 +4,12 @@ import Text from "./Text.astro";
 import Button from "./Button.astro";
 
 const {
-  title = "Overskrift",
-  date = "Dato og tid",
-  description = "Info om eventet",
-  buttonText = "Knap",
-  imageSrc = "/img/hey.jpg",
+  title = "Event overskrift",
+  date = "Dato / tid / pris for eventet",
+  description = "Info om eventet: lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati neque quam animi nihil sequi officiis inventore nisi odit maiores? Quibusdam excepturi laboriosam!",
+  buttonText = "Knap for deltagelse",
+  imageSrc = "/img/event.png",
+  imageSrcMobile = "/img/mobil-event.png",
   imageAlt = "Event billede",
 } = Astro.props;
 ---
@@ -17,26 +18,35 @@ const {
   class="grid grid-cols-4 md:grid-cols-12 gap-2xs border-b-2 border-primary-line"
 >
   <div
-    class="col-span-4 md:col-start-1 md:col-span-5 flex flex-col justify-center"
+    class="col-span-4 md:col-start-1 md:col-span-5 flex flex-col justify-center order-2 md:order-1"
   >
-    <Heading htmlheading="h3" size="small" stylingclasses="mb-xs text-text-dark"
-      >{title}</Heading
+    <Heading
+      htmlheading="h3"
+      size="small"
+      stylingclasses="mb:2xs mb-4xs md:mb-xs text-text-dark">{title}</Heading
     >
     <Text teksttype="brødtekst_bold" stylingclasses="mb-2xs text-text-dark"
       >{date}</Text
     >
-    <Text teksttype="brødtekst" stylingclasses="mb-xs text-text-dark"
+    <Text teksttype="brødtekst" stylingclasses="mb-2xs md:mb-xs text-text-dark"
       >{description}</Text
     >
-    <div class="self-start">
+    <div class="self-start mb-2xs">
       <Button variant="primary" size="medium">{buttonText}</Button>
     </div>
   </div>
 
-  <div class="col-span-4 md:col-start-7 md:col-end-13 flex">
-    <div class="w-full aspect-[1/0.65] overflow-hidden">
-      <div class="aspect-square rounded-full overflow-hidden">
-        <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" />
+  <div
+    class="col-span-4 md:col-start-7 md:col-end-13 flex items-end order-1 md:order-2"
+  >
+    <div class="w-full">
+      <div class="">
+        <img
+          src={imageSrcMobile || imageSrc}
+          alt={imageAlt}
+          class="w-full md:hidden"
+        />
+        <img src={imageSrc} alt={imageAlt} class="w-full hidden md:block" />
       </div>
     </div>
   </div>

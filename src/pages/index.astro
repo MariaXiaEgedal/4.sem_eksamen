@@ -22,24 +22,44 @@ import Socials from "../components/Socials.astro";
   <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="mb-s md:mb-l">
     <div class="flex flex-col gap-s md:gap-l">
-      <section class="bg-red-500 px-0 md:px-0">
+      <section class="px-0 md:px-0 relative">
         <video
-          class="w-full min-h-[550px] md:min-h-[600px] lg:max-h-[750px] h-auto object-cover"
+          class="w-full min-h-[550px] md:min-h-[600px] lg:max-h-[750px] h-auto object-cover relative z-0"
           src="/src/assets/videos/herovideo.mov"
           autoplay
           muted
           loop
           playsinline></video>
+
+        <div
+          class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
+        >
+          <div class="pointer-events-auto mt-25 md:mt-35">
+            <Button variant="primary" size="medium">Book pool table</Button>
+          </div>
+        </div>
       </section>
 
-      <section class="bg-orange-500 px-2xs md:px-xl">
-        <p>Welcome</p>
-        <TextImgRight />
+      <section class="px-2xs md:px-xl whitespace-pre-line">
+        <TextImgRight
+          heading="Welcome"
+          text={`Welcome to Pool Cph.
+
+          More than just a pool bar. Right in the heart of Copenhagen, we've created a space where good energy, great drinks, and late nights come together. Pool tables, cold beers, cocktails, and salty snacks, all wrapped in a unique and laid-back atmosphere. Hang out inside or take it outside on our terrace. 
+          
+          It's casual. It's social. It's all about the vibe.
+        `}
+          image="/img/welcomeimage.jpg"
+          imageAlt="Welcome image"
+        />
       </section>
 
       <section class="bg-yellow-500 px-2xs md:px-xl">
-        <p>Prices</p>
-        <TextImgLeft />
+        <TextImgLeft
+          heading="Prices"
+          text={`Whether you’re up for a quick game or a longer evening with friends, you can choose between 30, 60, 90 or 120 minutes.`}
+          ctaLabel="Book pool table"
+        />
       </section>
 
       <section class="bg-green-500 px-2xs md:px-xl">
@@ -50,9 +70,18 @@ import Socials from "../components/Socials.astro";
         <EventCardIndex />
       </section>
 
-      <section class="bg-blue-500 px-2xs md:px-xl">
+      <section class="bg-blue-500 px-2xs md:px-xl whitespace-pre-line">
         <p>Menu</p>
-        <TextImgLeft />
+        <TextImgLeft
+          image="/img/gotomenu.gif"
+          imageAlt="Go to menu image"
+          heading="Menu"
+          text={`Take a look at what we have to offer. From classic cocktails to refreshing drinks and everything in between, our menu is made to match the vibe. Whether you're in the mood for something light or something bold, there's something for everyone. 
+          
+          Explore the full menu below.`}
+          ctaHref="/menu"
+          ctaLabel="Go to menu"
+        />
       </section>
 
       <section class="bg-purple-500">

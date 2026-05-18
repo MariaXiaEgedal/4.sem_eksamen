@@ -1,16 +1,17 @@
 ---
-import { Image } from "astro:assets";
 import Button from "./Button.astro";
 import Text from "./Text.astro";
 import Heading from "./Heading.astro";
-import fallbackImage from "../assets/images/welcomeimage.jpg";
 
 const {
-  image = fallbackImage,
+  image = "/img/welcomeimage.jpg",
   imageAlt = "",
   heading = "Overskrift",
   text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   ctaLabel = "CTA primary",
+  ctaHref = null,
+  mapSrc = null,
+  mapTitle = "Location map",
 } = Astro.props;
 ---
 
@@ -18,7 +19,20 @@ const {
   class="grid grid-cols-4 md:grid-cols-12 gap-2xs items-start md:items-center"
 >
   <div class="col-span-4 md:col-span-5">
-    <Image src={image} alt={imageAlt} class="w-full h-auto object-cover" />
+    {
+      mapSrc ? (
+        <iframe
+          src={mapSrc}
+          title={mapTitle}
+          class="w-full h-[280px] md:h-[360px] "
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        />
+      ) : (
+        <img src={image} alt={imageAlt} class="w-full h-auto object-cover" />
+      )
+    }
   </div>
 
   <div class="col-span-4 md:col-span-6 md:col-start-7 text-text-dark">
@@ -31,7 +45,19 @@ const {
     </Text>
 
     <div class="mt-xs">
-      <Button variant="primary" size="medium">{ctaLabel}</Button>
+      {
+        ctaLabel ? (
+          ctaHref ? (
+            <Button variant="primary" size="medium" href={ctaHref}>
+              {ctaLabel}
+            </Button>
+          ) : (
+            <Button variant="primary" size="medium">
+              {ctaLabel}
+            </Button>
+          )
+        ) : null
+      }
     </div>
   </div>
 </div>

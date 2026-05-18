@@ -1,0 +1,43 @@
+---
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+import Button from "./Button.astro";
+
+const {
+  title = "Overskrift",
+  date = "Dato og tid",
+  description = "Info om eventet",
+  buttonText = "Knap",
+  imageSrc = "/img/hey.jpg",
+  imageAlt = "Event billede",
+} = Astro.props;
+---
+
+<div
+  class="grid grid-cols-4 md:grid-cols-12 gap-2xs border-b-2 border-primary-line"
+>
+  <div
+    class="col-span-4 md:col-start-1 md:col-span-5 flex flex-col justify-center"
+  >
+    <Heading htmlheading="h3" size="small" stylingclasses="mb-xs text-text-dark"
+      >{title}</Heading
+    >
+    <Text teksttype="brødtekst_bold" stylingclasses="mb-2xs text-text-dark"
+      >{date}</Text
+    >
+    <Text teksttype="brødtekst" stylingclasses="mb-xs text-text-dark"
+      >{description}</Text
+    >
+    <div class="self-start">
+      <Button variant="primary" size="medium">{buttonText}</Button>
+    </div>
+  </div>
+
+  <div class="col-span-4 md:col-start-7 md:col-end-13 flex">
+    <div class="w-full aspect-[1/0.65] overflow-hidden">
+      <div class="aspect-square rounded-full overflow-hidden">
+        <img src={imageSrc} alt={imageAlt} class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+</div>

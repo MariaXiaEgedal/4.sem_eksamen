@@ -10,8 +10,10 @@ const {
   text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   ctaLabel = "CTA primary",
   ctaHref = null,
+  ctaOnClickHref = null,
   mapSrc = null,
   mapTitle = "Location map",
+  imageClass = "w-full h-auto object-cover",
 } = Astro.props;
 ---
 
@@ -30,12 +32,14 @@ const {
           referrerpolicy="no-referrer-when-downgrade"
         />
       ) : (
-        <img src={image} alt={imageAlt} class="w-full h-auto object-cover" />
+        <img src={image} alt={imageAlt} class={imageClass} />
       )
     }
   </div>
 
-  <div class="col-span-4 md:col-span-6 md:col-start-7 text-text-dark">
+  <div
+    class="col-span-4 md:col-span-6 md:col-start-7 text-text-dark mt-2xs md:mt-0"
+  >
     <Heading htmlheading="h2" size="medium" stylingclasses="leading-none">
       {heading}
     </Heading>
@@ -44,10 +48,18 @@ const {
       {text}
     </Text>
 
-    <div class="mt-xs">
+    <div class="mt-2xs md:mt-xs">
       {
         ctaLabel ? (
-          ctaHref ? (
+          ctaOnClickHref ? (
+            <Button
+              variant="primary"
+              size="medium"
+              onClickHref={ctaOnClickHref}
+            >
+              {ctaLabel}
+            </Button>
+          ) : ctaHref ? (
             <Button variant="primary" size="medium" href={ctaHref}>
               {ctaLabel}
             </Button>

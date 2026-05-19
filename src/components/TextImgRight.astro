@@ -15,16 +15,18 @@ const {
 <div
   class="grid grid-cols-4 md:grid-cols-12 gap-2xs items-start md:items-center"
 >
-  <div class="col-start-1 col-end-5 md:col-end-6 text-text-dark">
+  <div class="col-start-1 col-end-5 md:col-end-7 text-text-dark">
     <Heading htmlheading="h1" size="large">{heading}</Heading>
-    <Text teksttype="brødtekst" stylingclasses="mt-4xs max-w-[38rem]">
+    <Text teksttype="brødtekst" stylingclasses="mt-5xs max-w-[38rem]">
       {text}
     </Text>
 
-    <img src={logo} alt={logoAlt} class="mt-xs" />
+    <img src={logo} alt={logoAlt} class="mt-2xs" />
   </div>
 
-  <div class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end">
+  <div
+    class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end mt-2xs md:mt-0"
+  >
     <img src={image} alt={imageAlt} class="w-full h-auto" />
   </div>
 </div>

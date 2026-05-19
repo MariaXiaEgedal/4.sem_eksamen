@@ -48,14 +48,44 @@ import SectionDivider from "../components/SectionDivider.astro";
 
       <SectionDivider />
 
-      <section class="bg-yellow-500 px-2xs md:px-xl">
-        <p>A New Way to Socialize</p>
-        <Heading htmlheading="h2" size="medium" stylingclasses="text-text-dark"
-          >A New Way to Socialize</Heading
+      <section class="px-2xs md:px-xl">
+        <Heading
+          htmlheading="h2"
+          size="medium"
+          stylingclasses="mb-2xs text-text-dark">A New Way to Socialize</Heading
         >
+        <div class="grid grid-cols-2">
+          <div class="p-xs md:p-2xs">
+            <Heading
+              htmlheading="h2"
+              size="small"
+              stylingclasses="text-text-dark ">Our Mission</Heading
+            >
+            <Text teksttype="brødtekst" stylingclasses="text-text-dark">
+              We want to create a space that people can relate to at all times
+              of the day. Inclusivity is a key value for us, and we feel that
+              it’s missing in the scene. Let’s build lasting connections
+              together.
+            </Text>
+          </div>
+
+          <div class="p-xs md:p-2xs">
+            <Heading
+              htmlheading="h2"
+              size="small"
+              stylingclasses="text-text-dark ">Community</Heading
+            >
+            <Text teksttype="brødtekst" stylingclasses="text-text-dark">
+              Our vision is to push the boundaries within the industry by
+              offering new ways of socializing that go beyond drinking. We’re
+              here to provide fun experiences that keep you fresh for the next
+              morning.
+            </Text>
+          </div>
+        </div>
       </section>
 
-      <section class="bg-green-500 px-2xs md:px-xl">
+      <section class="px-2xs md:px-xl">
         <p>FAQ</p>
         <Faq />
       </section>

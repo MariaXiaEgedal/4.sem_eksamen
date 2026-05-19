@@ -7,7 +7,7 @@ import Text from "../components/Text.astro";
 import Button from "../components/Button.astro";
 import TextImgLeft from "../components/TextImgLeft.astro";
 import TextImgRight from "../components/TextImgRight.astro";
-import EventCardIndex from "../components/EventCardIndex.astro";
+import EventCard from "../components/EventCard.astro";
 import Socials from "../components/Socials.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 ---
@@ -23,6 +23,7 @@ import SectionDivider from "../components/SectionDivider.astro";
   <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="mb-s md:mb-l">
     <div class="flex flex-col gap-s md:gap-l">
+      <!-- ***************************** Start Hero ***************************** -->
       <section class="px-0 md:px-0 relative">
         <video
           class="block md:hidden w-full min-h-[550px] h-auto object-cover relative z-0"
@@ -48,6 +49,9 @@ import SectionDivider from "../components/SectionDivider.astro";
           </div>
         </div>
       </section>
+      <!-- ***************************** End Hero ***************************** -->
+
+      <!-- ***************************** Start Welcome ***************************** -->
 
       <section class="px-2xs md:px-xl whitespace-pre-line">
         <TextImgRight
@@ -62,9 +66,11 @@ import SectionDivider from "../components/SectionDivider.astro";
           imageAlt="Welcome image"
         />
       </section>
+      <!-- ***************************** End Welcome ***************************** -->
 
       <SectionDivider />
 
+      <!-- ***************************** Start Prices ***************************** -->
       <section class="px-2xs md:px-xl">
         <TextImgLeft
           heading="Prices"
@@ -74,19 +80,74 @@ import SectionDivider from "../components/SectionDivider.astro";
           imageAlt="Price tavle"
         />
       </section>
+      <!-- ***************************** End Prices ***************************** -->
 
       <SectionDivider />
 
-      <section class="bg-green-500 px-2xs md:px-xl">
-        <p>Events</p>
-        <Heading htmlheading="h2" size="medium" stylingclasses="text-text-dark"
-          >Events</Heading
+      <!-- ***************************** Start Events ***************************** -->
+      <section
+        class="bg-green-500 pl-2xs lg:px-xl flex flex-col gap-2xs lg:gap-0"
+      >
+        <Heading
+          htmlheading="h2"
+          size="medium"
+          stylingclasses="mb-2xs text-text-dark">Events</Heading
         >
-        <EventCardIndex />
+
+        <!-- Mangler linje under og pil -->
+        <a href="/event" class="self-end">
+          <Text
+            teksttype="brødtekst_bold"
+            stylingclasses="mb-2xs text-text-dark">Alle events</Text
+          >
+        </a>
+
+        <div
+          class="pr-2xs lg:pr-0 flex items-start gap-2xs overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-6 lg:gap-m :overflow-visible"
+        >
+          <EventCard
+            class="shrink-0 basis-6/8 snap-start md:col-span-2"
+            smallVersion={true}
+            noBorder={true}
+            title="Tuesday’s Tournament"
+            date="Every Tuesday / 20:00-22:00 / 50 kr. per person"
+            description="Join our weekly pool tournament. Every Tuesday at 20:00. Sign up with a teammate and play for fun (and nice prizes!) All levels are welcome."
+            buttonText="Save Your Spot"
+            imageSrc="/img/event1.png"
+            imageSrcMobile="/img/mobil-event1.png"
+            imageAlt="Tuesday’s Tournament"
+          />
+          <EventCard
+            class="shrink-0 basis-6/8 snap-start md:col-span-2"
+            smallVersion={true}
+            noBorder={true}
+            title="Summerparty"
+            date="19. June 2026 / 16:00-00:00 / Free entry"
+            description="Join us at Pool Cph for a summer party with great vibes, cold drinks, and a DJ all night. Everybody is welcome. Bring your friends and celebrate summer with us."
+            buttonText="See Facebook Event"
+            imageSrc="/img/event2.png"
+            imageSrcMobile="/img/mobil-event2.png"
+            imageAlt="Summerparty"
+          />
+          <EventCard
+            class="shrink-0 basis-6/8 snap-start md:col-span-2"
+            smallVersion={true}
+            noBorder={true}
+            title="Girls Night"
+            date="3. July 2026 / 20:00-00:00 / 100 kr per person"
+            description="Join us at Pool Cph for a girls night filled with great vibes, cocktails, and good company. Grab your girls, dress up, and come enjoy a fun night out."
+            buttonText="Save The Date"
+            imageSrc="/img/event3.png"
+            imageSrcMobile="/img/mobil-event3.png"
+            imageAlt="Girls Night"
+          />
+        </div>
       </section>
+      <!-- ***************************** End Events ***************************** -->
 
       <SectionDivider />
 
+      <!-- ***************************** Start Menu ***************************** -->
       <section class="bg-blue-500 px-2xs md:px-xl whitespace-pre-line">
         <TextImgLeft
           image="/img/gotomenu.gif"
@@ -100,9 +161,11 @@ import SectionDivider from "../components/SectionDivider.astro";
           ctaLabel="Go to menu"
         />
       </section>
+      <!-- ***************************** End Menu ***************************** -->
 
       <SectionDivider />
 
+      <!-- ***************************** Start Socials ***************************** -->
       <section class="bg-purple-500">
         <p>Socials</p>
         <Heading
@@ -112,6 +175,7 @@ import SectionDivider from "../components/SectionDivider.astro";
         >
         <Socials />
       </section>
+      <!-- ***************************** End Socials ***************************** -->
     </div>
   </main>
 </MainLayout>

@@ -12,12 +12,14 @@ const {
   imageSrcMobile = "/img/mobil-event.png",
   imageAlt = "Event billede",
   smallVersion = false,
+  noBorder = false,
+  class: className = "",
 } = Astro.props;
 ---
 
 <div
-  class={`grid grid-cols-4 ${smallVersion ? "" : "md:grid-cols-12"} gap-2xs border-b border-primary-line`}
-  style="border-bottom-width: var(--stroke-xs);"
+  class={`grid grid-cols-4 ${smallVersion ? "" : "md:grid-cols-12"} gap-2xs ${noBorder ? "" : "border-b border-primary-line"} ${className}`}
+  style={noBorder ? undefined : "border-bottom-width: var(--stroke-xs);"}
 >
   <div
     class={`col-span-4 flex flex-col justify-center order-2 ${smallVersion ? "" : "md:col-start-1 md:col-span-5 md:order-1"}`}

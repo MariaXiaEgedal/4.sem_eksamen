@@ -25,8 +25,16 @@ import SectionDivider from "../components/SectionDivider.astro";
     <div class="flex flex-col gap-s md:gap-l">
       <section class="px-0 md:px-0 relative">
         <video
-          class="w-full min-h-[550px] md:min-h-[600px] lg:max-h-[750px] h-auto object-cover relative z-0"
-          src="/src/assets/videos/herovideo.mov"
+          class="block md:hidden w-full min-h-[550px] h-auto object-cover relative z-0"
+          src="/img/heromobilvideo.mov"
+          autoplay
+          muted
+          loop
+          playsinline></video>
+
+        <video
+          class="hidden md:block w-full min-h-[600px] lg:max-h-[750px] h-auto object-cover relative z-0"
+          src="/img/herovideo.mov"
           autoplay
           muted
           loop

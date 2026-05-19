@@ -1,0 +1,213 @@
+---
+import Text from "./Text.astro";
+import Heading from "./Heading.astro";
+
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+const { items = null }: { items?: FaqItem[] | null } = Astro.props;
+
+const defaultItems: FaqItem[] = [
+  {
+    question: "Can I come without booking?",
+    answer:
+      "Walk-ins are more than welcome! However, we can't guarantee that a pool table will be available, especially during busy hours. If you want to make sure you get a table, we recommend booking in advance.",
+  },
+  {
+    question: "What are your opening hours?",
+    answer:
+      "Monday – Wednesday: 16:00 – 00:00 Thursday – Saturday: 14:00 – 00:00",
+  },
+  {
+    question: "Do you offer food and drinks in the bar?",
+    answer:
+      "Yes! We serve a wide variety of cocktails, beers, wines, and plenty of non-alcoholic alternatives. We also offer light meals and snacks such as olives, bread with ham and cheese, pool toast, and salted nuts.",
+  },
+  {
+    question: "How many people can share a table?",
+    answer:
+      "There can be up to 12 people per pool table, making it perfect for both smaller gatherings and larger groups.",
+  },
+  {
+    question: "Do you have tournaments or weekly events?",
+    answer:
+      "Yes! We host weekly Tuesday tournaments as well as ongoing events throughout the year. Follow our Instagram or keep an eye on our website to stay updated on upcoming tournaments, themed nights, and special events.",
+  },
+];
+
+const faqs: FaqItem[] = items ?? defaultItems;
+---
+
+<section class="w-full py-m">
+  <!-- Desktop version -->
+  <div class="hidden md:block">
+    <div class="flex items-center gap-2xs mb-m">
+      <Heading
+        htmlheading="h4"
+        size="xsmall"
+        stylingclasses="whitespace-nowrap text-text-dark">Q.</Heading
+      >
+      <div class="flex-1 h-px bg-primary-line"></div>
+      <Heading
+        htmlheading="h4"
+        size="xsmall"
+        stylingclasses="whitespace-nowrap text-center px-s text-text-dark"
+        >FAQ</Heading
+      >
+      <div class="flex-1 h-px bg-primary-line"></div>
+      <Heading
+        htmlheading="h4"
+        size="xsmall"
+        stylingclasses="whitespace-nowrap text-text-dark">A.</Heading
+      >
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs items-start">
+      <div class="pr-3xs md:pr-xs md:border-r md:border-primary-line">
+        <div id="faq-list" class="flex flex-col">
+          {
+            faqs.map((faq, i) => (
+              <div
+                class="faq-item cursor-pointer py-3xs border-b border-primary-line last:border-b-0 flex items-center justify-between"
+                data-index={i}
+              >
+                <Text
+                  teksttype="brødtekst_bold"
+                  stylingclasses="faq-question cursor-pointer text-text-dark"
+                >
+                  {faq.question}
+                </Text>
+                <span class="faq-icon cursor-pointer w-xs h-xs flex items-center justify-center text-text-dark text-[26px]">
+                  {i === 0 ? "→" : "+"}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="pl-3xs md:pl-m">
+        <div class="faq-detail">
+          <Text teksttype="brødtekst_bold" stylingclasses="text-text-dark"
+            >{faqs[0].question}</Text
+          >
+          <Text teksttype="brødtekst">{faqs[0].answer}</Text>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobil accordion -->
+  <div class="md:hidden">
+    <div class="flex items-center gap-2xs mb-m">
+      <div class="flex-1 h-px bg-primary-line"></div>
+      <Heading
+        htmlheading="h4"
+        size="xsmall"
+        stylingclasses="whitespace-nowrap text-center px-s text-text-dark"
+        >FAQ</Heading
+      >
+      <div class="flex-1 h-px bg-primary-line"></div>
+    </div>
+
+    {
+      faqs.map((faq, i) => (
+        <div class="faq-mobile border-b border-primary-line last:border-b-0">
+          <button
+            class="faq-mobile-btn w-full py-3xs px-0 flex items-center justify-between text-left"
+            data-index={i}
+          >
+            <Text
+              teksttype="brødtekst_bold"
+              stylingclasses="faq-mobile-q text-text-dark"
+            >
+              {faq.question}
+            </Text>
+            <span class="faq-mobile-icon text-text-dark text-[26px]">
+              {i === 0 ? "→" : "+"}
+            </span>
+          </button>
+          <div
+            class="faq-mobile-answer overflow-hidden max-h-0 transition-all duration-300"
+            data-index={i}
+          >
+            <div class="py-3xs">
+              <Text teksttype="brødtekst" stylingclasses="text-text-dark">
+                {faq.answer}
+              </Text>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script type="module" define:vars={{ faqs }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const list = document.getElementById("faq-list");
+    const detailContainer = document.querySelector(".faq-detail");
+
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    const setActiveDesktop = (index) => {
+      faqItems.forEach((row, i) => {
+        const icon = row.querySelector(".faq-icon");
+        if (icon) icon.textContent = i === index ? "→" : "+";
+      });
+
+      const faq = faqs[index];
+      if (!faq || !detailContainer) return;
+
+      detailContainer.innerHTML = `<p class="font-bold text-[16px] md:text-[22px] mb-6 text-text-dark">${faq.question}</p><p class="text-[16px] md:text-[22px] text-text-dark">${faq.answer}</p>`;
+    };
+
+    if (list && detailContainer) {
+      list.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const row = target.closest(".faq-item");
+        if (!row) return;
+
+        const index = Number(row.dataset.index);
+        if (Number.isNaN(index)) return;
+
+        setActiveDesktop(index);
+      });
+
+      setActiveDesktop(0);
+    }
+
+    const mobileAnswers = document.querySelectorAll(".faq-mobile-answer");
+    const mobileIcons = document.querySelectorAll(".faq-mobile-icon");
+
+    const closeAllMobileItems = () => {
+      mobileAnswers.forEach((answer) => answer.classList.remove("max-h-96"));
+      mobileIcons.forEach((icon) => (icon.textContent = "+"));
+    };
+
+    document.querySelectorAll(".faq-mobile-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const index = Number(btn.dataset.index);
+        if (Number.isNaN(index)) return;
+
+        const answer = document.querySelector(
+          `.faq-mobile-answer[data-index="${index}"]`,
+        );
+        const icon = btn.querySelector(".faq-mobile-icon");
+        if (!answer || !icon) return;
+
+        const shouldOpen = !answer.classList.contains("max-h-96");
+        closeAllMobileItems();
+
+        if (shouldOpen) {
+          answer.classList.add("max-h-96");
+          icon.textContent = "→";
+        }
+      });
+    });
+  });
+</script>

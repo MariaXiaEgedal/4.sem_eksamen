@@ -8,6 +8,7 @@ import Button from "../components/Button.astro";
 import TextImgLeft from "../components/TextImgLeft.astro";
 import EventCard from "../components/EventCard.astro";
 import Faq from "../components/Faq.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 ---
 
 <MainLayout title="Event">
@@ -26,7 +27,11 @@ import Faq from "../components/Faq.astro";
         <TextImgLeft />
       </section>
 
-      <section class="bg-orange-500 px-2xs md:px-xl flex flex-col gap-2xs md:gap-0">
+      <SectionDivider />
+
+      <section
+        class="bg-orange-500 px-2xs md:px-xl flex flex-col gap-2xs md:gap-0"
+      >
         <EventCard
           title="Tuesday’s Tournament"
           date="Every Tuesday / 20:00-22:00 / 50 kr. per person"
@@ -64,6 +69,8 @@ import Faq from "../components/Faq.astro";
           imageAlt="Dinner date"
         />
       </section>
+
+      <!-- <SectionDivider /> -->
 
       <section class="bg-yellow-500 px-2xs md:px-xl">
         <p>Looking to host an event?</p>

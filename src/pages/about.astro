@@ -10,6 +10,7 @@ import TimeLine from "../components/TimeLine.astro";
 import Faq from "../components/Faq.astro";
 import TextImgLeft from "../components/TextImgLeft.astro";
 import Socials from "../components/Socials.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 ---
 
 <MainLayout title="About us">
@@ -34,13 +35,18 @@ import Socials from "../components/Socials.astro";
         />
       </section>
 
-      <section class="bg-orange-500 px-2xs md:px-xl">
-        <p>The history of pool</p>
-        <Heading htmlheading="h2" size="medium" stylingclasses="text-text-dark"
-          >The history of pool</Heading
+      <SectionDivider />
+
+      <section class="px-2xs md:px-xl">
+        <Heading
+          htmlheading="h2"
+          size="medium"
+          stylingclasses="mb-2xs text-text-dark">The history of pool</Heading
         >
         <TimeLine />
       </section>
+
+      <SectionDivider />
 
       <section class="bg-yellow-500 px-2xs md:px-xl">
         <p>A New Way to Socialize</p>
@@ -65,6 +71,8 @@ import Socials from "../components/Socials.astro";
           mapTitle="POOL Cph - Gothersgade 8C"
         />
       </section>
+
+      <SectionDivider />
 
       <section class="bg-purple-500">
         <p>Socials</p>

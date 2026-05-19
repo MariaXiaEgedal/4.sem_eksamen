@@ -9,6 +9,7 @@ import TextImgLeft from "../components/TextImgLeft.astro";
 import TextImgRight from "../components/TextImgRight.astro";
 import EventCardIndex from "../components/EventCardIndex.astro";
 import Socials from "../components/Socials.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 ---
 
 <MainLayout title="Pool CPH">
@@ -54,6 +55,8 @@ import Socials from "../components/Socials.astro";
         />
       </section>
 
+      <SectionDivider />
+
       <section class="px-2xs md:px-xl">
         <TextImgLeft
           heading="Prices"
@@ -64,6 +67,8 @@ import Socials from "../components/Socials.astro";
         />
       </section>
 
+      <SectionDivider />
+
       <section class="bg-green-500 px-2xs md:px-xl">
         <p>Events</p>
         <Heading htmlheading="h2" size="medium" stylingclasses="text-text-dark"
@@ -71,6 +76,8 @@ import Socials from "../components/Socials.astro";
         >
         <EventCardIndex />
       </section>
+
+      <SectionDivider />
 
       <section class="bg-blue-500 px-2xs md:px-xl whitespace-pre-line">
         <TextImgLeft
@@ -85,6 +92,8 @@ import Socials from "../components/Socials.astro";
           ctaLabel="Go to menu"
         />
       </section>
+
+      <SectionDivider />
 
       <section class="bg-purple-500">
         <p>Socials</p>

@@ -11,15 +11,16 @@ const {
   imageSrc = "/img/event.png",
   imageSrcMobile = "/img/mobil-event.png",
   imageAlt = "Event billede",
+  smallVersion = false,
 } = Astro.props;
 ---
 
 <div
-  class="grid grid-cols-4 md:grid-cols-12 gap-2xs border-primary-line"
+  class={`grid grid-cols-4 ${smallVersion ? "" : "md:grid-cols-12"} gap-2xs border-b border-primary-line`}
   style="border-bottom-width: var(--stroke-xs);"
 >
   <div
-    class="col-span-4 md:col-start-1 md:col-span-5 flex flex-col justify-center order-2 md:order-1"
+    class={`col-span-4 flex flex-col justify-center order-2 ${smallVersion ? "" : "md:col-start-1 md:col-span-5 md:order-1"}`}
   >
     <Heading
       htmlheading="h3"
@@ -38,16 +39,20 @@ const {
   </div>
 
   <div
-    class="col-span-4 md:col-start-7 md:col-end-13 flex items-end order-1 md:order-2"
+    class={`col-span-4 flex items-end order-1 ${smallVersion ? "" : "md:col-start-7 md:col-end-13 md:order-2"}`}
   >
     <div class="w-full">
       <div class="">
         <img
           src={imageSrcMobile || imageSrc}
           alt={imageAlt}
-          class="w-full md:hidden"
+          class={`w-full ${smallVersion ? "" : "md:hidden"}`}
         />
-        <img src={imageSrc} alt={imageAlt} class="w-full hidden md:block" />
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class={`w-full hidden ${smallVersion ? "" : "md:block"}`}
+        />
       </div>
     </div>
   </div>

@@ -1,0 +1,72 @@
+---
+import Heading from "./Heading.astro";
+import MenuInfo from "./MenuInfo.astro";
+import Text from "./Text.astro";
+
+const {
+  title = "Menu Category Title",
+  items = [],
+  imageSrc = "/img/hey.jpg",
+  imageAlt = "Category image",
+  isOpen = true,
+} = Astro.props;
+---
+
+<details
+  open={isOpen}
+  class="group border-primary-line"
+  style="border-bottom-width: var(--stroke-xs);"
+>
+  <summary class="py-5xs md:py-4xs flex items-center justify-between">
+    <Heading htmlheading="h2" size="xsmall" stylingclasses="text-text-dark">
+      {title}
+    </Heading>
+
+    <img
+      src="/img/arrow.svg"
+      alt=""
+      class="w-10 h-10 transition-transform duration-300 rotate-180 group-open:rotate-0"
+    />
+  </summary>
+
+  <div class="py-2xs md:py-xs">
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-2xs">
+      <!-- Items area: span two columns on all sizes, on desktop it occupies first two columns -->
+      <div class="col-span-2">
+        <div class="grid grid-cols-2 gap-x-2xs gap-y-2xs md:gap-y-xs">
+          {
+            items.map((item) =>
+              item && item.heading ? (
+                <div class="col-span-2">
+                  <Text
+                    teksttype="brødtekst_bold_italic"
+                    stylingclasses="mt-2xs text-text-dark"
+                  >
+                    {item.heading}
+                  </Text>
+                </div>
+              ) : (
+                <MenuInfo
+                  name={item.name}
+                  classic={item.classic}
+                  low={item.low}
+                  info={item.info}
+                  price={item.price}
+                />
+              ),
+            )
+          }
+        </div>
+      </div>
+
+      <!-- Image: full width under items on mobile/tablet, right column on desktop -->
+      <div class="col-span-2 lg:col-span-1">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          class="w-full max-h-[400px] object-cover md:max-h-none"
+        />
+      </div>
+    </div>
+  </div>
+</details>

@@ -15,6 +15,7 @@ import TextImgLeft from "../components/TextImgLeft.astro";
 import TextImgRight from "../components/TextImgRight.astro";
 import TimeLine from "../components/TimeLine.astro";
 import Event from "./event.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 ---
 
 <MainLayout title="Komponentbibliotek">
@@ -107,6 +108,8 @@ import Event from "./event.astro";
       >Komponenter: (Her kan vi se alle komponenter, mens vi arbejder på dem)</Heading
     >
     <div class="flex flex-col gap-s md:gap-l">
+      <SectionDivider />
+
       <section class="bg-red-500 px-2xs md:px-xl">
         <Heading
           htmlheading="h5"

@@ -1,6 +1,6 @@
 ---
 // Henter parametrene fra Astro.props
-const { variant = "primary", size = "medium" } = Astro.props;
+const { variant = "primary", size = "medium", href = null, target = "_self", onClickHref = null } = Astro.props;
 
 // Basale styling (fælles)
 const base = "rounded-xs transition-all duration-300 ease-out";
@@ -22,6 +22,16 @@ const sizeClasses = {
 ---
 
 <!-- Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->
-<button class:list={[base, variantClasses[variant], sizeClasses[size]]}
-  ><slot /></button
->
+{onClickHref ? (
+  <button onclick={`location.href='${onClickHref}'`} class:list={[base, variantClasses[variant], sizeClasses[size]]}>
+    <slot />
+  </button>
+) : href ? (
+  <a href={href} target={target} class:list={[base, variantClasses[variant], sizeClasses[size]]}>
+    <slot />
+  </a>
+) : (
+  <button class:list={[base, variantClasses[variant], sizeClasses[size]]}>
+    <slot />
+  </button>
+)}

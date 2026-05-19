@@ -1,10 +1,104 @@
 ---
-
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+import Heading from "./Heading.astro";
 ---
 
-<footer class="bg-footer text-text-dark">
-  <div class="px-2xs md:px-xl">
-    <p>footer content</p>
-    <!-- lav her -->
+<footer
+  class="bg-footer text-text-dark border-t border-primary-line w-full"
+  role="contentinfo"
+>
+  <div class="mx-2xs md:mx-xl pt-m">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-y-m gap-x-2xs">
+      <div class="md:col-start-1 md:col-span-3">
+        <Heading htmlheading="h4" size="xsmall" stylingclasses="mb-5xs">
+          Opening hours
+        </Heading>
+
+        <Text teksttype="brødtekst" stylingclasses="mb-5xs">
+          Monday-Thursday: 16 - 00
+        </Text>
+
+        <Text teksttype="brødtekst" stylingclasses="mb-5xs">
+          Friday-Saturday: 14 - 00
+        </Text>
+
+        <Text teksttype="brødtekst"> Sunday: Closed </Text>
+      </div>
+
+      <div class="md:col-start-5 md:col-span-4 md:justify-self-center">
+        <Heading htmlheading="h4" size="xsmall" stylingclasses="mb-5xs">
+          Contact
+        </Heading>
+
+        <Text teksttype="brødtekst" stylingclasses="mb-5xs">
+          +45 31 26 91 81
+        </Text>
+
+        <Text teksttype="brødtekst" stylingclasses="mb-5xs">
+          info@poolcph.dk
+        </Text>
+
+        <Text teksttype="brødtekst"> booking@poolcph.dk </Text>
+      </div>
+
+      <div class="md:col-start-10 md:col-span-3">
+        <Heading htmlheading="h4" size="xsmall" stylingclasses="mb-5xs">
+          Adresse
+        </Heading>
+
+        <Text teksttype="brødtekst" stylingclasses="mb-5xs">
+          Gothersgade 8C, 1123
+        </Text>
+
+        <Text teksttype="brødtekst"> København </Text>
+      </div>
+
+      <div class="flex items-center gap-2xs md:col-start-1 md:col-span-2">
+        <a
+          href="https://www.instagram.com/poolcph/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <img
+            src="/img/instgramicon.svg"
+            alt="Instagram"
+            class="w-[40px] md:w-[50px]"
+          />
+        </a>
+
+        <a
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <img
+            src="/img/facebookicon.svg"
+            alt="Facebook"
+            class="w-[40px] md:w-[50px]"
+          />
+        </a>
+      </div>
+
+      <div
+        class="flex justify-center md:justify-start md:col-start-10 md:col-span-2"
+      >
+        <img
+          src="/img/poollogorød.svg"
+          alt="Pool CPH logo"
+          class="w-[180px] md:w-[160px]"
+        />
+      </div>
+
+      <div
+        class="flex justify-center gap-xs md:col-start-5 md:col-span-4 pb-2xs"
+      >
+        <Text teksttype="brødtekst"> Smiley rapport </Text>
+
+        <Text teksttype="brødtekst"> Giftcard </Text>
+      </div>
+    </div>
   </div>
 </footer>

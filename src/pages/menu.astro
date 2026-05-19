@@ -1,23 +1,226 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Link from "../components/Link.astro";
-import { Image } from "astro:assets";
-import Heading from "../components/Heading.astro";
-import Text from "../components/Text.astro";
-import Button from "../components/Button.astro";
-import MenuCard from "../components/MenuCard.astro";
 import TextImgRight from "../components/TextImgRight.astro";
+import MenuCard from "../components/MenuCard.astro";
+
+// ************************************** Start Cocktails **************************************
+const cocktails = [
+  {
+    name: "Paloma",
+    classic: "Olmeca Tequila Blanco, Lime, Grape soda",
+    low: "Mexican Agave ISH, Olmeca Tequila Blanco, Lime, Grape soda",
+    price: "95 kr.",
+  },
+  {
+    name: "Sportif Tonic",
+    classic: "Vodka, Grape Likør, Tonic",
+    low: "Vodka, Agave sirup, Tonic",
+    price: "95 kr.",
+  },
+  {
+    name: "Vermouth Tonic",
+    classic: "Carpano Vermouth, Tonic",
+    low: "Anaperitivo ISH, Carpano Vermouth, Tonic",
+    price: "95 kr.",
+  },
+  {
+    name: "Whiskey Sour",
+    classic: "Four Roses, æggehvider, Lime, Agave sirup",
+    low: "Fire Roses, Lime, Agave sirup",
+    price: "95 kr.",
+  },
+  {
+    name: "Negroni",
+    classic: "Carpano Classico Vermouth, Campari, Gin",
+    low: "London Botanical Gin ISH, Carpano Classico Vermouth, Campari",
+    price: "95 kr.",
+  },
+  {
+    name: "Amaratto Sour",
+    classic: "Amaretto, æggehvider, Lime, Agave sirup",
+    low: "Amaretto, Lime, Agave sirup",
+    price: "95 kr.",
+  },
+  {
+    name: "Kaffe Martini",
+    classic: "Espresso, Kahlua, Vodka, Agave sirup",
+    low: "Espresso, Kahlua, Vodka, Agave sirup",
+    price: "95 kr.",
+  },
+  {
+    name: "Italicus Sour",
+    classic: "Italicz, æggehvider, Lime, Agave sirup",
+    low: "Italicz, Lime, Agave sirup",
+    price: "95 kr.",
+  },
+  {
+    name: "Spicy Margarita",
+    classic: "Olmeca Tequila Blanco, Cointreau, Lime, Chili",
+    low: "Mexican Agave ISH, Cointreau, Lime, Chili",
+    price: "95 kr.",
+  },
+  {
+    name: "Pina Bianca",
+    classic: "Grey Goose Vodka, Tomat juice, Lime, Selleri",
+    low: "ISH Tomato, Lime, Selleri",
+    price: "125 kr.",
+  },
+  {
+    name: "Bloody Mary",
+    classic: "Grey Goose Vodka, Tomat juice, Lime, Selleri",
+    low: "ISH Tomato, Lime, Selleri",
+    price: "125 kr.",
+  },
+];
+// ************************************** End Cocktails **************************************
+
+// ************************************** Start Wine **************************************
+const wines = [
+  { heading: "Bobler" },
+  { name: "2024 Orange Pet Nat, Brand Bros, Pfalz", price: "550 kr." },
+  {
+    name: "NV Tradition Extra Brut 1er cru, Lelarge Pugeot, Champagne",
+    price: "670 kr.",
+  },
+  { name: "L’atavique MAGNUM, Mouzon Leroux", price: "1100 kr." },
+  { name: "L’atavique, Mouzon Leroux", price: "800 kr." },
+  { heading: "Hvide" },
+  { name: "2024 Riesling Free, Brand Bros, Pfalz", price: "510 kr." },
+  { name: "2023 Alte Reben, Peter Jakob Kuhn, Rheingau", price: "550 kr." },
+  { name: "Terre de 3 anjou blanc, Terra vita vinum", price: "550 kr." },
+  {
+    name: "2023 La Femme Soleil, Cyril Fhal, Cotes Catalanes",
+    price: "550 kr.",
+  },
+  {
+    name: "2022 ‘La Croisette’ Aligote, Domaine la Varenne, Bourgogne",
+    price: "550 kr.",
+  },
+  {
+    name: "2023 Arenas de Santyuste, Esmeralda Garcia, Rueda",
+    price: "575 kr.",
+  },
+  { heading: "Orange" },
+  { name: "2024 Orange Pet Nat, Brand Bros, Pfalz", price: "550 kr." },
+  {
+    name: "2023 La Femme Soleil, Cyril Fhal, Cotes Catalanes",
+    price: "550 kr.",
+  },
+  {
+    name: "2022 ‘La Croisette’ Aligote, Domaine la Varenne, Bourgogne",
+    price: "550 kr.",
+  },
+  { name: "2024 Brisat, Azimut, Penedes", price: "500 kr." },
+  { name: "2023 Le Schlouk 1L, Domaine Geschict, Alsace", price: "550 kr." },
+  {
+    name: "2022 Macabouef #2, Mas Coutelou, Cotes Catalanes",
+    price: "585 kr.",
+  },
+  { heading: "Rødvin" },
+  { name: "Morgon Vielles Vignes, GUY BRETON", price: "635 kr." },
+  {
+    name: "2023 La Madone Fleurie, Justin Dutraive, Beaujolais",
+    price: "550 kr.",
+  },
+  {
+    name: "2021 Maranges ‘Les Clos Roussots’, Maison en Belles Lies, Bourgogne",
+    price: "750 kr.",
+  },
+  {
+    name: "2021 Vaille que Vaille, Pierre Bourlier, Ardeche",
+    price: "510 kr.",
+  },
+  {
+    name: "2020 Brunello di Montalcino, Casanova di Neri, Toscana",
+    price: "850 kr.",
+  },
+  { name: "2020 Barolo, Brovia, Piemonte", price: "900 kr." },
+];
+// ************************************** End Wine **************************************
+
+// ************************************** Start Beer / Longdrinks / Other **************************************
+const beers = [
+  { heading: "Draftbeers" },
+  { name: "“Fløjte” Heineken", price: "1 for 40 kr, 4 for 120 kr" },
+  { name: "Royal Blanche", price: "55 kr." },
+  { name: "Odense Classic", price: "55 kr." },
+  { name: "Birra Moretti", price: "60 kr." },
+  { name: "Snuble Juice", price: "60 kr." },
+  { heading: "Bottlebeers" },
+  { name: "Heineken", price: "45 kr" },
+  { name: "Birra Moretti", price: "45 kr" },
+  { name: "Odense Pilsner", price: "40 kr" },
+  { name: "Odense Classic", price: "40 kr" },
+  { name: "45 Days Pilsner", price: "45 kr" },
+  { heading: "Longdrinks" },
+  { name: "Gin & Tonic", price: "85 kr" },
+  { name: "Vodka Mate Mate", price: "85 kr" },
+  { name: "Vodka Energi", price: "85 kr" },
+  { name: "Vodka Danskvand", price: "85 kr" },
+  { name: "Rum & Coke", price: "85 kr" },
+  { heading: "Others" },
+  { name: "Frem Sodavnd", price: "25 kr" },
+  { name: "NB Cider", price: "45 kr" },
+  { name: "Dansevand", price: "45 kr" },
+];
+// ************************************** End Beer / Longdrinks / Other **************************************
+
+// ************************************** Start Alcohol free **************************************
+const alcoholFree = [
+  { heading: "Cocktails" },
+  { name: "Paloma", info: "Mexican Agave, Lime, Grape Soda", price: "95 kr." },
+  { name: "Vermouth Tonic", info: "Anerperitivo ISH, Tonic", price: "95 kr." },
+  {
+    name: "Pina Bianca",
+    info: "Carribian Spiced ISH, Lime, Ananas sirup, Hyldeblomst",
+    price: "95 kr.",
+  },
+  {
+    name: "Spicy Margarita",
+    info: "Mexican Agave ISH, Lime, Chili",
+    price: "95 kr.",
+  },
+  { heading: "Wine" },
+  { name: "Arensbak Hvid", price: "500 kr." },
+  { name: "Riesling “Zero”, Riffel, Rheinhessen, Tyskland", price: "500 kr." },
+  { heading: "Beers" },
+  { name: "Heineken 0,0", price: "45 kr." },
+  { name: "Implosion", price: "45 kr." },
+  { name: "Implosion Lager", price: "45 kr." },
+  { name: "Doing Zero Hazy Lazy", price: "45 kr." },
+  { name: "Doing Zero Sunset IPA", price: "45 kr." },
+  { name: "Doing Zero Zen Citrus", price: "45 kr." },
+];
+// ************************************** End Alcohol free **************************************
+
+// ************************************** Start Snacks **************************************
+const snacks = [
+  {
+    name: "Pool Toast",
+    info: "Landskinke, Manchego & dijonnaise",
+    price: "65 kr",
+  },
+  {
+    name: "Oliven, nødder eller chips",
+    info: "Oliven fra Puglia i Italien",
+    price: "45 kr",
+  },
+  { name: "Padrons", info: "Grillet m/ salt og citron", price: "55 kr" },
+  {
+    name: "Brød m/ Olivenolie",
+    info: "Bagt af Justus hos Helges oste på Østerbro med Olivenolie fra Cibboca",
+    price: "45 kr",
+  },
+  {
+    name: "Iberico m/ surdejsbrød",
+    info: "Iberico skinke og friskbagt surdejsbrød fra Helges Oste",
+    price: "85 kr",
+  },
+];
+// ************************************** End Snacks **************************************
 ---
 
 <MainLayout title="Menu">
-  <!-- Denne linje under betyder gappet mellem sektioner 40px/mobil og 80px/desktop (Jeg har lavet den)-->
-  <!-- flex flex-col gap-s md:gap-l  -->
-
-  <!-- Denne linje under betyder padding på x-aksen 20px/mobil og 100px/desktop (Jeg har lavet den) -->
-  <!-- px-2xs md:px-xl -->
-
-  <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
-  <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="my-s md:my-l">
     <div class="flex flex-col gap-s md:gap-l">
       <section class="px-2xs md:px-xl">
@@ -31,13 +234,42 @@ import TextImgRight from "../components/TextImgRight.astro";
         />
       </section>
 
-      <section class="bg-orange-500 px-2xs md:px-xl">
-        <p>Menucard</p>
-        <MenuCard />
-        <MenuCard />
-        <MenuCard />
-        <MenuCard />
-        <MenuCard />
+      <section class="px-2xs md:px-xl">
+        <MenuCard
+          title="Cocktails"
+          items={cocktails}
+          imageSrc="/img/menu-cocktails.png"
+          imageAlt="Cocktail-udvalg"
+          isOpen={false}
+        />
+        <MenuCard
+          title="Wine"
+          items={wines}
+          imageSrc="/img/menu-wine.png"
+          imageAlt="Wine selection"
+          isOpen={false}
+        />
+        <MenuCard
+          title="Beer, longdrinks & Other"
+          items={beers}
+          imageSrc="/img/menu-beer.png"
+          imageAlt="Beer selection"
+          isOpen={false}
+        />
+        <MenuCard
+          title="Alcohol free"
+          items={alcoholFree}
+          imageSrc="/img/menu-alcohol-free.png"
+          imageAlt="Alcohol free selection"
+          isOpen={false}
+        />
+        <MenuCard
+          title="Snacks"
+          items={snacks}
+          imageSrc="/img/menu-snacks.png"
+          imageAlt="Snacks selection"
+          isOpen={false}
+        />
       </section>
     </div>
   </main>

@@ -1,0 +1,46 @@
+---
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+
+const {
+  name = "Navn på vare",
+  classic = "",
+  low = "",
+  info = "",
+  price = "Pris kr",
+} = Astro.props;
+---
+
+<div class="flex flex-col gap-4xs text-text-dark">
+  <Heading htmlheading="h5" size="xsmallbold" stylingclasses="">
+    {name}
+  </Heading>
+
+  {
+    info && (
+      <Text teksttype="brødtekst_lille" stylingclasses="">
+        {info}
+      </Text>
+    )
+  }
+
+  {
+    classic && (
+      <Text teksttype="brødtekst_lille" stylingclasses="">
+        <span class="font-bold">Classic:</span>
+        {classic}
+      </Text>
+    )
+  }
+
+  {
+    low && (
+      <Text teksttype="brødtekst_lille" stylingclasses="">
+        <span class="font-bold">Low:</span>
+        {low}
+      </Text>
+    )
+  }
+
+  <Text teksttype="brødtekst_bold" stylingclasses=""> {price}</Text>
+</div>

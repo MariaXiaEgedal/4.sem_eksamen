@@ -1,0 +1,59 @@
+---
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+
+const images = [
+  "/img/some1.svg",
+  "/img/some2.svg",
+  "/img/some3.svg",
+  "/img/some4.svg",
+  "/img/some5.svg",
+  "/img/some6.svg",
+];
+---
+
+<section class="text-text-dark overflow-hidden pb-s">
+  <div class="ml-2xs mr-2xs md:ml-xl md:mr-xl">
+    <Heading htmlheading="h2" size="medium" stylingclasses="mb-4xs md:mb-xs">
+      Follow us on instagram
+    </Heading>
+
+    <a
+      href="https://www.instagram.com/poolcph/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block mb-s hover:opacity-80"
+    >
+      <Text teksttype="brødtekst">@poolcph</Text>
+    </a>
+  </div>
+
+  <div class="social-track flex gap-2xs">
+    {
+      [...images, ...images].map((image) => (
+        <img
+          src={image}
+          alt="Pool CPH Instagram image"
+          class="w-[220px] md:w-[260px] shrink-0"
+          loading="lazy"
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .social-track {
+    animation: scroll 15s linear infinite;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>

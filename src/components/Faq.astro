@@ -18,7 +18,7 @@ const defaultItems: FaqItem[] = [
   {
     question: "What are your opening hours?",
     answer:
-      "Monday – Wednesday: 16:00 – 00:00 Thursday – Saturday: 14:00 – 00:00",
+      "Monday – Wednesday: 16:00 – 00:00\nThursday – Saturday: 14:00 – 00:00",
   },
   {
     question: "Do you offer food and drinks in the bar?",
@@ -38,6 +38,10 @@ const defaultItems: FaqItem[] = [
 ];
 
 const faqs: FaqItem[] = items ?? defaultItems;
+const arrowIcon =
+  '<img src="/img/piltilhøjre.svg" alt="" class="w-5 h-5 inline-block" />';
+const plusIcon =
+  '<img src="/img/plus.svg" alt="" class="w-5 h-5 inline-block" />';
 ---
 
 <section class="w-full py-m">
@@ -49,14 +53,22 @@ const faqs: FaqItem[] = items ?? defaultItems;
         size="xsmall"
         stylingclasses="whitespace-nowrap text-text-dark">Q.</Heading
       >
-      <div class="flex-1 h-px bg-primary-line"></div>
+      <div
+        class="flex-1 border-primary-line"
+        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+      >
+      </div>
       <Heading
         htmlheading="h4"
         size="xsmall"
         stylingclasses="whitespace-nowrap text-center px-s text-text-dark"
         >FAQ</Heading
       >
-      <div class="flex-1 h-px bg-primary-line"></div>
+      <div
+        class="flex-1 border-primary-line"
+        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+      >
+      </div>
       <Heading
         htmlheading="h4"
         size="xsmall"
@@ -65,22 +77,30 @@ const faqs: FaqItem[] = items ?? defaultItems;
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs items-start">
-      <div class="pr-3xs md:pr-xs md:border-r md:border-primary-line">
+      <div
+        class="pr-3xs md:pr-xs md:border-r md:border-primary-line"
+        style="border-right-width: var(--stroke-xs);"
+      >
         <div id="faq-list" class="flex flex-col">
           {
             faqs.map((faq, i) => (
               <div
-                class="faq-item cursor-pointer py-3xs border-b border-primary-line last:border-b-0 flex items-center justify-between"
+                class={`faq-item cursor-pointer py-3xs border-primary-line last:border-b-0 flex items-center justify-between ${i === 0 ? "is-active" : ""}`}
+                style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
                 data-index={i}
               >
                 <Text
-                  teksttype="brødtekst_bold"
+                  teksttype="brødtekst"
                   stylingclasses="faq-question cursor-pointer text-text-dark"
                 >
                   {faq.question}
                 </Text>
                 <span class="faq-icon cursor-pointer w-xs h-xs flex items-center justify-center text-text-dark text-[26px]">
-                  {i === 0 ? "→" : "+"}
+                  {i === 0 ? (
+                    <img src="/img/piltilhøjre.svg" alt="" class="w-5 h-5" />
+                  ) : (
+                    <img src="/img/plus.svg" alt="" class="w-5 h-5" />
+                  )}
                 </span>
               </div>
             ))
@@ -93,7 +113,9 @@ const faqs: FaqItem[] = items ?? defaultItems;
           <Text teksttype="brødtekst_bold" stylingclasses="text-text-dark"
             >{faqs[0].question}</Text
           >
-          <Text teksttype="brødtekst">{faqs[0].answer}</Text>
+          <Text teksttype="brødtekst" stylingclasses="whitespace-pre-line"
+            >{faqs[0].answer}</Text
+          >
         </div>
       </div>
     </div>
@@ -102,19 +124,30 @@ const faqs: FaqItem[] = items ?? defaultItems;
   <!-- Mobil accordion -->
   <div class="md:hidden">
     <div class="flex items-center gap-2xs mb-m">
-      <div class="flex-1 h-px bg-primary-line"></div>
+      <div
+        class="flex-1 border-primary-line"
+        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+      >
+      </div>
       <Heading
         htmlheading="h4"
         size="xsmall"
         stylingclasses="whitespace-nowrap text-center px-s text-text-dark"
         >FAQ</Heading
       >
-      <div class="flex-1 h-px bg-primary-line"></div>
+      <div
+        class="flex-1 border-primary-line"
+        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+      >
+      </div>
     </div>
 
     {
       faqs.map((faq, i) => (
-        <div class="faq-mobile border-b border-primary-line last:border-b-0">
+        <div
+          class="faq-mobile border-primary-line last:border-b-0"
+          style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+        >
           <button
             class="faq-mobile-btn w-full py-3xs px-0 flex items-center justify-between text-left"
             data-index={i}
@@ -126,7 +159,11 @@ const faqs: FaqItem[] = items ?? defaultItems;
               {faq.question}
             </Text>
             <span class="faq-mobile-icon text-text-dark text-[26px]">
-              {i === 0 ? "→" : "+"}
+              {i === 0 ? (
+                <img src="/img/piltilhøjre.svg" alt="" class="w-5 h-5" />
+              ) : (
+                <img src="/img/plus.svg" alt="" class="w-5 h-5" />
+              )}
             </span>
           </button>
           <div
@@ -134,7 +171,10 @@ const faqs: FaqItem[] = items ?? defaultItems;
             data-index={i}
           >
             <div class="py-3xs">
-              <Text teksttype="brødtekst" stylingclasses="text-text-dark">
+              <Text
+                teksttype="brødtekst"
+                stylingclasses="text-text-dark whitespace-pre-line"
+              >
                 {faq.answer}
               </Text>
             </div>
@@ -143,9 +183,16 @@ const faqs: FaqItem[] = items ?? defaultItems;
       ))
     }
   </div>
+  <div class="hidden md:block -mx-2xs px-2xs mt-m">
+    <div
+      class="border-primary-line"
+      style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+    >
+    </div>
+  </div>
 </section>
 
-<script type="module" define:vars={{ faqs }}>
+<script type="module" define:vars={{ faqs, arrowIcon, plusIcon }}>
   document.addEventListener("DOMContentLoaded", () => {
     const list = document.getElementById("faq-list");
     const detailContainer = document.querySelector(".faq-detail");
@@ -154,14 +201,15 @@ const faqs: FaqItem[] = items ?? defaultItems;
 
     const setActiveDesktop = (index) => {
       faqItems.forEach((row, i) => {
+        row.classList.toggle("is-active", i === index);
         const icon = row.querySelector(".faq-icon");
-        if (icon) icon.textContent = i === index ? "→" : "+";
+        if (icon) icon.innerHTML = i === index ? arrowIcon : plusIcon;
       });
 
       const faq = faqs[index];
       if (!faq || !detailContainer) return;
 
-      detailContainer.innerHTML = `<p class="font-bold text-[16px] md:text-[22px] mb-6 text-text-dark">${faq.question}</p><p class="text-[16px] md:text-[22px] text-text-dark">${faq.answer}</p>`;
+      detailContainer.innerHTML = `<p class="font-bold text-[16px] md:text-[22px] mb-6 text-text-dark">${faq.question}</p><p class="text-[16px] md:text-[22px] text-text-dark whitespace-pre-line">${faq.answer}</p>`;
     };
 
     if (list && detailContainer) {
@@ -186,7 +234,7 @@ const faqs: FaqItem[] = items ?? defaultItems;
 
     const closeAllMobileItems = () => {
       mobileAnswers.forEach((answer) => answer.classList.remove("max-h-96"));
-      mobileIcons.forEach((icon) => (icon.textContent = "+"));
+      mobileIcons.forEach((icon) => (icon.innerHTML = plusIcon));
     };
 
     document.querySelectorAll(".faq-mobile-btn").forEach((btn) => {
@@ -205,9 +253,19 @@ const faqs: FaqItem[] = items ?? defaultItems;
 
         if (shouldOpen) {
           answer.classList.add("max-h-96");
-          icon.textContent = "→";
+          icon.innerHTML = arrowIcon;
         }
       });
     });
   });
 </script>
+
+<style>
+  :global(.faq-item .faq-question) {
+    font-weight: 400;
+  }
+
+  :global(.faq-item.is-active .faq-question) {
+    font-weight: 700;
+  }
+</style>

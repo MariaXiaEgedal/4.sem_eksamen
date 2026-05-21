@@ -1,0 +1,167 @@
+---
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+import Button from "./Button.astro";
+---
+
+<div
+  class="fixed inset-0 z-[999] bg-black/40 opacity-0 pointer-events-none transition-all duration-300 peer-checked/booking:opacity-100 peer-checked/booking:pointer-events-auto"
+>
+  <div
+    class="absolute top-0 right-0 h-screen w-full md:w-[55%] bg-primary-red text-text-light translate-x-full transition-transform duration-300 peer-checked/booking:translate-x-0 overflow-y-auto"
+  >
+    <div class="pl-s pr-s pt-s pb-s min-h-screen flex flex-col">
+      <div class="flex items-center justify-between mb-l">
+        <img
+          src="/img/hvidpoollogo.svg"
+          alt="Pool CPH logo"
+          class="w-[180px]"
+        />
+
+        <label
+          for="booking-toggle"
+          class="cursor-pointer"
+          aria-label="Close booking"
+        >
+          <span
+            class="block w-[60px] h-[4px] bg-primary-beige rotate-45 translate-y-[2px]"
+          ></span>
+          <span
+            class="block w-[60px] h-[4px] bg-primary-beige -rotate-45 -translate-y-[2px]"
+          ></span>
+        </label>
+      </div>
+
+      <div
+        class="border border-primary-beige rounded-xs pl-xs pr-xs pt-4xs pb-4xs flex items-center justify-between mb-l"
+      >
+        <Text teksttype="brødtekst_bold">Pick your date</Text>
+        <span class="text-[28px] leading-none">⌄</span>
+      </div>
+
+      <div class="mb-l">
+        <Heading htmlheading="h3" size="small" stylingclasses="mb-4xs">
+          Table time
+        </Heading>
+
+        <div class="mb-4xs">
+          <Text teksttype="brødtekst">
+            Choose how long you’d like to play
+          </Text>
+        </div>
+
+        <div class="mb-4xs">
+          <Text teksttype="brødtekst_bold">Prices:</Text>
+        </div>
+
+        <Text teksttype="brødtekst">
+          Monday – Wednesday: DKK 75 pr. 30 min
+        </Text>
+
+        <div class="mb-s">
+          <Text teksttype="brødtekst">
+            Thursday – Saturday: DKK 100 pr. 30 min
+          </Text>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2xs">
+          <button
+            class="bg-primary-beige text-primary-red rounded-xs pt-3xs pb-3xs"
+          >
+            <Text teksttype="brødtekst_bold">30 min</Text>
+          </button>
+
+          <button class="border border-primary-beige rounded-xs pt-3xs pb-3xs">
+            <Text teksttype="brødtekst_bold">60 min</Text>
+          </button>
+
+          <button class="border border-primary-beige rounded-xs pt-3xs pb-3xs">
+            <Text teksttype="brødtekst_bold">90 min</Text>
+          </button>
+
+          <button class="border border-primary-beige rounded-xs pt-3xs pb-3xs">
+            <Text teksttype="brødtekst_bold">120 min</Text>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-l mb-xl">
+        <div>
+          <Heading htmlheading="h3" size="small" stylingclasses="mb-4xs">
+            Guests
+          </Heading>
+
+          <div class="mb-4xs">
+            <Text teksttype="brødtekst">Select number of guests</Text>
+          </div>
+
+          <div class="mb-s">
+            <Text teksttype="brødtekst">
+              (For more than 12 guests, please contact us)
+            </Text>
+          </div>
+
+          <div
+            class="border-b border-primary-beige pb-4xs flex items-center gap-xs w-fit"
+          >
+            <Text teksttype="brødtekst_bold">1</Text>
+
+            <button
+              class="w-[32px] h-[32px] rounded-full border border-primary-beige flex items-center justify-center"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <Heading htmlheading="h3" size="small" stylingclasses="mb-4xs">
+            Time
+          </Heading>
+
+          <div class="mb-s">
+            <Text teksttype="brødtekst">Available times:</Text>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2xs">
+            {
+              [
+                "16:00",
+                "16:30",
+                "17:00",
+                "17:30",
+                "18:00",
+                "18:30",
+                "19:00",
+                "19:30",
+                "20:00",
+                "20:30",
+                "21:00",
+              ].map((time, index) => (
+                <button
+                  class={`rounded-xs pt-3xs pb-3xs ${
+                    index === 0
+                      ? "bg-primary-beige text-primary-red"
+                      : "border border-primary-beige"
+                  }`}
+                >
+                  <Text teksttype="brødtekst_bold">{time}</Text>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-l">
+        <Button variant="secondary"> Continue Booking → </Button>
+      </div>
+
+      <div class="text-center mt-auto">
+        <a href="mailto:booking@poolcph.dk">
+          <Text teksttype="brødtekst">booking@poolcph.dk</Text>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

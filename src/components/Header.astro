@@ -1,27 +1,168 @@
 ---
-
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+import Button from "./Button.astro";
+import Bookingoverlay from "./Bookingoverlay.astro";
 ---
 
-<header class="bg-header text-text-dark">
-  <nav class="">
-    <ul class="flex gap-8">
-      <li>
-        <a href="/" class="hover:underline">Home</a>
-      </li>
-      <li>
-        <a href="/event" class="hover:underline">Events</a>
-      </li>
-      <li>
-        <a href="/menu" class="hover:underline">Menu</a>
-      </li>
-      <li>
-        <a href="/about" class="hover:underline">About us</a>
-      </li>
-      <li>
-        <a href="/komponentbibliotek" class="hover:underline"
-          >komponentbibliotek</a
+<header
+  class="bg-header text-text-dark border-b border-primary-line sticky top-0 z-50"
+>
+  <input id="menu-toggle" type="checkbox" class="hidden peer" />
+  <input id="booking-toggle" type="checkbox" class="hidden peer/booking" />
+
+  <!-- Desktop navbar -->
+  <div
+    class="hidden lg:flex items-center justify-center gap-xl pt-2xs pb-2xs relative"
+  >
+    <!-- Wrapper for at flytte indholdet -->
+    <div class="flex items-center gap-xl translate-x-[60px]">
+      <a href="/event" class="relative group">
+        <Text teksttype="brødtekst_bold">Event</Text>
+        <span
+          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-red transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+
+      <a href="/menu" class="relative group">
+        <Text teksttype="brødtekst_bold">Menu card</Text>
+        <span
+          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-red transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+
+      <a href="/">
+        <img src="/img/poollogorød.svg" alt="Pool CPH logo" class="w-[160px]" />
+      </a>
+
+      <a href="/about" class="relative group">
+        <Text teksttype="brødtekst_bold">About us</Text>
+        <span
+          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-red transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+
+      <label for="booking-toggle" class="cursor-pointer">
+        <Button variant="primary"> Book pool table </Button>
+      </label>
+    </div>
+  </div>
+
+  <!-- Mobile + tablet navbar -->
+  <div
+    class="flex lg:hidden items-center justify-between pl-2xs pr-2xs pt-2xs pb-2xs"
+  >
+    <a href="/">
+      <img src="/img/poollogorød.svg" alt="Pool CPH logo" class="w-[160px]" />
+    </a>
+
+    <label for="menu-toggle" class="cursor-pointer" aria-label="Open menu">
+      <span class="block w-[48px] h-[4px] bg-primary-red mb-4xs"></span>
+      <span class="block w-[48px] h-[4px] bg-primary-red mb-4xs"></span>
+      <span class="block w-[48px] h-[4px] bg-primary-red"></span>
+    </label>
+  </div>
+
+  <!-- Mobile + tablet overlay -->
+  <nav
+    class="fixed top-0 right-0 z-50 h-screen w-full bg-primary-red text-text-light translate-x-full peer-checked:translate-x-0 transition-transform duration-300 pl-2xs pr-2xs pt-s pb-s flex flex-col lg:hidden"
+  >
+    <div class="flex items-center justify-between">
+      <a href="/">
+        <img
+          src="/img/hvidpoollogo.svg"
+          alt="Pool CPH logo"
+          class="w-[160px]"
+        />
+      </a>
+
+      <label for="menu-toggle" class="cursor-pointer" aria-label="Close menu">
+        <span
+          class="block w-[60px] h-[4px] bg-primary-beige rotate-45 translate-y-[2px]"
+        ></span>
+        <span
+          class="block w-[60px] h-[4px] bg-primary-beige -rotate-45 -translate-y-[2px]"
+        ></span>
+      </label>
+    </div>
+
+    <div class="flex flex-col items-center mt-xl gap-l">
+      <a href="/event" class="relative group">
+        <Heading htmlheading="h5" size="xsmallbold">Event</Heading>
+        <span
+          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-beige transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+
+      <a href="/menu" class="relative group">
+        <Heading htmlheading="h5" size="xsmallbold">Menu card</Heading>
+        <span
+          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-beige transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+
+      <a href="/about" class="relative group">
+        <Heading htmlheading="h5" size="xsmallbold">About us</Heading>
+        <span
+          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-beige transition-all duration-300 group-hover:w-full"
+        ></span>
+      </a>
+
+      <div class="mt-m">
+        <Button variant="secondary" href="/booking"> Book pool table </Button>
+      </div>
+    </div>
+
+    <div class="mt-m flex flex-col items-center">
+      <div class="mb-4xs">
+        <Text teksttype="brødtekst">+45 31 26 91 81</Text>
+      </div>
+
+      <div class="mb-s">
+        <Text teksttype="brødtekst">info@poolcph.dk</Text>
+      </div>
+
+      <div class="flex gap-2xs">
+        <a
+          href="https://www.instagram.com/poolcph/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-      </li>
-    </ul>
+          <img src="/img/hvidinstalogo.svg" alt="Instagram" class="w-[40px]" />
+        </a>
+
+        <a
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/img/hvidfacebooklogo.svg"
+            alt="Facebook"
+            class="w-[40px]"
+          />
+        </a>
+      </div>
+    </div>
   </nav>
+
+  <!-- Booking overlay -->
+  <div
+    class="fixed top-0 left-0 z-50 h-screen w-full bg-black bg-opacity-50 text-text-light translate-x-full peer-checked/booking:translate-x-0 transition-transform duration-300 flex items-center justify-center"
+  >
+    <div
+      class="relative bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[600px]"
+    >
+      <!-- Close button -->
+      <label
+        for="booking-toggle"
+        class="absolute top-4 right-4 text-black cursor-pointer text-xl"
+      >
+        &times;
+      </label>
+
+      <!-- Bookingoverlay component -->
+      <Bookingoverlay />
+    </div>
+  </div>
 </header>

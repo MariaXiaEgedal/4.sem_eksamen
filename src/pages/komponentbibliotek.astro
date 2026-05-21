@@ -15,6 +15,7 @@ import TextImgRight from "../components/TextImgRight.astro";
 import TimeLine from "../components/TimeLine.astro";
 import Event from "./event.astro";
 import SectionDivider from "../components/SectionDivider.astro";
+import EventBookingOverlay from "../components/EventBookingOverlay.astro";  
 ---
 
 <MainLayout title="Komponentbibliotek">
@@ -91,10 +92,11 @@ import SectionDivider from "../components/SectionDivider.astro";
           forskellige komponenter. Der skal nok laves flere varianter)</Heading
         >
 
-        <div class="flex items-center gap-2xs">
+        <div class="flex items-center gap-2xs flex-wrap">
           <Button variant="primary" size="medium">Primær CTA</Button>
           <Button variant="secondary" size="medium">Sekundær CTA</Button>
         </div>
+        <EventBookingOverlay />
       </section>
     </div>
     <!-- ***************************** End Buttons ***************************** -->

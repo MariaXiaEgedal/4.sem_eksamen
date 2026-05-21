@@ -1,0 +1,179 @@
+---
+import Button from "./Button.astro";
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+---
+
+<div>
+  <!-- Page content -->
+  <div>
+    <Button id="open-drawer" variant="primary" size="medium"
+      >Open event drawer</Button
+    >
+  </div>
+
+  <!-- Overlay -->
+  <div
+    id="drawer-overlay"
+    class="hidden fixed inset-0 z-40 cursor-pointer transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Sidebar -->
+  <div
+    id="drawer-side"
+    class="bg-background-primary hidden fixed right-0 top-0 h-full w-full md:w-1/2 bg- p-6 md:p-8 z-50 transition-all duration-300 overflow-y-auto"
+  >
+    <!-- Close button -->
+    <div class="flex justify-end mb-6">
+      <button
+        id="close-drawer"
+        class="text-3xl text-red-900 hover:text-red-700 font-light"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Logo -->
+    <div class="mb-8">
+      <img src="/img/pool.svg" alt="Pool Logo" class="h-8 w-auto" />
+    </div>
+
+    <!-- Title OK ****************************************************** -->
+    <Heading
+      htmlheading="h4"
+      size="xsmall"
+      stylingclasses="text-text-dark mb-4xs">Overskrift</Heading
+    >
+
+    <!-- Description OK ****************************************************** -->
+    <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-xs md:mb-s">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
+      amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+    </Text>
+
+    <!-- Form -->
+    <form class="space-y-3xs md:space-y-2xs mb-xs md:mb-s">
+      <!-- Name and Last Name Row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
+        <div>
+          <label>
+            <Text
+              teksttype="brødtekst_lille"
+              stylingclasses="text-text-dark mb-5xs"
+              >Name <span class="text-text-dark">*</span></Text
+            >
+          </label>
+          <input
+            type="text"
+            placeholder=""
+            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+            required
+          />
+        </div>
+        <div>
+          <label>
+            <Text
+              teksttype="brødtekst_lille"
+              stylingclasses="text-text-dark mb-5xs"
+              >Last name <span class="text-text-dark">*</span></Text
+            >
+          </label>
+          <input
+            type="text"
+            placeholder=""
+            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label>
+          <Text
+            teksttype="brødtekst_lille"
+            stylingclasses="text-text-dark mb-5xs"
+            >Email <span class="text-text-dark">*</span></Text
+          >
+        </label>
+        <input
+          type="email"
+          placeholder=""
+          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+          required
+        />
+      </div>
+
+      <!-- Phone Number -->
+      <div>
+        <label class="block">
+          <Text
+            teksttype="brødtekst_lille"
+            stylingclasses="text-text-dark mb-5xs"
+            >Phone number <span class="text-text-dark">*</span></Text
+          >
+        </label>
+        <input
+          type="tel"
+          placeholder=""
+          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="booking-submit w-full mt-xs md:mt-s">
+        <Button variant="primary" size="medium">Complete booking</Button>
+      </div>
+    </form>
+
+    <!-- Images Grid - Two columns on desktop, one on mobile -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
+      <img
+        src="/img/hey.jpg"
+        alt="Event Image 1"
+        class="w-full h-full object-cover"
+      />
+      <img
+        src="/img/hey.jpg"
+        alt="Event Image 2"
+        class="hidden md:block w-full h-full object-cover"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById("open-drawer");
+  const closeBtn = document.getElementById("close-drawer");
+  const overlay = document.getElementById("drawer-overlay");
+  const drawer = document.getElementById("drawer-side");
+
+  if (openBtn)
+    openBtn.addEventListener("click", () => {
+      drawer.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+    });
+
+  if (closeBtn)
+    closeBtn.addEventListener("click", () => {
+      drawer.classList.add("hidden");
+      overlay.classList.add("hidden");
+    });
+
+  if (overlay)
+    overlay.addEventListener("click", () => {
+      drawer.classList.add("hidden");
+      overlay.classList.add("hidden");
+    });
+</script>
+
+<style is:global>
+  .booking-submit button {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+</style>

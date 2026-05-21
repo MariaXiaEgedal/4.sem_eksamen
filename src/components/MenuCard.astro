@@ -59,13 +59,15 @@ const {
         </div>
       </div>
 
-      <!-- Image: full width under items on mobile/tablet, right column on desktop -->
+      <!-- Image: full width under items on mobile/tablet, sticky on desktop -->
       <div class="col-span-2 lg:col-span-1">
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          class="w-full max-h-[400px] object-cover md:max-h-none"
-        />
+        <div class="lg:sticky lg:top-l">
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            class="w-full max-h-[400px] object-cover md:max-h-none"
+          />
+        </div>
       </div>
     </div>
   </div>

@@ -8,35 +8,31 @@ import Text from "./Text.astro";
   <!-- Page content -->
   <div>
     <Button id="open-drawer" variant="primary" size="medium"
-      >Open event drawer</Button
+      >Open event overlay</Button
     >
   </div>
 
   <!-- Overlay -->
   <div
     id="drawer-overlay"
-    class="hidden fixed inset-0 z-40 cursor-pointer transition-opacity duration-300"
+    class="fixed inset-0 z-[60] bg-black/50 opacity-0 transition-opacity duration-500 ease-out"
   >
   </div>
 
   <!-- Sidebar -->
   <div
     id="drawer-side"
-    class="bg-background-primary hidden fixed right-0 top-0 h-full w-full md:w-1/2 bg- p-6 md:p-8 z-50 transition-all duration-300 overflow-y-auto"
+    class="bg-background-primary fixed right-0 top-0 h-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[70] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
   >
-    <!-- Close button -->
-    <div class="flex justify-end mb-6">
+    <!-- Topbar: centered logo with close button on same line -->
+    <div class="relative mb-xs md:mb-s">
       <button
         id="close-drawer"
-        class="text-3xl text-red-900 hover:text-red-700 font-light"
+        class="absolute right-0 top-0 text-3xl text-text-dark">✕</button
       >
-        ✕
-      </button>
-    </div>
-
-    <!-- Logo -->
-    <div class="mb-8">
-      <img src="/img/pool.svg" alt="Pool Logo" class="h-8 w-auto" />
+      <div class="flex justify-center">
+        <img src="/img/logo-pool-rod.svg" alt="Pool Logo" class="h-14 w-auto" />
+      </div>
     </div>
 
     <!-- Title OK ****************************************************** -->
@@ -151,23 +147,25 @@ import Text from "./Text.astro";
   const overlay = document.getElementById("drawer-overlay");
   const drawer = document.getElementById("drawer-side");
 
-  if (openBtn)
-    openBtn.addEventListener("click", () => {
-      drawer.classList.remove("hidden");
-      overlay.classList.remove("hidden");
-    });
+  const openDrawer = () => {
+    overlay.classList.remove("pointer-events-none");
+    overlay.classList.add("opacity-100");
+    drawer.classList.remove("translate-x-full");
+    drawer.classList.add("translate-x-0");
+    document.documentElement.classList.add("overflow-hidden");
+  };
 
-  if (closeBtn)
-    closeBtn.addEventListener("click", () => {
-      drawer.classList.add("hidden");
-      overlay.classList.add("hidden");
-    });
+  const closeDrawer = () => {
+    overlay.classList.remove("opacity-100");
+    overlay.classList.add("pointer-events-none");
+    drawer.classList.remove("translate-x-0");
+    drawer.classList.add("translate-x-full");
+    document.documentElement.classList.remove("overflow-hidden");
+  };
 
-  if (overlay)
-    overlay.addEventListener("click", () => {
-      drawer.classList.add("hidden");
-      overlay.classList.add("hidden");
-    });
+  if (openBtn) openBtn.addEventListener("click", openDrawer);
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+  if (overlay) overlay.addEventListener("click", closeDrawer);
 </script>
 
 <style is:global>

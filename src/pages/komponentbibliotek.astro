@@ -15,7 +15,21 @@ import TextImgRight from "../components/TextImgRight.astro";
 import TimeLine from "../components/TimeLine.astro";
 import Event from "./event.astro";
 import SectionDivider from "../components/SectionDivider.astro";
-import EventBookingOverlay from "../components/EventBookingOverlay.astro";  
+import EventBookingOverlay from "../components/EventBookingOverlay.astro";
+
+const Test = [
+  { heading: "Underkategori" },
+  {
+    name: "Navn på vare",
+    info: "Info om varen",
+    price: "Pris kr.",
+  },
+  {
+    name: "Navn på vare",
+    info: "Info om varen",
+    price: "Pris kr.",
+  },
+];
 ---
 
 <MainLayout title="Komponentbibliotek">
@@ -82,36 +96,59 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
     <!-- ***************************** End typography ***************************** -->
 
     <!-- ***************************** Start Buttons ***************************** -->
+    <!-- (Her kan vi se hvordan knapperne skal bruges i de forskellige komponenter. Der skal nok laves flere varianter) -->
     <div class="px-2xs md:px-xl">
       <section class="mt-12">
         <Heading
           htmlheading="h4"
           size="xsmall"
           stylingclasses="mb-4 text-text-dark"
-          >Buttons: (Her kan vi se hvordan knapperne skal bruges i de
-          forskellige komponenter. Der skal nok laves flere varianter)</Heading
-        >
+          >Buttons:
+        </Heading>
 
         <div class="flex items-center gap-2xs flex-wrap">
           <Button variant="primary" size="medium">Primær CTA</Button>
           <Button variant="secondary" size="medium">Sekundær CTA</Button>
         </div>
-        <EventBookingOverlay />
       </section>
     </div>
     <!-- ***************************** End Buttons ***************************** -->
+
+    <!-- ***************************** Start Overlays  ***************************** -->
+    <!-- (Her kan vi se hvordan overlays skal bruges) -->
+    <div class="px-2xs md:px-xl">
+      <Heading
+        htmlheading="h4"
+        size="xsmall"
+        stylingclasses="mt-12 mb-4 text-text-dark"
+        >Overlays:
+      </Heading>
+      <EventBookingOverlay />
+    </div>
+    <!-- ***************************** End Overlays  ***************************** -->
 
     <!-- ***************************** Start Alle Komponenter ***************************** -->
     <Heading
       htmlheading="h4"
       size="xsmall"
       stylingclasses="mt-12 mb-4 text-text-dark px-2xs md:px-xl"
-      >Komponenter: (Her kan vi se alle komponenter, mens vi arbejder på dem)</Heading
+      >Alle komponenter: (Her kan vi se alle komponenter, mens vi arbejder på
+      dem)</Heading
     >
     <div class="flex flex-col gap-s md:gap-l">
-      <SectionDivider />
+      <!-- SectionDivider -->
+      <section class="mt-2xs px-2xs md:px-xl">
+        <Heading
+          htmlheading="h5"
+          size="xsmallbold"
+          stylingclasses="mb-4 text-text-dark"
+          >Komponetent: SectionDivider</Heading
+        >
+        <SectionDivider />
+      </section>
 
-      <section class="bg-red-500 px-2xs md:px-xl">
+      <!-- EventCard -->
+      <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h5"
           size="xsmallbold"
@@ -125,19 +162,13 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
           stylingclasses="mt-8 mb-4 text-text-dark"
           >Komponetent: EventCard small version</Heading
         >
-        <EventCard smallVersion={true} />
+        <div class="w-1/3">
+          <EventCard smallVersion={true} />
+        </div>
       </section>
 
-      <section class="bg-red-500 px-2xs md:px-xl">
-        <Heading
-          htmlheading="h5"
-          size="xsmallbold"
-          stylingclasses="mb-4 text-text-dark"
-          >Komponetent: EventCardIndex</Heading
-        >
-      </section>
-
-      <section class="bg-red-500 px-2xs md:px-xl">
+      <!-- Faq -->
+      <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h5"
           size="xsmallbold"
@@ -146,25 +177,35 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
         <Faq />
       </section>
 
-      <section class="bg-red-500 px-2xs md:px-xl">
+      <!-- MenuCard -->
+      <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h5"
           size="xsmallbold"
           stylingclasses="mb-4 text-text-dark">Komponetent: MenuCard</Heading
         >
-        <MenuCard />
+        <MenuCard
+          title="Kategori Overskrift"
+          items={Test}
+          imageSrc="/img/hey.jpg"
+          imageAlt="Kategori billede"
+          isOpen={true}
+        />
       </section>
 
-      <section class="bg-red-500">
+      <!-- Socials -->
+      <section>
         <Heading
           htmlheading="h5"
           size="xsmallbold"
-          stylingclasses="mb-4 text-text-dark">Komponetent: Socials</Heading
+          stylingclasses="mb-4 text-text-dark px-2xs md:px-xl"
+          >Komponetent: Socials</Heading
         >
         <Socials />
       </section>
 
-      <section class="bg-red-500 px-2xs md:px-xl">
+      <!-- TextImgLeft -->
+      <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h5"
           size="xsmallbold"
@@ -173,7 +214,8 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
         <TextImgLeft />
       </section>
 
-      <section class="bg-red-500 px-2xs md:px-xl">
+      <!-- TextImgRight -->
+      <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h5"
           size="xsmallbold"
@@ -183,7 +225,8 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
         <TextImgRight />
       </section>
 
-      <section class="bg-red-500 px-2xs md:px-xl">
+      <!-- TimeLine -->
+      <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h5"
           size="xsmallbold"

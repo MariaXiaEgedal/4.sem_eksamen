@@ -13,6 +13,7 @@ import Socials from "../components/Socials.astro";
 import TextImgLeft from "../components/TextImgLeft.astro";
 import TextImgRight from "../components/TextImgRight.astro";
 import TimeLine from "../components/TimeLine.astro";
+import Counting from "../components/Counting.astro";
 import Event from "./event.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 import Calendar from "../components/Calendar.astro";
@@ -37,7 +38,7 @@ const Test = [
     <!-- ***************************** Start intro ***************************** -->
     <div class="px-2xs md:px-xl">
       <Heading htmlheading="h1" size="large" stylingclasses="text-text-dark"
-        >Komponent bibliotek TEST!!!!!!!!!!!!!</Heading
+        >Komponent bibliotek</Heading
       >
       <Text teksttype="brødtekst_bold" stylingclasses="text-text-dark"
         >Komponent bibliotek til 4.semesters afsluttende eksamensopgave - Pool
@@ -111,9 +112,10 @@ const Test = [
           >Buttons:
         </Heading>
 
-        <div class="flex items-center gap-2xs flex-wrap">
+        <div class="flex items-center gap-2xs flex-wrap bg-blue-800">
           <Button variant="primary" size="medium">Primær CTA</Button>
           <Button variant="secondary" size="medium">Sekundær CTA</Button>
+          <Button variant="pool time" size="medium">Pool Time</Button>
         </div>
       </section>
     </div>
@@ -207,6 +209,18 @@ const Test = [
           >Komponetent: Socials</Heading
         >
         <Socials />
+      </section>
+
+      <!-- Counting -->
+      <section class="px-2xs md:px-xl">
+        <Heading
+          htmlheading="h5"
+          size="xsmallbold"
+          stylingclasses="mb-4 text-text-dark">Komponetent: Counting</Heading
+        >
+        <div class="bg-beige-800 p-4">
+          <Counting />
+        </div>
       </section>
 
       <!-- TextImgLeft -->

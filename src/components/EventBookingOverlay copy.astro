@@ -2,33 +2,20 @@
 import Button from "./Button.astro";
 import Heading from "./Heading.astro";
 import Text from "./Text.astro";
-
-const {
-  openButtonText = "Open event overlay",
-  submitButtonText = "Complete booking",
-  heading = "Overskrift",
-  bodyText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
-  img1Src = "/img/hey.jpg",
-  img1Alt = "Event Image 1",
-  img2Src = "/img/hey.jpg",
-  img2Alt = "Event Image 2",
-} = Astro.props;
 ---
 
 <div>
   <!-- Page content -->
   <div>
     <Button id="open-drawer" variant="primary" size="medium"
-      >{openButtonText}</Button
+      >Open event overlay</Button
     >
   </div>
 
   <!-- Overlay -->
   <div
     id="drawer-overlay"
-    class="fixed inset-0 z-[60] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
+    class="fixed inset-0 z-[60] bg-black/50 opacity-0 transition-opacity duration-500 ease-out"
   >
   </div>
 
@@ -52,12 +39,14 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
     <Heading
       htmlheading="h4"
       size="xsmall"
-      stylingclasses="text-text-dark mb-4xs">{heading}</Heading
+      stylingclasses="text-text-dark mb-4xs">Overskrift</Heading
     >
 
     <!-- Description OK ****************************************************** -->
     <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-xs md:mb-s">
-      {bodyText}
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
+      amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
     </Text>
 
     <!-- Form -->
@@ -132,16 +121,20 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
 
       <!-- Submit Button -->
       <div class="booking-submit w-full mt-xs md:mt-s">
-        <Button variant="primary" size="medium">{submitButtonText}</Button>
+        <Button variant="primary" size="medium">Complete booking</Button>
       </div>
     </form>
 
     <!-- Images Grid - Two columns on desktop, one on mobile -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
-      <img src={img1Src} alt={img1Alt} class="w-full h-full object-cover" />
       <img
-        src={img2Src}
-        alt={img2Alt}
+        src="/img/hey.jpg"
+        alt="Event Image 1"
+        class="w-full h-full object-cover"
+      />
+      <img
+        src="/img/hey.jpg"
+        alt="Event Image 2"
         class="hidden md:block w-full h-full object-cover"
       />
     </div>

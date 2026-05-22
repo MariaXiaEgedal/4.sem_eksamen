@@ -1,6 +1,11 @@
 ---
 // Henter parametrene fra Astro.props
-const { variant = "primary", size = "medium", id } = Astro.props;
+const {
+  variant = "primary",
+  size = "medium",
+  id,
+  class: className = "",
+} = Astro.props;
 const variantKey = String(variant);
 const sizeKey = String(size);
 
@@ -33,7 +38,7 @@ const selectedSize = sizeClasses[sizeKey] || sizeClasses.medium;
 <button
   id={id}
   data-button-variant={variantKey === "pool time" ? "pool-time" : null}
-  class:list={[base, selectedVariant, selectedSize]}><slot /></button
+  class:list={[base, selectedVariant, selectedSize, className]}><slot /></button
 >
 
 <script>

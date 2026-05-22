@@ -10,7 +10,6 @@ import TextImgRight from "../components/TextImgRight.astro";
 import EventCard from "../components/EventCard.astro";
 import Socials from "../components/Socials.astro";
 import SectionDivider from "../components/SectionDivider.astro";
-import EventBookingOverlay from "../components/EventBookingOverlay.astro";
 ---
 
 <MainLayout title="Pool CPH">
@@ -23,7 +22,7 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
   <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
   <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="mb-s md:mb-l">
-    <div class="flex flex-col gap-s md:gap-l">
+    <div class="flex flex-col gap-s md:gap-xl">
       <!-- ***************************** Start Hero ***************************** -->
       <section class="px-0 md:px-0 relative">
         <video
@@ -68,30 +67,6 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
         />
       </section>
       <!-- ***************************** End Welcome ***************************** -->
-
-      <!-- Indsæt overlay komponenetet her IKKE DONE!-->
-      <section class="px-2xs md:px-xl">
-        <EventBookingOverlay
-          openButtonText="TEST Book event"
-          submitButtonText="Book nu"
-          heading="Book dit event"
-          bodyText={`Her kan du booke et event hos os. Udfyld oplysningerne, så vender vi tilbage med bekræftelse.`}
-          img1Src="/img/hey.jpg"
-          img1Alt="Event billede 1"
-          img2Src="/img/hey.jpg"
-          img2Alt="Event billede 2"
-        />
-        <EventBookingOverlay
-          openButtonText="TEST Book event"
-          submitButtonText="Book nu"
-          heading="Book dit event"
-          bodyText={`Her kan du booke et event hos os. Udfyld oplysningerne, så vender vi tilbage med bekræftelse.`}
-          img1Src="/img/hey.jpg"
-          img1Alt="Event billede 1"
-          img2Src="/img/hey.jpg"
-          img2Alt="Event billede 2"
-        />
-      </section>
 
       <SectionDivider />
 
@@ -140,6 +115,16 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
             date="Every Tuesday / 20:00-22:00 / 50 kr. per person"
             description="Join our weekly pool tournament. Every Tuesday at 20:00. Sign up with a teammate and play for fun (and nice prizes!) All levels are welcome."
             buttonText="Save Your Spot"
+            overlayProps={{
+              submitButtonText: "Book nu",
+              heading: "Tuesday’s Tournament",
+              bodyText:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              img1Src: "/img/overlay-tuesday-tournament1.png",
+              img1Alt: "Tuesday’s Tournament",
+              img2Src: "/img/overlay-tuesday-tournament2.png",
+              img2Alt: "Tuesday’s Tournament",
+            }}
             imageSrc="/img/event1.png"
             imageSrcMobile="/img/mobil-event1.png"
             imageAlt="Tuesday’s Tournament"
@@ -152,6 +137,7 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
             date="19. June 2026 / 16:00-00:00 / Free entry"
             description="Join us at Pool Cph for a summer party with great vibes, cold drinks, and a DJ all night. Everybody is welcome. Bring your friends and celebrate summer with us."
             buttonText="See Facebook Event"
+            buttonHref="https://www.facebook.com/poolcph"
             imageSrc="/img/event2.png"
             imageSrcMobile="/img/mobil-event2.png"
             imageAlt="Summerparty"
@@ -164,6 +150,16 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
             date="3. July 2026 / 20:00-00:00 / 100 kr per person"
             description="Join us at Pool Cph for a girls night filled with great vibes, cocktails, and good company. Grab your girls, dress up, and come enjoy a fun night out."
             buttonText="Save The Date"
+            overlayProps={{
+              submitButtonText: "Book nu",
+              heading: "Join Our Girls Night",
+              bodyText:
+                "Girls Night starts at 20:00. Spend the evening at Pool CPH with welcome drinks, light snacks including olives, nuts and chips, free access to the pool tables all night and great music in the perfect atmosphere. ",
+              img1Src: "/img/overlay-girls-night1.png",
+              img1Alt: "Girls Night",
+              img2Src: "/img/overlay-girls-night2.png",
+              img2Alt: "Girls Night",
+            }}
             imageSrc="/img/event3.png"
             imageSrcMobile="/img/mobil-event3.png"
             imageAlt="Girls Night"

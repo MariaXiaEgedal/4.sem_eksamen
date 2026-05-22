@@ -2,19 +2,26 @@
 import Heading from "./Heading.astro";
 import Text from "./Text.astro";
 import Button from "./Button.astro";
+import EventBookingOverlay from "./EventBookingOverlay.astro";
 
 const {
   title = "Event overskrift",
   date = "Dato / tid / pris for eventet",
   description = "Info om eventet: lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati neque quam animi nihil sequi officiis inventore nisi odit maiores? Quibusdam excepturi laboriosam!",
   buttonText = "Knap for deltagelse",
+  buttonHref = null,
   imageSrc = "/img/event.png",
   imageSrcMobile = "/img/mobil-event.png",
   imageAlt = "Event billede",
   smallVersion = false,
   noBorder = false,
+  overlayProps = null,
   class: className = "",
 } = Astro.props;
+
+const bookingOverlayProps = overlayProps
+  ? { openButtonText: buttonText, ...overlayProps }
+  : null;
 ---
 
 <div
@@ -36,7 +43,22 @@ const {
       >{description}</Text
     >
     <div class="self-start mb-2xs">
-      <Button variant="primary" size="medium">{buttonText}</Button>
+      {
+        bookingOverlayProps ? (
+          <EventBookingOverlay {...bookingOverlayProps} />
+        ) : buttonHref ? (
+          <a
+            href={buttonHref}
+            class="inline-block bg-cta-primary text-text-light px-xs py-4xs hover:px-m hover:shadow-lg rounded-xs transition-all duration-300 ease-out text-[16px] md:text-[22px]"
+          >
+            {buttonText}
+          </a>
+        ) : (
+          <Button variant="primary" size="medium">
+            {buttonText}
+          </Button>
+        )
+      }
     </div>
   </div>
 

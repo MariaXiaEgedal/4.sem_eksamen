@@ -23,7 +23,7 @@ import SectionDivider from "../components/SectionDivider.astro";
   <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
   <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="my-s md:my-l">
-    <div class="flex flex-col gap-s md:gap-l">
+    <div class="flex flex-col gap-2xs">
       <section class="px-2xs md:px-xl whitespace-pre-line">
         <TextImgRight
           image="/img/aboutusbillede.svg"
@@ -52,34 +52,59 @@ import SectionDivider from "../components/SectionDivider.astro";
         <Heading
           htmlheading="h2"
           size="medium"
-          stylingclasses="mb-2xs text-text-dark">A New Way to Socialize</Heading
+          stylingclasses="mb-2xs text-text-dark"
         >
-        <div class="grid grid-cols-2">
-          <div class="p-xs md:p-2xs">
+          A New Way to Socialize
+        </Heading>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs items-start">
+          <div class="flex flex-col gap-2xs">
+            <div class="w-full aspect-[16/9] overflow-hidden">
+              <img
+                src="/img/ourvision.svg"
+                alt="Our Vision"
+                class="w-full h-full object-cover"
+              />
+            </div>
             <Heading
-              htmlheading="h2"
+              htmlheading="h3"
               size="small"
-              stylingclasses="text-text-dark ">Our Mission</Heading
+              stylingclasses="text-text-dark"
             >
+              Our Vision
+            </Heading>
+            <Text teksttype="brødtekst" stylingclasses="text-text-dark">
+              Pool Cph is a part of <a
+                href="https://eve.dk"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline">EVE Group</a
+              >. Our vision is to push the boundaries within the industry by
+              offering new ways of socializing that go beyond drinking. We’re
+              here to provide fun experiences that keep you fresh for the next
+              morning.
+            </Text>
+          </div>
+
+          <div class="flex flex-col gap-2xs">
+            <div class="w-full aspect-[16/9] overflow-hidden">
+              <img
+                src="/img/ourmission.svg"
+                alt="Our Mission"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <Heading
+              htmlheading="h3"
+              size="small"
+              stylingclasses="text-text-dark"
+            >
+              Our Mission
+            </Heading>
             <Text teksttype="brødtekst" stylingclasses="text-text-dark">
               We want to create a space that people can relate to at all times
               of the day. Inclusivity is a key value for us, and we feel that
               it’s missing in the scene. Let’s build lasting connections
               together.
-            </Text>
-          </div>
-
-          <div class="p-xs md:p-2xs">
-            <Heading
-              htmlheading="h2"
-              size="small"
-              stylingclasses="text-text-dark ">Community</Heading
-            >
-            <Text teksttype="brødtekst" stylingclasses="text-text-dark">
-              Our vision is to push the boundaries within the industry by
-              offering new ways of socializing that go beyond drinking. We’re
-              here to provide fun experiences that keep you fresh for the next
-              morning.
             </Text>
           </div>
         </div>

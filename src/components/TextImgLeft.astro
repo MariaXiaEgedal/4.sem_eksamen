@@ -15,6 +15,8 @@ const {
   mapTitle = "Location map",
   imageClass = "w-full h-auto object-cover",
 } = Astro.props;
+
+const isVideo = /\.(mov)$/i.test(image);
 ---
 
 <div
@@ -30,6 +32,16 @@ const {
           allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
+        />
+      ) : isVideo ? (
+        <video
+          src={image}
+          class={imageClass}
+          playsinline
+          autoplay
+          muted
+          loop
+          preload="metadata"
         />
       ) : (
         <img src={image} alt={imageAlt} class={imageClass} />

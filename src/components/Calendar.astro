@@ -1,0 +1,146 @@
+---
+import Text from "./Text.astro";
+---
+
+<div class="w-full max-w-[420px]">
+  <details class="group w-full">
+    <summary
+      class="list-none cursor-pointer border border-primary-red bg-primary-beige/70 text-primary-red rounded-xs px-xs py-4xs flex items-center justify-center relative w-full"
+    >
+      <Text teksttype="brødtekst_bold">Pick your date</Text>
+
+      <span
+        class="absolute right-xs text-[24px] leading-none transition-transform group-open:rotate-180"
+      >
+        ⌄
+      </span>
+    </summary>
+
+    <div
+      class="calendar mt-4xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full"
+    >
+      <div class="grid grid-cols-[1fr_auto] items-center mb-xs">
+        <Text teksttype="brødtekst_bold">
+          <span class="month-title"></span>
+        </Text>
+
+        <div class="flex items-center gap-xs">
+          <button type="button" class="prev-month text-[28px] leading-none">
+            ‹
+          </button>
+
+          <button type="button" class="next-month text-[28px] leading-none">
+            ›
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-7 place-items-center gap-4xs mb-4xs">
+        {
+          ["M", "T", "W", "T", "F", "S", "S"].map((day) => (
+            <Text teksttype="brødtekst_bold">{day}</Text>
+          ))
+        }
+      </div>
+
+      <div class="calendar-days grid grid-cols-7 place-items-center gap-4xs">
+      </div>
+    </div>
+  </details>
+</div>
+
+<script>
+  const calendar = document.querySelector(".calendar");
+  const title = calendar.querySelector(".month-title");
+  const daysContainer = calendar.querySelector(".calendar-days");
+
+  let month = 5;
+  let year = 2026;
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  function renderCalendar() {
+    title.textContent = `${monthNames[month]} ${year}`;
+    daysContainer.innerHTML = "";
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const mondayStart = firstDay === 0 ? 6 : firstDay - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const prevMonthDays = new Date(year, month, 0).getDate();
+
+    for (let i = mondayStart; i > 0; i--) {
+      daysContainer.innerHTML += `
+        <button
+          type="button"
+          class="h-[34px] w-[34px] md:h-[40px] md:w-[40px] flex items-center justify-center rounded-full text-primary-red opacity-30"
+        >
+          ${prevMonthDays - i + 1}
+        </button>
+      `;
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      daysContainer.innerHTML += `
+        <button
+          type="button"
+          class="calendar-day h-[34px] w-[34px] md:h-[40px] md:w-[40px] flex items-center justify-center rounded-full text-primary-red border border-transparent hover:border-primary-red transition"
+        >
+          ${day}
+        </button>
+      `;
+    }
+  }
+
+  calendar.querySelector(".prev-month").addEventListener("click", () => {
+    month--;
+
+    if (month < 0) {
+      month = 11;
+      year--;
+    }
+
+    renderCalendar();
+  });
+
+  calendar.querySelector(".next-month").addEventListener("click", () => {
+    month++;
+
+    if (month > 11) {
+      month = 0;
+      year++;
+    }
+
+    renderCalendar();
+  });
+
+  daysContainer.addEventListener("click", (e) => {
+    const target = e.target;
+    const button =
+      target instanceof Element ? target.closest(".calendar-day") : null;
+
+    if (!button) return;
+
+    document.querySelectorAll(".calendar-day").forEach((day) => {
+      day.classList.remove("bg-primary-red", "text-text-light");
+      day.classList.add("text-primary-red");
+    });
+
+    button.classList.remove("text-primary-red");
+    button.classList.add("bg-primary-red", "text-text-light");
+  });
+
+  renderCalendar();
+</script>

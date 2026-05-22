@@ -10,6 +10,7 @@ import TextImgRight from "../components/TextImgRight.astro";
 import EventCard from "../components/EventCard.astro";
 import Socials from "../components/Socials.astro";
 import SectionDivider from "../components/SectionDivider.astro";
+import EventBookingOverlay from "../components/EventBookingOverlay.astro";
 ---
 
 <MainLayout title="Pool CPH">
@@ -67,6 +68,30 @@ import SectionDivider from "../components/SectionDivider.astro";
         />
       </section>
       <!-- ***************************** End Welcome ***************************** -->
+
+      <!-- Indsæt overlay komponenetet her IKKE DONE!-->
+      <section class="px-2xs md:px-xl">
+        <EventBookingOverlay
+          openButtonText="TEST Book event"
+          submitButtonText="Book nu"
+          heading="Book dit event"
+          bodyText={`Her kan du booke et event hos os. Udfyld oplysningerne, så vender vi tilbage med bekræftelse.`}
+          img1Src="/img/hey.jpg"
+          img1Alt="Event billede 1"
+          img2Src="/img/hey.jpg"
+          img2Alt="Event billede 2"
+        />
+        <EventBookingOverlay
+          openButtonText="TEST Book event"
+          submitButtonText="Book nu"
+          heading="Book dit event"
+          bodyText={`Her kan du booke et event hos os. Udfyld oplysningerne, så vender vi tilbage med bekræftelse.`}
+          img1Src="/img/hey.jpg"
+          img1Alt="Event billede 1"
+          img2Src="/img/hey.jpg"
+          img2Alt="Event billede 2"
+        />
+      </section>
 
       <SectionDivider />
 
@@ -150,7 +175,7 @@ import SectionDivider from "../components/SectionDivider.astro";
       <!-- ***************************** Start Menu ***************************** -->
       <section class="bg-blue-500 px-2xs md:px-xl whitespace-pre-line">
         <TextImgLeft
-          image="/img/gotomenu.gif"
+          image="/img/gotomenu.mov"
           imageAlt="Go to menu image"
           imageClass="w-full h-[360px] md:h-[600px] object-cover"
           heading="Menu"
@@ -166,13 +191,7 @@ import SectionDivider from "../components/SectionDivider.astro";
       <SectionDivider />
 
       <!-- ***************************** Start Socials ***************************** -->
-      <section class="bg-purple-500">
-        <p>Socials</p>
-        <Heading
-          htmlheading="h2"
-          size="medium"
-          stylingclasses="px-2xs md:px-xl text-text-dark">Socials</Heading
-        >
+      <section>
         <Socials />
       </section>
       <!-- ***************************** End Socials ***************************** -->

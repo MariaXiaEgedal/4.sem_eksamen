@@ -1,21 +1,18 @@
 ---
 import Text from "./Text.astro";
+import Button from "./Button.astro";
 ---
 
 <div class="w-full max-w-[420px]">
   <details class="group w-full">
-    <summary
-      class="list-none cursor-pointer border border-primary-red bg-primary-beige/70 text-primary-red rounded-xs px-xs py-4xs flex items-center justify-center relative w-full"
-    >
-      <Text teksttype="brødtekst_bold">Pick your date</Text>
-
-      <span
-        class="absolute right-xs text-[24px] leading-none transition-transform group-open:rotate-180"
-      >
-        ⌄
-      </span>
+    <!-- PICK DATE BUTTON -->
+    <summary class="list-none cursor-pointer">
+      <div class="pointer-events-none">
+        <Button variant="primary"> Pick your date </Button>
+      </div>
     </summary>
 
+    <!-- CALENDAR -->
     <div
       class="calendar mt-4xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full"
     >
@@ -25,12 +22,26 @@ import Text from "./Text.astro";
         </Text>
 
         <div class="flex items-center gap-xs">
-          <button type="button" class="prev-month text-[28px] leading-none">
-            ‹
+          <button
+            type="button"
+            class="prev-month flex items-center justify-center"
+          >
+            <img
+              src="/img/arrow.svg"
+              alt="Previous month"
+              class="w-[20px] -rotate-90"
+            />
           </button>
 
-          <button type="button" class="next-month text-[28px] leading-none">
-            ›
+          <button
+            type="button"
+            class="next-month flex items-center justify-center"
+          >
+            <img
+              src="/img/arrow.svg"
+              alt="Next month"
+              class="w-[20px] rotate-90"
+            />
           </button>
         </div>
       </div>
@@ -128,6 +139,7 @@ import Text from "./Text.astro";
 
   daysContainer.addEventListener("click", (e) => {
     const target = e.target;
+
     const button =
       target instanceof Element ? target.closest(".calendar-day") : null;
 

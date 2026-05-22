@@ -15,6 +15,22 @@ import TextImgRight from "../components/TextImgRight.astro";
 import TimeLine from "../components/TimeLine.astro";
 import Event from "./event.astro";
 import SectionDivider from "../components/SectionDivider.astro";
+import Calendar from "../components/Calendar.astro";
+import EventBookingOverlay from "../components/EventBookingOverlay.astro";
+
+const Test = [
+  { heading: "Underkategori" },
+  {
+    name: "Navn på vare",
+    info: "Info om varen",
+    price: "Pris kr.",
+  },
+  {
+    name: "Navn på vare",
+    info: "Info om varen",
+    price: "Pris kr.",
+  },
+];
 ---
 
 <MainLayout title="Komponentbibliotek">
@@ -22,7 +38,7 @@ import SectionDivider from "../components/SectionDivider.astro";
     <!-- ***************************** Start intro ***************************** -->
     <div class="px-2xs md:px-xl">
       <Heading htmlheading="h1" size="large" stylingclasses="text-text-dark"
-        >Komponent bibliotek</Heading
+        >Komponent bibliotek TEST!!!!!!!!!!!!!</Heading
       >
       <Text teksttype="brødtekst_bold" stylingclasses="text-text-dark"
         >Komponent bibliotek til 4.semesters afsluttende eksamensopgave - Pool

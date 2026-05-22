@@ -21,7 +21,7 @@ import SectionDivider from "../components/SectionDivider.astro";
   <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
   <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="my-s md:my-l">
-    <div class="flex flex-col gap-s md:gap-l">
+    <div class="flex flex-col gap-s md:gap-xl">
       <section class="px-2xs md:px-xl">
         <div
           class="grid grid-cols-4 md:grid-cols-12 gap-2xs items-start md:items-center"
@@ -61,13 +61,23 @@ import SectionDivider from "../components/SectionDivider.astro";
 
       <SectionDivider />
 
-      <section class="px-2xs md:px-xl flex flex-col gap-2xs md:gap-0">
+      <section class="px-2xs md:px-xl flex flex-col gap-2xs md:gap-2xs">
         <EventCard
           class="relative z-[40] opacity-0 intersect:opacity-100 intersect:animate-fade-down intersect:animate-delay-500 intersect-once"
           title="Tuesday’s Tournament"
           date="Every Tuesday / 20:00-22:00 / 50 kr. per person"
           description="Join our weekly pool tournament. Every Tuesday at 20:00. Sign up with a teammate and play for fun (and nice prizes!) All levels are welcome."
           buttonText="Save Your Spot"
+          overlayProps={{
+            submitButtonText: "Book nu",
+            heading: "Tuesday's Tournament",
+            bodyText:
+              "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            img1Src: "/img/overlay-tuesday-tournament1.png",
+            img1Alt: "Tuesday's Tournament",
+            img2Src: "/img/overlay-tuesday-tournament2.png",
+            img2Alt: "Tuesday's Tournament",
+          }}
           imageSrc="/img/event1.png"
           imageSrcMobile="/img/mobil-event1.png"
           imageAlt="Tuesday’s Tournament"
@@ -78,6 +88,7 @@ import SectionDivider from "../components/SectionDivider.astro";
           date="19. June 2026 / 16:00-00:00 / Free entry"
           description="Join us at Pool Cph for a summer party with great vibes, cold drinks, and a DJ all night. Everybody is welcome. Bring your friends and celebrate summer with us."
           buttonText="See Facebook Event"
+          buttonHref="https://www.facebook.com/poolcph"
           imageSrc="/img/event2.png"
           imageSrcMobile="/img/mobil-event2.png"
           imageAlt="Summerparty"
@@ -88,6 +99,16 @@ import SectionDivider from "../components/SectionDivider.astro";
           date="3. July 2026 / 20:00-00:00 / 100 kr per person"
           description="Join us at Pool Cph for a girls night filled with great vibes, cocktails, and good company. Grab your girls, dress up, and come enjoy a fun night out."
           buttonText="Save The Date"
+          overlayProps={{
+            submitButtonText: "Book nu",
+            heading: "Join Our Girls Night",
+            bodyText:
+              "Girls Night starts at 20:00. Spend the evening at Pool CPH with welcome drinks, light snacks including olives, nuts and chips, free access to the pool tables all night and great music in the perfect atmosphere.",
+            img1Src: "/img/overlay-girls-night1.png",
+            img1Alt: "Girls Night",
+            img2Src: "/img/overlay-girls-night2.png",
+            img2Alt: "Girls Night",
+          }}
           imageSrc="/img/event3.png"
           imageSrcMobile="/img/mobil-event3.png"
           imageAlt="Girls Night"
@@ -98,6 +119,16 @@ import SectionDivider from "../components/SectionDivider.astro";
           date="7. July 2026 / 19:00-23:00 / 350 kr. per person"
           description="Join us at Pool Cph for an unforgettable dinner date with delicious food, great vibes, and even better company. Take a seat at our long table, enjoy a served dinner, and spend the evening socializing with friends, family, or meeting new people in a warm and welcoming atmosphere."
           buttonText="Save The Date"
+          overlayProps={{
+            submitButtonText: "Book nu",
+            heading: "Join Our Dinner Date",
+            bodyText:
+              "Enjoy a cozy evening from 19:00–23:00 with delicious pasta dishes served with sides, tiramisu for dessert, and one glass of red wine included in the price. Additional drinks will be available for purchase throughout the evening.",
+            img1Src: "/img/overlay-dinner-date1.png",
+            img1Alt: "Dinner date",
+            img2Src: "/img/overlay-dinner-date2.png",
+            img2Alt: "Dinner date",
+          }}
           imageSrc="/img/event4.png"
           imageSrcMobile="/img/mobil-event4.png"
           imageAlt="Dinner date"

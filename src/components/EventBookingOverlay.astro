@@ -17,162 +17,174 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
 } = Astro.props;
 ---
 
-<div>
+<div class="eventbooking-root">
   <!-- Page content -->
   <div>
-    <Button id="open-drawer" variant="primary" size="medium"
+    <Button class="eventbooking-open" variant="primary" size="medium"
       >{openButtonText}</Button
     >
   </div>
 
-  <!-- Overlay -->
-  <div
-    id="drawer-overlay"
-    class="fixed inset-0 z-[60] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
-  >
-  </div>
-
-  <!-- Sidebar -->
-  <div
-    id="drawer-side"
-    class="bg-background-primary fixed right-0 top-0 h-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[70] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
-  >
-    <!-- Topbar: centered logo with close button on same line -->
-    <div class="relative mb-xs md:mb-s">
-      <button
-        id="close-drawer"
-        class="absolute right-0 top-0 text-3xl text-text-dark">✕</button
-      >
-      <div class="flex justify-center">
-        <img src="/img/logo-pool-rod.svg" alt="Pool Logo" class="h-14 w-auto" />
-      </div>
+  <div class="eventbooking-portal">
+    <!-- Overlay -->
+    <div
+      class="eventbooking-overlay fixed inset-0 z-[1000] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
+    >
     </div>
 
-    <!-- Title OK ****************************************************** -->
-    <Heading
-      htmlheading="h4"
-      size="xsmall"
-      stylingclasses="text-text-dark mb-4xs">{heading}</Heading
+    <!-- Sidebar -->
+    <div
+      class="eventbooking-side bg-background-primary fixed right-0 top-0 h-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[1010] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
     >
+      <!-- Topbar: centered logo with close button on same line -->
+      <div class="relative mb-xs md:mb-s">
+        <button
+          class="eventbooking-close absolute right-0 top-0 text-3xl text-text-dark"
+          type="button">✕</button
+        >
+        <div class="flex justify-center">
+          <img
+            src="/img/logo-pool-rod.svg"
+            alt="Pool Logo"
+            class="h-14 w-auto"
+          />
+        </div>
+      </div>
 
-    <!-- Description OK ****************************************************** -->
-    <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-xs md:mb-s">
-      {bodyText}
-    </Text>
+      <!-- Title OK ****************************************************** -->
+      <Heading
+        htmlheading="h4"
+        size="xsmall"
+        stylingclasses="text-text-dark mb-4xs">{heading}</Heading
+      >
 
-    <!-- Form -->
-    <form class="space-y-3xs md:space-y-2xs mb-xs md:mb-s">
-      <!-- Name and Last Name Row -->
+      <!-- Description OK ****************************************************** -->
+      <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-xs md:mb-s">
+        {bodyText}
+      </Text>
+
+      <!-- Form -->
+      <form class="space-y-3xs md:space-y-2xs mb-xs md:mb-s">
+        <!-- Name and Last Name Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
+          <div>
+            <label>
+              <Text
+                teksttype="brødtekst_lille"
+                stylingclasses="text-text-dark mb-5xs"
+                >Name <span class="text-text-dark">*</span></Text
+              >
+            </label>
+            <input
+              type="text"
+              placeholder=""
+              class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+              required
+            />
+          </div>
+          <div>
+            <label>
+              <Text
+                teksttype="brødtekst_lille"
+                stylingclasses="text-text-dark mb-5xs"
+                >Last name <span class="text-text-dark">*</span></Text
+              >
+            </label>
+            <input
+              type="text"
+              placeholder=""
+              class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label>
+            <Text
+              teksttype="brødtekst_lille"
+              stylingclasses="text-text-dark mb-5xs"
+              >Email <span class="text-text-dark">*</span></Text
+            >
+          </label>
+          <input
+            type="email"
+            placeholder=""
+            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+            required
+          />
+        </div>
+
+        <!-- Phone Number -->
+        <div>
+          <label class="block">
+            <Text
+              teksttype="brødtekst_lille"
+              stylingclasses="text-text-dark mb-5xs"
+              >Phone number <span class="text-text-dark">*</span></Text
+            >
+          </label>
+          <input
+            type="tel"
+            placeholder=""
+            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+            required
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="booking-submit w-full mt-xs md:mt-s">
+          <Button variant="primary" size="medium">{submitButtonText}</Button>
+        </div>
+      </form>
+
+      <!-- Images Grid - Two columns on desktop, one on mobile -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
-        <div>
-          <label>
-            <Text
-              teksttype="brødtekst_lille"
-              stylingclasses="text-text-dark mb-5xs"
-              >Name <span class="text-text-dark">*</span></Text
-            >
-          </label>
-          <input
-            type="text"
-            placeholder=""
-            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-            required
-          />
-        </div>
-        <div>
-          <label>
-            <Text
-              teksttype="brødtekst_lille"
-              stylingclasses="text-text-dark mb-5xs"
-              >Last name <span class="text-text-dark">*</span></Text
-            >
-          </label>
-          <input
-            type="text"
-            placeholder=""
-            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-            required
-          />
-        </div>
-      </div>
-
-      <!-- Email -->
-      <div>
-        <label>
-          <Text
-            teksttype="brødtekst_lille"
-            stylingclasses="text-text-dark mb-5xs"
-            >Email <span class="text-text-dark">*</span></Text
-          >
-        </label>
-        <input
-          type="email"
-          placeholder=""
-          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-          required
+        <img src={img1Src} alt={img1Alt} class="w-full h-full object-cover" />
+        <img
+          src={img2Src}
+          alt={img2Alt}
+          class="hidden md:block w-full h-full object-cover"
         />
       </div>
-
-      <!-- Phone Number -->
-      <div>
-        <label class="block">
-          <Text
-            teksttype="brødtekst_lille"
-            stylingclasses="text-text-dark mb-5xs"
-            >Phone number <span class="text-text-dark">*</span></Text
-          >
-        </label>
-        <input
-          type="tel"
-          placeholder=""
-          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-          required
-        />
-      </div>
-
-      <!-- Submit Button -->
-      <div class="booking-submit w-full mt-xs md:mt-s">
-        <Button variant="primary" size="medium">{submitButtonText}</Button>
-      </div>
-    </form>
-
-    <!-- Images Grid - Two columns on desktop, one on mobile -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
-      <img src={img1Src} alt={img1Alt} class="w-full h-full object-cover" />
-      <img
-        src={img2Src}
-        alt={img2Alt}
-        class="hidden md:block w-full h-full object-cover"
-      />
     </div>
   </div>
 </div>
 
 <script>
-  const openBtn = document.getElementById("open-drawer");
-  const closeBtn = document.getElementById("close-drawer");
-  const overlay = document.getElementById("drawer-overlay");
-  const drawer = document.getElementById("drawer-side");
+  document.querySelectorAll(".eventbooking-root").forEach((root) => {
+    const portal = root.querySelector(".eventbooking-portal");
+    const openBtn = root.querySelector(".eventbooking-open");
 
-  const openDrawer = () => {
-    overlay.classList.remove("pointer-events-none");
-    overlay.classList.add("opacity-100");
-    drawer.classList.remove("translate-x-full");
-    drawer.classList.add("translate-x-0");
-    document.documentElement.classList.add("overflow-hidden");
-  };
+    if (portal && portal.parentElement !== document.body) {
+      document.body.appendChild(portal);
+    }
 
-  const closeDrawer = () => {
-    overlay.classList.remove("opacity-100");
-    overlay.classList.add("pointer-events-none");
-    drawer.classList.remove("translate-x-0");
-    drawer.classList.add("translate-x-full");
-    document.documentElement.classList.remove("overflow-hidden");
-  };
+    const closeBtn = portal?.querySelector(".eventbooking-close");
+    const overlay = portal?.querySelector(".eventbooking-overlay");
+    const drawer = portal?.querySelector(".eventbooking-side");
 
-  if (openBtn) openBtn.addEventListener("click", openDrawer);
-  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
-  if (overlay) overlay.addEventListener("click", closeDrawer);
+    const openDrawer = () => {
+      overlay?.classList.remove("pointer-events-none");
+      overlay?.classList.add("opacity-100");
+      drawer?.classList.remove("translate-x-full");
+      drawer?.classList.add("translate-x-0");
+      document.documentElement.classList.add("overflow-hidden");
+    };
+
+    const closeDrawer = () => {
+      overlay?.classList.remove("opacity-100");
+      overlay?.classList.add("pointer-events-none");
+      drawer?.classList.remove("translate-x-0");
+      drawer?.classList.add("translate-x-full");
+      document.documentElement.classList.remove("overflow-hidden");
+    };
+
+    openBtn?.addEventListener("click", openDrawer);
+    closeBtn?.addEventListener("click", closeDrawer);
+    overlay?.addEventListener("click", closeDrawer);
+  });
 </script>
 
 <style is:global>

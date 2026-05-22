@@ -1,167 +1,194 @@
 ---
+import Button from "./Button.astro";
 import Heading from "./Heading.astro";
 import Text from "./Text.astro";
-import Button from "./Button.astro";
+
+const {
+  openButtonText = "Book pool table",
+  submitButtonText = "Complete booking",
+  heading = "Overskrift",
+  bodyText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
+amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
+  img1Src = "/img/hey.jpg",
+  img1Alt = "Event Image 1",
+  img2Src = "/img/hey.jpg",
+  img2Alt = "Event Image 2",
+} = Astro.props;
 ---
 
-<div
-  class="fixed inset-0 z-[999] bg-black/40 opacity-0 pointer-events-none transition-all duration-300 peer-checked/booking:opacity-100 peer-checked/booking:pointer-events-auto"
->
+<div>
+  <!-- Page content -->
+  <div>
+    <Button id="open-drawer-booking" variant="primary" size="medium"
+      >{openButtonText}</Button
+    >
+  </div>
+
+  <!-- Overlay -->
   <div
-    class="absolute top-0 right-0 h-screen w-full md:w-[55%] bg-primary-red text-text-light translate-x-full transition-transform duration-300 peer-checked/booking:translate-x-0 overflow-y-auto"
+    id="drawer-overlay-booking"
+    class="fixed inset-0 z-[60] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
   >
-    <div class="pl-s pr-s pt-s pb-s min-h-screen flex flex-col">
-      <div class="flex items-center justify-between mb-l">
-        <img
-          src="/img/hvidpoollogo.svg"
-          alt="Pool CPH logo"
-          class="w-[180px]"
-        />
+  </div>
 
-        <label
-          for="booking-toggle"
-          class="cursor-pointer"
-          aria-label="Close booking"
-        >
-          <span
-            class="block w-[60px] h-[4px] bg-primary-beige rotate-45 translate-y-[2px]"
-          ></span>
-          <span
-            class="block w-[60px] h-[4px] bg-primary-beige -rotate-45 -translate-y-[2px]"
-          ></span>
-        </label>
-      </div>
-
-      <div
-        class="border border-primary-beige rounded-xs pl-xs pr-xs pt-4xs pb-4xs flex items-center justify-between mb-l"
+  <!-- Sidebar -->
+  <div
+    id="drawer-side-booking"
+    class="bg-background-primary fixed right-0 top-0 h-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[70] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
+  >
+    <!-- Topbar: centered logo with close button on same line -->
+    <div class="relative mb-xs md:mb-s">
+      <button
+        id="close-drawer-booking"
+        class="absolute right-0 top-0 text-3xl text-text-dark">✕</button
       >
-        <Text teksttype="brødtekst_bold">Pick your date</Text>
-        <span class="text-[28px] leading-none">⌄</span>
+      <div class="flex justify-center">
+        <img src="/img/logo-pool-rod.svg" alt="Pool Logo" class="h-14 w-auto" />
       </div>
+    </div>
 
-      <div class="mb-l">
-        <Heading htmlheading="h3" size="small" stylingclasses="mb-4xs">
-          Table time
-        </Heading>
+    <!-- Title OK ****************************************************** -->
+    <Heading
+      htmlheading="h4"
+      size="xsmall"
+      stylingclasses="text-text-dark mb-4xs">{heading}</Heading
+    >
 
-        <div class="mb-4xs">
-          <Text teksttype="brødtekst">
-            Choose how long you’d like to play
-          </Text>
-        </div>
+    <!-- Description OK ****************************************************** -->
+    <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-xs md:mb-s">
+      {bodyText}
+    </Text>
 
-        <div class="mb-4xs">
-          <Text teksttype="brødtekst_bold">Prices:</Text>
-        </div>
-
-        <Text teksttype="brødtekst">
-          Monday – Wednesday: DKK 75 pr. 30 min
-        </Text>
-
-        <div class="mb-s">
-          <Text teksttype="brødtekst">
-            Thursday – Saturday: DKK 100 pr. 30 min
-          </Text>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-2xs">
-          <button
-            class="bg-primary-beige text-primary-red rounded-xs pt-3xs pb-3xs"
-          >
-            <Text teksttype="brødtekst_bold">30 min</Text>
-          </button>
-
-          <button class="border border-primary-beige rounded-xs pt-3xs pb-3xs">
-            <Text teksttype="brødtekst_bold">60 min</Text>
-          </button>
-
-          <button class="border border-primary-beige rounded-xs pt-3xs pb-3xs">
-            <Text teksttype="brødtekst_bold">90 min</Text>
-          </button>
-
-          <button class="border border-primary-beige rounded-xs pt-3xs pb-3xs">
-            <Text teksttype="brødtekst_bold">120 min</Text>
-          </button>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-l mb-xl">
+    <!-- Form -->
+    <form class="space-y-3xs md:space-y-2xs mb-xs md:mb-s">
+      <!-- Name and Last Name Row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
         <div>
-          <Heading htmlheading="h3" size="small" stylingclasses="mb-4xs">
-            Guests
-          </Heading>
-
-          <div class="mb-4xs">
-            <Text teksttype="brødtekst">Select number of guests</Text>
-          </div>
-
-          <div class="mb-s">
-            <Text teksttype="brødtekst">
-              (For more than 12 guests, please contact us)
-            </Text>
-          </div>
-
-          <div
-            class="border-b border-primary-beige pb-4xs flex items-center gap-xs w-fit"
-          >
-            <Text teksttype="brødtekst_bold">1</Text>
-
-            <button
-              class="w-[32px] h-[32px] rounded-full border border-primary-beige flex items-center justify-center"
+          <label>
+            <Text
+              teksttype="brødtekst_lille"
+              stylingclasses="text-text-dark mb-5xs"
+              >Name <span class="text-text-dark">*</span></Text
             >
-              +
-            </button>
-          </div>
+          </label>
+          <input
+            type="text"
+            placeholder=""
+            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+            required
+          />
         </div>
-
         <div>
-          <Heading htmlheading="h3" size="small" stylingclasses="mb-4xs">
-            Time
-          </Heading>
-
-          <div class="mb-s">
-            <Text teksttype="brødtekst">Available times:</Text>
-          </div>
-
-          <div class="grid grid-cols-3 gap-2xs">
-            {
-              [
-                "16:00",
-                "16:30",
-                "17:00",
-                "17:30",
-                "18:00",
-                "18:30",
-                "19:00",
-                "19:30",
-                "20:00",
-                "20:30",
-                "21:00",
-              ].map((time, index) => (
-                <button
-                  class={`rounded-xs pt-3xs pb-3xs ${
-                    index === 0
-                      ? "bg-primary-beige text-primary-red"
-                      : "border border-primary-beige"
-                  }`}
-                >
-                  <Text teksttype="brødtekst_bold">{time}</Text>
-                </button>
-              ))
-            }
-          </div>
+          <label>
+            <Text
+              teksttype="brødtekst_lille"
+              stylingclasses="text-text-dark mb-5xs"
+              >Last name <span class="text-text-dark">*</span></Text
+            >
+          </label>
+          <input
+            type="text"
+            placeholder=""
+            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+            required
+          />
         </div>
       </div>
 
-      <div class="mb-l">
-        <Button variant="secondary"> Continue Booking → </Button>
+      <!-- Email -->
+      <div>
+        <label>
+          <Text
+            teksttype="brødtekst_lille"
+            stylingclasses="text-text-dark mb-5xs"
+            >Email <span class="text-text-dark">*</span></Text
+          >
+        </label>
+        <input
+          type="email"
+          placeholder=""
+          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+          required
+        />
       </div>
 
-      <div class="text-center mt-auto">
-        <a href="mailto:booking@poolcph.dk">
-          <Text teksttype="brødtekst">booking@poolcph.dk</Text>
-        </a>
+      <!-- Phone Number -->
+      <div>
+        <label class="block">
+          <Text
+            teksttype="brødtekst_lille"
+            stylingclasses="text-text-dark mb-5xs"
+            >Phone number <span class="text-text-dark">*</span></Text
+          >
+        </label>
+        <input
+          type="tel"
+          placeholder=""
+          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
+          required
+        />
       </div>
+
+      <!-- Submit Button -->
+      <div class="booking-submit w-full mt-xs md:mt-s">
+        <Button variant="primary" size="medium">{submitButtonText}</Button>
+      </div>
+    </form>
+
+    <!-- Images Grid - Two columns on desktop, one on mobile -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
+      <img src={img1Src} alt={img1Alt} class="w-full h-full object-cover" />
+      <img
+        src={img2Src}
+        alt={img2Alt}
+        class="hidden md:block w-full h-full object-cover"
+      />
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const openBtn = document.getElementById("open-drawer-booking");
+    const closeBtn = document.getElementById("close-drawer-booking");
+    const overlay = document.getElementById("drawer-overlay-booking");
+    const drawer = document.getElementById("drawer-side-booking");
+
+    const openDrawer = () => {
+      if (overlay) {
+        overlay.classList.remove("pointer-events-none", "opacity-0");
+        overlay.classList.add("opacity-100");
+      }
+      if (drawer) {
+        drawer.classList.remove("translate-x-full");
+        drawer.classList.add("translate-x-0");
+      }
+      document.documentElement.classList.add("overflow-hidden");
+    };
+
+    const closeDrawer = () => {
+      if (overlay) {
+        overlay.classList.remove("opacity-100");
+        overlay.classList.add("opacity-0", "pointer-events-none");
+      }
+      if (drawer) {
+        drawer.classList.remove("translate-x-0");
+        drawer.classList.add("translate-x-full");
+      }
+      document.documentElement.classList.remove("overflow-hidden");
+    };
+
+    if (openBtn) openBtn.addEventListener("click", openDrawer);
+    if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+    if (overlay) overlay.addEventListener("click", closeDrawer);
+  });
+</script>
+
+<style is:global>
+  .booking-submit button {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+</style>

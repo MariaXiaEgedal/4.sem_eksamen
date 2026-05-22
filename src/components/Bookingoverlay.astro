@@ -20,42 +20,46 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
 <div>
   <!-- Page content -->
   <div>
-    <Button id="open-drawer-booking" variant="primary" size="medium"
-      >{openButtonText}</Button
-    >
+    <Button id="open-booking-overlay" variant="primary" size="medium">
+      {openButtonText}
+    </Button>
   </div>
 
   <!-- Overlay -->
   <div
-    id="drawer-overlay-booking"
+    id="booking-overlay"
     class="fixed inset-0 z-[60] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
   >
   </div>
 
   <!-- Sidebar -->
   <div
-    id="drawer-side-booking"
+    id="booking-drawer"
     class="bg-background-primary fixed right-0 top-0 h-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[70] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
   >
     <!-- Topbar: centered logo with close button on same line -->
     <div class="relative mb-xs md:mb-s">
       <button
-        id="close-drawer-booking"
-        class="absolute right-0 top-0 text-3xl text-text-dark">✕</button
+        id="close-booking-overlay"
+        class="absolute right-0 top-0 text-3xl text-text-dark"
       >
+        ✕
+      </button>
       <div class="flex justify-center">
         <img src="/img/logo-pool-rod.svg" alt="Pool Logo" class="h-14 w-auto" />
       </div>
     </div>
 
-    <!-- Title OK ****************************************************** -->
+    <!-- Title -->
     <Heading
       htmlheading="h4"
       size="xsmall"
-      stylingclasses="text-text-dark mb-4xs">{heading}</Heading
+      stylingclasses="text-text-dark mb-4xs"
     >
+      {heading}
+    </Heading>
 
-    <!-- Description OK ****************************************************** -->
+    <!-- Description -->
     <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-xs md:mb-s">
       {bodyText}
     </Text>
@@ -69,8 +73,9 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
             <Text
               teksttype="brødtekst_lille"
               stylingclasses="text-text-dark mb-5xs"
-              >Name <span class="text-text-dark">*</span></Text
             >
+              Name <span class="text-text-dark">*</span>
+            </Text>
           </label>
           <input
             type="text"
@@ -84,8 +89,9 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
             <Text
               teksttype="brødtekst_lille"
               stylingclasses="text-text-dark mb-5xs"
-              >Last name <span class="text-text-dark">*</span></Text
             >
+              Last name <span class="text-text-dark">*</span>
+            </Text>
           </label>
           <input
             type="text"
@@ -102,8 +108,9 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
           <Text
             teksttype="brødtekst_lille"
             stylingclasses="text-text-dark mb-5xs"
-            >Email <span class="text-text-dark">*</span></Text
           >
+            Email <span class="text-text-dark">*</span>
+          </Text>
         </label>
         <input
           type="email"
@@ -119,8 +126,9 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
           <Text
             teksttype="brødtekst_lille"
             stylingclasses="text-text-dark mb-5xs"
-            >Phone number <span class="text-text-dark">*</span></Text
           >
+            Phone number <span class="text-text-dark">*</span>
+          </Text>
         </label>
         <input
           type="tel"
@@ -136,7 +144,7 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
       </div>
     </form>
 
-    <!-- Images Grid - Two columns on desktop, one on mobile -->
+    <!-- Images Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
       <img src={img1Src} alt={img1Alt} class="w-full h-full object-cover" />
       <img
@@ -150,10 +158,10 @@ amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const openBtn = document.getElementById("open-drawer-booking");
-    const closeBtn = document.getElementById("close-drawer-booking");
-    const overlay = document.getElementById("drawer-overlay-booking");
-    const drawer = document.getElementById("drawer-side-booking");
+    const openBtn = document.getElementById("open-booking-overlay");
+    const closeBtn = document.getElementById("close-booking-overlay");
+    const overlay = document.getElementById("booking-overlay");
+    const drawer = document.getElementById("booking-drawer");
 
     const openDrawer = () => {
       if (overlay) {

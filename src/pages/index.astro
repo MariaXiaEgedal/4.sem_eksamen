@@ -110,28 +110,30 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
       <SectionDivider />
 
       <!-- ***************************** Start Events ***************************** -->
-      <section
-        class="bg-green-500 pl-2xs lg:px-xl flex flex-col gap-2xs lg:gap-0"
-      >
+      <section class="pl-2xs lg:px-xl flex flex-col">
         <Heading
           htmlheading="h2"
           size="medium"
           stylingclasses="mb-2xs text-text-dark">Events</Heading
         >
 
-        <!-- Mangler linje under og pil -->
-        <a href="/event" class="self-end">
+        <a
+          href="/event"
+          class="self-end inline-flex items-center gap-2 mb-4xs mr-2xs lg:mr-0"
+        >
           <Text
             teksttype="brødtekst_bold"
-            stylingclasses="mb-2xs text-text-dark">Alle events</Text
+            stylingclasses="text-text-dark hover:underline hover:underline-offset-2 hover:decoration-text-dark"
+            >Alle events</Text
           >
+          <img src="/img/piltilhøjre.svg" alt="Pil til højre" />
         </a>
 
         <div
           class="pr-2xs lg:pr-0 flex items-start gap-2xs overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-6 lg:gap-m :overflow-visible"
         >
           <EventCard
-            class="shrink-0 basis-6/8 snap-start md:col-span-2"
+            class="shrink-0 basis-6/8 snap-start md:col-span-2 opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-100 intersect-once"
             smallVersion={true}
             noBorder={true}
             title="Tuesday’s Tournament"
@@ -143,7 +145,7 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
             imageAlt="Tuesday’s Tournament"
           />
           <EventCard
-            class="shrink-0 basis-6/8 snap-start md:col-span-2"
+            class="shrink-0 basis-6/8 snap-start md:col-span-2 opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-200 intersect-once"
             smallVersion={true}
             noBorder={true}
             title="Summerparty"
@@ -155,7 +157,7 @@ import EventBookingOverlay from "../components/EventBookingOverlay.astro";
             imageAlt="Summerparty"
           />
           <EventCard
-            class="shrink-0 basis-6/8 snap-start md:col-span-2"
+            class="shrink-0 basis-6/8 snap-start md:col-span-2 opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-300 intersect-once"
             smallVersion={true}
             noBorder={true}
             title="Girls Night"

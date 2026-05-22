@@ -61,10 +61,9 @@ import SectionDivider from "../components/SectionDivider.astro";
 
       <SectionDivider />
 
-      <section
-        class="bg-orange-500 px-2xs md:px-xl flex flex-col gap-2xs md:gap-0"
-      >
+      <section class="px-2xs md:px-xl flex flex-col gap-2xs md:gap-0">
         <EventCard
+          class="relative z-[40] opacity-0 intersect:opacity-100 intersect:animate-fade-down intersect:animate-delay-500 intersect-once"
           title="Tuesday’s Tournament"
           date="Every Tuesday / 20:00-22:00 / 50 kr. per person"
           description="Join our weekly pool tournament. Every Tuesday at 20:00. Sign up with a teammate and play for fun (and nice prizes!) All levels are welcome."
@@ -74,6 +73,7 @@ import SectionDivider from "../components/SectionDivider.astro";
           imageAlt="Tuesday’s Tournament"
         />
         <EventCard
+          class="relative z-[30] opacity-0 intersect:opacity-100 intersect:animate-fade-down intersect:animate-delay-500 intersect-once"
           title="Summerparty"
           date="19. June 2026 / 16:00-00:00 / Free entry"
           description="Join us at Pool Cph for a summer party with great vibes, cold drinks, and a DJ all night. Everybody is welcome. Bring your friends and celebrate summer with us."
@@ -83,6 +83,7 @@ import SectionDivider from "../components/SectionDivider.astro";
           imageAlt="Summerparty"
         />
         <EventCard
+          class="relative z-[20] opacity-0 intersect:opacity-100 intersect:animate-fade-down intersect:animate-delay-500 intersect-once"
           title="Girls Night"
           date="3. July 2026 / 20:00-00:00 / 100 kr per person"
           description="Join us at Pool Cph for a girls night filled with great vibes, cocktails, and good company. Grab your girls, dress up, and come enjoy a fun night out."
@@ -92,6 +93,7 @@ import SectionDivider from "../components/SectionDivider.astro";
           imageAlt="Girls Night"
         />
         <EventCard
+          class="relative z-[10] opacity-0 intersect:opacity-100 intersect:animate-fade-down intersect:animate-delay-500 intersect-once"
           title="Dinner date"
           date="7. July 2026 / 19:00-23:00 / 350 kr. per person"
           description="Join us at Pool Cph for an unforgettable dinner date with delicious food, great vibes, and even better company. Take a seat at our long table, enjoy a served dinner, and spend the evening socializing with friends, family, or meeting new people in a warm and welcoming atmosphere."

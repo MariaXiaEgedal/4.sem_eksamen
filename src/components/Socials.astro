@@ -28,43 +28,45 @@ const images = [
     </a>
   </div>
 
-  <div class="social-track flex gap-2xs">
-    {
-      [...images, ...images].map((image) => (
-        <a
-          href="https://www.instagram.com/pool_cph/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Pool CPH on Instagram"
-          class="group relative block w-[220px] md:w-[260px] shrink-0 overflow-hidden rounded-xs"
-        >
-          <img
-            src={image}
-            alt="Pool CPH Instagram image"
-            class="w-[220px] md:w-[260px] shrink-0"
-            loading="lazy"
-          />
-          <span class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+  <div class="social-carousel overflow-hidden">
+    <div class="social-track flex gap-2xs">
+      {
+        [...images, ...images].map((image) => (
+          <a
+            href="https://www.instagram.com/pool_cph/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Pool CPH on Instagram"
+            class="group/item social-item relative block w-[220px] md:w-[260px] shrink-0 overflow-hidden rounded-xs"
+          >
             <img
-              src="/img/icon-instagram-hvid.svg"
-              alt=""
-              aria-hidden="true"
-              class="h-10 w-10"
+              src={image}
+              alt="Pool CPH Instagram image"
+              class="w-[220px] md:w-[260px] shrink-0"
+              loading="lazy"
             />
-          </span>
-        </a>
-      ))
-    }
+            <span class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover/item:opacity-100">
+              <img
+                src="/img/icon-instagram-hvid.svg"
+                alt=""
+                aria-hidden="true"
+                class="h-10 w-10"
+              />
+            </span>
+          </a>
+        ))
+      }
+    </div>
   </div>
 </section>
 
 <style>
-  .social-track {
-    animation: scroll 15s linear infinite;
+  .social-carousel:hover .social-track {
+    animation-play-state: paused;
   }
 
-  .social-track:hover {
-    animation-play-state: paused;
+  .social-track {
+    animation: scroll 15s linear infinite;
   }
 
   @keyframes scroll {

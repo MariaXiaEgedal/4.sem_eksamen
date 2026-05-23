@@ -3,18 +3,27 @@ import Text from "./Text.astro";
 import Button from "./Button.astro";
 ---
 
-<div class="w-full max-w-[420px]">
+<div class="calendar-root w-full">
   <details class="group w-full">
     <!-- PICK DATE BUTTON -->
     <summary class="list-none cursor-pointer">
       <div class="pointer-events-none">
-        <Button variant="primary"> Pick your date </Button>
+        <Button variant="outline" class="w-full">
+          <span class="relative w-full flex items-center">
+            <span class="absolute inset-x-0 text-center">Pick your date</span>
+            <img
+              src="/img/arrow-hvid.svg"
+              alt="Arrow icon"
+              class="calendar-toggle-arrow w-5 h-5 ml-auto relative z-10"
+            />
+          </span>
+        </Button>
       </div>
     </summary>
 
     <!-- CALENDAR -->
     <div
-      class="calendar mt-4xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full"
+      class="calendar mt-5xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full"
     >
       <div class="grid grid-cols-[1fr_auto] items-center mb-xs">
         <Text teksttype="brødtekst_bold">
@@ -61,98 +70,206 @@ import Button from "./Button.astro";
 </div>
 
 <script>
-  const calendar = document.querySelector(".calendar");
-  const title = calendar.querySelector(".month-title");
-  const daysContainer = calendar.querySelector(".calendar-days");
+  document.querySelectorAll(".calendar-root").forEach((root) => {
+    const rootEl = root instanceof HTMLElement ? root : null;
+    if (!rootEl) return;
+    if (rootEl.dataset.calendarInit === "true") return;
+    rootEl.dataset.calendarInit = "true";
 
-  let month = 5;
-  let year = 2026;
+    const calendar = rootEl.querySelector(".calendar");
+    const title = calendar?.querySelector(".month-title");
+    const daysContainer = calendar?.querySelector(".calendar-days");
+    const prevMonthButton = calendar?.querySelector(".prev-month");
+    const nextMonthButton = calendar?.querySelector(".next-month");
+    // cache button elements as proper HTMLButtonElement when possible
+    const prevBtn =
+      prevMonthButton instanceof HTMLButtonElement ? prevMonthButton : null;
+    const nextBtn =
+      nextMonthButton instanceof HTMLButtonElement ? nextMonthButton : null;
 
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  function renderCalendar() {
-    title.textContent = `${monthNames[month]} ${year}`;
-    daysContainer.innerHTML = "";
-
-    const firstDay = new Date(year, month, 1).getDay();
-    const mondayStart = firstDay === 0 ? 6 : firstDay - 1;
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const prevMonthDays = new Date(year, month, 0).getDate();
-
-    for (let i = mondayStart; i > 0; i--) {
-      daysContainer.innerHTML += `
-        <button
-          type="button"
-          class="h-[34px] w-[34px] md:h-[40px] md:w-[40px] flex items-center justify-center rounded-full text-primary-red opacity-30"
-        >
-          ${prevMonthDays - i + 1}
-        </button>
-      `;
+    if (
+      !calendar ||
+      !title ||
+      !daysContainer ||
+      !prevMonthButton ||
+      !nextMonthButton
+    ) {
+      return;
     }
 
-    for (let day = 1; day <= daysInMonth; day++) {
-      daysContainer.innerHTML += `
-        <button
-          type="button"
-          class="calendar-day h-[34px] w-[34px] md:h-[40px] md:w-[40px] flex items-center justify-center rounded-full text-primary-red border border-transparent hover:border-primary-red transition"
-        >
-          ${day}
-        </button>
-      `;
+    const now = new Date();
+    let month = now.getMonth();
+    let year = now.getFullYear();
+
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    function renderCalendar() {
+      title.textContent = `${monthNames[month]} ${year}`;
+      // clear container
+      daysContainer.innerHTML = "";
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const mondayStart = firstDay === 0 ? 6 : firstDay - 1;
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const prevMonthDays = new Date(year, month, 0).getDate();
+
+      const today = new Date();
+      const todayYear = today.getFullYear();
+      const todayMonth = today.getMonth();
+      const todayDate = today.getDate();
+
+      // Precompute flags used for all days in this render
+      const displayedBeforeThisMonth =
+        year < todayYear || (year === todayYear && month < todayMonth);
+      const displayedIsThisMonth = year === todayYear && month === todayMonth;
+
+      const baseSize =
+        "h-[34px] w-[34px] md:h-[40px] md:w-[40px] flex items-center justify-center rounded-full";
+      const disabledClass = "text-primary-red opacity-30 pointer-events-none";
+      const normalClass =
+        "text-primary-red border border-transparent hover:border-primary-red transition";
+      const todayClass =
+        "bg-primary-red text-text-light border border-transparent";
+
+      const makeButton = ({ text, disabled = false, isToday = false }) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = String(text);
+        btn.className = `${baseSize} ${isToday ? todayClass : disabled ? disabledClass : normalClass}`;
+        if (!disabled) btn.classList.add("calendar-day");
+        if (disabled) {
+          btn.disabled = true;
+          btn.setAttribute("aria-disabled", "true");
+        }
+        if (isToday) btn.setAttribute("aria-current", "date");
+        return btn;
+      };
+
+      // use a fragment to batch DOM inserts
+      const frag = document.createDocumentFragment();
+
+      // leading days from previous month (dimmed)
+      for (let i = mondayStart; i > 0; i--) {
+        const dayNum = prevMonthDays - i + 1;
+        frag.appendChild(makeButton({ text: dayNum, disabled: true }));
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const weekday = new Date(year, month, day).getDay();
+        const isSunday = weekday === 0;
+
+        // disabled if whole month is past, or sunday, or earlier this month
+        const disabled =
+          displayedBeforeThisMonth ||
+          isSunday ||
+          (displayedIsThisMonth && day < todayDate);
+        const isToday = displayedIsThisMonth && day === todayDate && !isSunday;
+
+        frag.appendChild(makeButton({ text: day, disabled, isToday }));
+      }
+
+      daysContainer.appendChild(frag);
     }
-  }
 
-  calendar.querySelector(".prev-month").addEventListener("click", () => {
-    month--;
+    const startMonth = now.getMonth();
+    const startYear = now.getFullYear();
 
-    if (month < 0) {
-      month = 11;
-      year--;
-    }
+    const updateNavButtons = () => {
+      // Prev enabled only if current viewed month is after the start month/year
+      const canGoBack =
+        year > startYear || (year === startYear && month > startMonth);
+      if (prevBtn) {
+        prevBtn.disabled = !canGoBack;
+        prevBtn.setAttribute("aria-hidden", String(!canGoBack));
+      }
 
-    renderCalendar();
-  });
+      // Next enabled unless we've reached December of the start year
+      const canGoForward = !(year === startYear && month >= 11);
+      if (nextBtn) {
+        nextBtn.disabled = !canGoForward;
+        nextBtn.setAttribute("aria-hidden", String(!canGoForward));
+      }
+    };
 
-  calendar.querySelector(".next-month").addEventListener("click", () => {
-    month++;
+    const changeMonth = (delta) => {
+      if (delta > 0) {
+        // move forward but not past December of the start year
+        if (year === startYear && month >= 11) return;
+        month = Math.min(11, month + 1);
+      } else if (delta < 0) {
+        // allow going back but not before the start month/year
+        if (year === startYear && month <= startMonth) return;
+        month = Math.max(startMonth, month - 1);
+      } else return;
 
-    if (month > 11) {
-      month = 0;
-      year++;
-    }
+      renderCalendar();
+      updateNavButtons();
+    };
 
-    renderCalendar();
-  });
+    if (prevBtn) prevBtn.addEventListener("click", () => changeMonth(-1));
+    if (nextBtn) nextBtn.addEventListener("click", () => changeMonth(1));
 
-  daysContainer.addEventListener("click", (e) => {
-    const target = e.target;
+    daysContainer.addEventListener("click", (e) => {
+      const target = e.target;
 
-    const button =
-      target instanceof Element ? target.closest(".calendar-day") : null;
+      const button =
+        target instanceof Element ? target.closest(".calendar-day") : null;
 
-    if (!button) return;
+      if (!button) return;
 
-    document.querySelectorAll(".calendar-day").forEach((day) => {
-      day.classList.remove("bg-primary-red", "text-text-light");
-      day.classList.add("text-primary-red");
+      rootEl.querySelectorAll(".calendar-day").forEach((day) => {
+        day.classList.remove("bg-primary-red", "text-text-light");
+        day.classList.add("text-primary-red");
+      });
+
+      button.classList.remove("text-primary-red");
+      button.classList.add("bg-primary-red", "text-text-light");
     });
 
-    button.classList.remove("text-primary-red");
-    button.classList.add("bg-primary-red", "text-text-light");
-  });
+    renderCalendar();
+    updateNavButtons();
 
-  renderCalendar();
+    // Toggle arrow color based on open state
+    const detailsEl = rootEl.querySelector("details");
+    const toggleArrow = rootEl.querySelector(".calendar-toggle-arrow");
+
+    if (toggleArrow && detailsEl) {
+      const arrowEl = toggleArrow instanceof HTMLElement ? toggleArrow : null;
+      if (arrowEl) {
+        const setArrowState = (open) => {
+          if (arrowEl instanceof HTMLImageElement) {
+            arrowEl.src = open ? "/img/arrow.svg" : "/img/arrow-hvid.svg";
+          }
+        };
+
+        setArrowState(!!detailsEl.open);
+        detailsEl.addEventListener("toggle", () =>
+          setArrowState(!!detailsEl.open),
+        );
+      }
+    }
+
+    // Toggle summary button `active` class so it visually fills when opened
+    const summaryBtn = rootEl.querySelector("summary button");
+    if (summaryBtn) {
+      if (detailsEl?.open) summaryBtn.classList.add("active");
+      detailsEl?.addEventListener("toggle", () => {
+        if (detailsEl.open) summaryBtn.classList.add("active");
+        else summaryBtn.classList.remove("active");
+      });
+    }
+  });
 </script>

@@ -8,27 +8,31 @@ const {
 } = Astro.props;
 const variantKey = String(variant);
 const sizeKey = String(size);
+const isToggleVariant = variantKey === "outline";
 
-// Basale styling (fælles)
-const base = "rounded-xs transition-all duration-300 ease-out";
+// Basale styling (fælles for alle varianter og størrelser)
+const base =
+  "rounded-xs transition-all duration-300 ease-out flex items-center justify-center";
 
-// Varianter: bruger jeres token-klasser fra tailwind.css
-const variantClasses: Record<string, string> = {
+// Varianter
+const variantClasses = {
   primary:
     "bg-cta-primary text-text-light px-xs py-4xs hover:px-m hover:shadow-lg",
   secondary:
     "bg-cta-secondary text-text-dark px-xs py-4xs hover:px-m hover:shadow-lg",
-  "pool time":
-    "bg-transparent border-[length:var(--stroke-xs)] border-primary-beige text-primary-beige px-xs py-4xs hover:bg-primary-beige hover:text-text-dark",
+  outline:
+    "bg-transparent border-2 border-cta-secondary text-text-light px-xs py-4xs [&.active]:bg-cta-secondary [&.active]:text-text-dark",
 };
 
 const selectedVariant = variantClasses[variantKey] || variantClasses.primary;
 
 // Størrelse (kun tekst-størrelse)
-const sizeClasses: Record<string, string> = {
-  large: "text-[16px] md:text-[22px]",
+const sizeClasses = {
+  large: "text-[16px] md:text-[22px] font-bold",
   medium: "text-[16px] md:text-[22px]",
-  small: "text-[16px] md:text-[22px]",
+  mediumOverlay:
+    "text-[16px] md:text-[22px] hover:text-[18px] md:hover:text-[24px]",
+  small: "text-[16px] md:text-[18px] font-bold",
 };
 
 const selectedSize = sizeClasses[sizeKey] || sizeClasses.medium;
@@ -37,19 +41,29 @@ const selectedSize = sizeClasses[sizeKey] || sizeClasses.medium;
 <!-- Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->
 <button
   id={id}
-  data-button-variant={variantKey === "pool time" ? "pool-time" : null}
-  class:list={[base, selectedVariant, selectedSize, className]}><slot /></button
+  data-toggle={isToggleVariant}
+  class:list={[base, selectedVariant, selectedSize, className]}
 >
+  <slot />
+</button>
 
-<script>
-  const poolTimeButtons = document.querySelectorAll(
-    '[data-button-variant="pool-time"]',
-  );
+<script is:inline define:vars={{ isToggleVariant }}>
+  if (isToggleVariant) {
+    const initToggle = () => {
+      document.querySelectorAll('[data-toggle="true"]').forEach((button) => {
+        if (!button.dataset.toggleInit) {
+          button.dataset.toggleInit = "true";
+          button.addEventListener("click", () => {
+            button.classList.toggle("active");
+          });
+        }
+      });
+    };
 
-  poolTimeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      button.classList.add("bg-primary-beige", "text-text-dark");
-      button.classList.remove("bg-transparent", "text-primary-beige");
-    });
-  });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initToggle);
+    } else {
+      initToggle();
+    }
+  }
 </script>

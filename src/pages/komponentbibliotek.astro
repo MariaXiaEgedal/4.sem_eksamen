@@ -2,10 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
-import Link from "../components/Link.astro";
 import Button from "../components/Button.astro";
-import { Image } from "astro:assets";
-import thumbsup from "../assets/images/thumbsup.png";
 import EventCard from "../components/EventCard.astro";
 import Faq from "../components/Faq.astro";
 import MenuCard from "../components/MenuCard.astro";
@@ -14,11 +11,11 @@ import TextImgLeft from "../components/TextImgLeft.astro";
 import TextImgRight from "../components/TextImgRight.astro";
 import TimeLine from "../components/TimeLine.astro";
 import Counting from "../components/Counting.astro";
-import Event from "./event.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 import Calendar from "../components/Calendar.astro";
 import EventBookingOverlay from "../components/EventBookingOverlay.astro";
 import BookingOverlay from "../components/BookingOverlay.astro";
+
 const Test = [
   { heading: "Underkategori" },
   {
@@ -97,11 +94,6 @@ const Test = [
     </div>
     <!-- ***************************** End typography ***************************** -->
 
-    <!-- ***************************** Start Overlay Komponenter *****************************-->
-    <Calendar />
-
-    <!-- ***************************** End Overlay Komponenter *****************************-->
-
     <!-- ***************************** Start Buttons ***************************** -->
     <!-- (Her kan vi se hvordan knapperne skal bruges i de forskellige komponenter. Der skal nok laves flere varianter) -->
     <div class="px-2xs md:px-xl">
@@ -116,7 +108,7 @@ const Test = [
         <div class="flex items-center gap-2xs flex-wrap bg-blue-800">
           <Button variant="primary" size="medium">Primær CTA</Button>
           <Button variant="secondary" size="medium">Sekundær CTA</Button>
-          <Button variant="pool time" size="medium">Pool Time</Button>
+          <Button variant="outline" size="medium">Udvendig CTA</Button>
         </div>
       </section>
     </div>
@@ -129,21 +121,41 @@ const Test = [
         htmlheading="h4"
         size="xsmall"
         stylingclasses="mt-12 mb-4 text-text-dark"
-        >Overlays:
+        >Overlays: (Tryk på knapperne for at se dem i aktion)
       </Heading>
       <EventBookingOverlay />
-      <BookingOverlay />
+      <div class="mt-8">
+        <BookingOverlay />
+      </div>
     </div>
-
     <!-- ***************************** End Overlays  ***************************** -->
+
+    <!-- ***************************** Start Overlay Komponenter *****************************-->
+    <Heading
+      htmlheading="h4"
+      size="xsmall"
+      stylingclasses="mt-12 mb-4 text-text-dark px-2xs md:px-xl"
+      >Alle overlay-komponenter:</Heading
+    >
+    <section
+      class="px-2xs md:px-xl py-2xs bg-background-secondary flex flex-col items-center gap-4"
+    >
+      <div class="flex justify-center w-full max-w-[420px]">
+        <Calendar />
+      </div>
+      <div class="w-full flex justify-center">
+        <Counting />
+      </div>
+    </section>
+
+    <!-- ***************************** End Overlay Komponenter *****************************-->
 
     <!-- ***************************** Start Alle Komponenter ***************************** -->
     <Heading
       htmlheading="h4"
       size="xsmall"
       stylingclasses="mt-12 mb-4 text-text-dark px-2xs md:px-xl"
-      >Alle komponenter: (Her kan vi se alle komponenter, mens vi arbejder på
-      dem)</Heading
+      >Alle komponenter:</Heading
     >
     <div class="flex flex-col gap-s md:gap-l">
       <!-- SectionDivider -->
@@ -212,18 +224,6 @@ const Test = [
           >Komponetent: Socials</Heading
         >
         <Socials />
-      </section>
-
-      <!-- Counting -->
-      <section class="px-2xs md:px-xl">
-        <Heading
-          htmlheading="h5"
-          size="xsmallbold"
-          stylingclasses="mb-4 text-text-dark">Komponetent: Counting</Heading
-        >
-        <div class="bg-beige-800 p-4">
-          <Counting />
-        </div>
       </section>
 
       <!-- TextImgLeft -->

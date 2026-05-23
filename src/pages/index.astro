@@ -10,6 +10,7 @@ import TextImgRight from "../components/TextImgRight.astro";
 import EventCard from "../components/EventCard.astro";
 import Socials from "../components/Socials.astro";
 import SectionDivider from "../components/SectionDivider.astro";
+import BookingOverlay from "../components/BookingOverlay.astro";
 ---
 
 <MainLayout title="Pool CPH">
@@ -45,7 +46,7 @@ import SectionDivider from "../components/SectionDivider.astro";
           class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none"
         >
           <div class="pointer-events-auto mt-25 md:mt-35">
-            <Button variant="primary" size="medium">Book pool table</Button>
+            <BookingOverlay />
           </div>
         </div>
       </section>

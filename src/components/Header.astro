@@ -2,7 +2,7 @@
 import Heading from "./Heading.astro";
 import Text from "./Text.astro";
 import Button from "./Button.astro";
-import Bookingoverlay from "./Bookingoverlay.astro";
+import BookingOverlay from "./BookingOverlay.astro";
 ---
 
 <header
@@ -46,9 +46,7 @@ import Bookingoverlay from "./Bookingoverlay.astro";
         ></span>
       </a>
 
-      <label for="booking-toggle" class="cursor-pointer">
-        <Button variant="primary"> Book pool table </Button>
-      </label>
+      <BookingOverlay />
     </div>
   </div>
 
@@ -113,7 +111,7 @@ import Bookingoverlay from "./Bookingoverlay.astro";
       </a>
 
       <div class="mt-m">
-        <Button variant="secondary" href="/booking"> Book pool table </Button>
+        <BookingOverlay openButtonVariant="secondary" />
       </div>
     </div>
 
@@ -153,24 +151,4 @@ import Bookingoverlay from "./Bookingoverlay.astro";
       </div>
     </div>
   </nav>
-
-  <!-- Booking overlay -->
-  <div
-    class="fixed top-0 left-0 z-50 h-screen w-full bg-black bg-opacity-50 text-text-light translate-x-full peer-checked/booking:translate-x-0 transition-transform duration-300 flex items-center justify-center"
-  >
-    <div
-      class="relative bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-[600px]"
-    >
-      <!-- Close button -->
-      <label
-        for="booking-toggle"
-        class="absolute top-4 right-4 text-black cursor-pointer text-xl"
-      >
-        &times;
-      </label>
-
-      <!-- Bookingoverlay component -->
-      <Bookingoverlay />
-    </div>
-  </div>
 </header>

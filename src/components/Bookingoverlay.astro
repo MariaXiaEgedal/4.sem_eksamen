@@ -2,201 +2,142 @@
 import Button from "./Button.astro";
 import Heading from "./Heading.astro";
 import Text from "./Text.astro";
-
-const {
-  openButtonText = "Book pool table",
-  submitButtonText = "Complete booking",
-  heading = "Overskrift",
-  bodyText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
-amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt`,
-  img1Src = "/img/hey.jpg",
-  img1Alt = "Event Image 1",
-  img2Src = "/img/hey.jpg",
-  img2Alt = "Event Image 2",
-} = Astro.props;
+import Calendar from "./Calendar.astro";
+import Counting from "./Counting.astro";
 ---
 
-<div>
+<div class="eventbooking-root">
   <!-- Page content -->
   <div>
-    <Button id="open-booking-overlay" variant="primary" size="medium">
-      {openButtonText}
-    </Button>
+    <Button class="eventbooking-open" variant="primary" size="medium"
+      >Book a table</Button
+    >
   </div>
 
-  <!-- Overlay -->
-  <div
-    id="booking-overlay"
-    class="fixed inset-0 z-[60] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
-  >
-  </div>
-
-  <!-- Sidebar -->
-  <div
-    id="booking-drawer"
-    class="bg-background-primary fixed right-0 top-0 h-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[70] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
-  >
-    <!-- Topbar: centered logo with close button on same line -->
-    <div class="relative mb-xs md:mb-s">
-      <button
-        id="close-booking-overlay"
-        class="absolute right-0 top-0 text-3xl text-text-dark"
-      >
-        ✕
-      </button>
-      <div class="flex justify-center">
-        <img src="/img/logo-pool-rod.svg" alt="Pool Logo" class="h-14 w-auto" />
-      </div>
+  <div class="eventbooking-portal">
+    <!-- Overlay -->
+    <div
+      class="eventbooking-overlay fixed inset-0 z-[1000] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
+    >
     </div>
 
-    <!-- Title -->
-    <Heading
-      htmlheading="h4"
-      size="xsmall"
-      stylingclasses="text-text-dark mb-4xs"
+    <!-- Sidebar -->
+    <div
+      class="eventbooking-side bg-background-secondary fixed right-0 top-0 h-full w-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[1010] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
     >
-      {heading}
-    </Heading>
-
-    <!-- Description -->
-    <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-xs md:mb-s">
-      {bodyText}
-    </Text>
-
-    <!-- Form -->
-    <form class="space-y-3xs md:space-y-2xs mb-xs md:mb-s">
-      <!-- Name and Last Name Row -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
-        <div>
-          <label>
-            <Text
-              teksttype="brødtekst_lille"
-              stylingclasses="text-text-dark mb-5xs"
-            >
-              Name <span class="text-text-dark">*</span>
-            </Text>
-          </label>
-          <input
-            type="text"
-            placeholder=""
-            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-            required
-          />
-        </div>
-        <div>
-          <label>
-            <Text
-              teksttype="brødtekst_lille"
-              stylingclasses="text-text-dark mb-5xs"
-            >
-              Last name <span class="text-text-dark">*</span>
-            </Text>
-          </label>
-          <input
-            type="text"
-            placeholder=""
-            class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-            required
+      <!-- Topbar: centered logo with close button on same line -->
+      <div class="relative mb-xs md:mb-s">
+        <button
+          class="eventbooking-close absolute right-0 top-0 text-3xl text-text-light"
+          type="button">✕</button
+        >
+        <div class="flex justify-center">
+          <img
+            src="/img/logo-pool-hvid.svg"
+            alt="Pool Logo"
+            class="h-14 w-auto"
           />
         </div>
       </div>
 
-      <!-- Email -->
-      <div>
-        <label>
-          <Text
-            teksttype="brødtekst_lille"
-            stylingclasses="text-text-dark mb-5xs"
+      <!-- Calendar -->
+      <div class="mb-xs md:mb-s">
+        <Calendar />
+      </div>
+
+      <!-- Prices  -->
+      <div class="mb-2xs md:mb-xs">
+        <Heading
+          htmlheading="h5"
+          size="xsmallbold"
+          stylingclasses="text-text-light mb-5xs">Prices: (30 min)</Heading
+        >
+        <Text teksttype="brødtekst-lille" stylingclasses="text-text-light">
+          Monday - Wednesday: DKK 75 pr. 30 min <br /> Thursday - Saturday: DKK 100
+          pr. 30 min
+        </Text>
+      </div>
+
+      <!-- Table time -->
+      <div class="mb-2xs md:mb-xs">
+        <Heading
+          htmlheading="h5"
+          size="xsmallbold"
+          stylingclasses="text-text-light mb-5xs">Table time</Heading
+        >
+        <Text
+          teksttype="brødtekst"
+          stylingclasses="text-text-light mb-4xs md:mb-2xs"
+        >
+          Choose how long you’d like to play
+        </Text>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-[10px] md:gap-[20px]">
+          <Button class="w-full" variant="outline" size="large">30 min</Button>
+          <Button class="w-full" variant="outline" size="large">60 min</Button>
+          <Button class="w-full" variant="outline" size="large">90 min</Button>
+          <Button class="w-full" variant="outline" size="large">120 min</Button>
+        </div>
+      </div>
+
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-2xs mb-2xs md:mb-xs"
+      >
+        <!-- Guests -->
+        <div class="min-w-0 mb-2xs md:mb-xs">
+          <Heading
+            htmlheading="h5"
+            size="xsmallbold"
+            stylingclasses="text-text-light mb-5xs">Guests</Heading
           >
-            Email <span class="text-text-dark">*</span>
+          <Text teksttype="brødtekst" stylingclasses="text-text-light mb-5xs">
+            Select number of guests
           </Text>
-        </label>
-        <input
-          type="email"
-          placeholder=""
-          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-          required
-        />
-      </div>
-
-      <!-- Phone Number -->
-      <div>
-        <label class="block">
           <Text
-            teksttype="brødtekst_lille"
-            stylingclasses="text-text-dark mb-5xs"
+            teksttype="brødtekst-lille"
+            stylingclasses="text-text-light mb-4xs md:mb-2xs"
           >
-            Phone number <span class="text-text-dark">*</span>
+            (For more than 12 guests, please contact us)
           </Text>
-        </label>
-        <input
-          type="tel"
-          placeholder=""
-          class="w-full bg-transparent text-text-dark border-b-2 border-primary-line focus:border-primary-line py-5xs"
-          required
-        />
+          <div class="flex justify-start">
+            <Counting />
+          </div>
+        </div>
+
+        <!-- Time -->
+        <div class="min-w-0">
+          <Heading
+            htmlheading="h5"
+            size="xsmallbold"
+            stylingclasses="text-text-light mb-5xs">Time</Heading
+          >
+          <Text
+            teksttype="brødtekst"
+            stylingclasses="text-text-light mb-2xs md:mb-xs"
+          >
+            Available times:
+          </Text>
+          <div class="grid grid-cols-3 gap-[10px] md:gap-[20px]">
+            <Button class="w-full" variant="outline" size="small">16:00</Button>
+            <Button class="w-full" variant="outline" size="small">16:30</Button>
+            <Button class="w-full" variant="outline" size="small">17:00</Button>
+            <Button class="w-full" variant="outline" size="small">17:30</Button>
+            <Button class="w-full" variant="outline" size="small">18:00</Button>
+            <Button class="w-full" variant="outline" size="small">18:30</Button>
+            <Button class="w-full" variant="outline" size="small">19:00</Button>
+            <Button class="w-full" variant="outline" size="small">19:30</Button>
+            <Button class="w-full" variant="outline" size="small">20:00</Button>
+          </div>
+        </div>
       </div>
 
-      <!-- Submit Button -->
-      <div class="booking-submit w-full mt-xs md:mt-s">
-        <Button variant="primary" size="medium">{submitButtonText}</Button>
+      <!-- Continue Booking Button -->
+      <div>
+        <Button class="w-full gap-2" variant="secondary" size="mediumOverlay">
+          <span>Continue Booking</span>
+          <img src="/img/piltilhøjre.svg" alt="" aria-hidden="true" />
+        </Button>
       </div>
-    </form>
-
-    <!-- Images Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
-      <img src={img1Src} alt={img1Alt} class="w-full h-full object-cover" />
-      <img
-        src={img2Src}
-        alt={img2Alt}
-        class="hidden md:block w-full h-full object-cover"
-      />
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const openBtn = document.getElementById("open-booking-overlay");
-    const closeBtn = document.getElementById("close-booking-overlay");
-    const overlay = document.getElementById("booking-overlay");
-    const drawer = document.getElementById("booking-drawer");
-
-    const openDrawer = () => {
-      if (overlay) {
-        overlay.classList.remove("pointer-events-none", "opacity-0");
-        overlay.classList.add("opacity-100");
-      }
-      if (drawer) {
-        drawer.classList.remove("translate-x-full");
-        drawer.classList.add("translate-x-0");
-      }
-      document.documentElement.classList.add("overflow-hidden");
-    };
-
-    const closeDrawer = () => {
-      if (overlay) {
-        overlay.classList.remove("opacity-100");
-        overlay.classList.add("opacity-0", "pointer-events-none");
-      }
-      if (drawer) {
-        drawer.classList.remove("translate-x-0");
-        drawer.classList.add("translate-x-full");
-      }
-      document.documentElement.classList.remove("overflow-hidden");
-    };
-
-    if (openBtn) openBtn.addEventListener("click", openDrawer);
-    if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
-    if (overlay) overlay.addEventListener("click", closeDrawer);
-  });
-</script>
-
-<style is:global>
-  .booking-submit button {
-    width: 100%;
-    display: block;
-    text-align: center;
-  }
-</style>

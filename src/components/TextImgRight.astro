@@ -10,6 +10,8 @@ const {
   logo = "/img/logo-pool-rod.svg",
   logoAlt = "Pool Cph logo",
 } = Astro.props;
+
+const isVideo = /\.(mov)$/i.test(image);
 ---
 
 <div
@@ -27,6 +29,20 @@ const {
   <div
     class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end mt-2xs md:mt-0"
   >
-    <img src={image} alt={imageAlt} class="w-full h-auto" />
+    {
+      isVideo ? (
+        <video
+          src={image}
+          class="w-full h-auto"
+          playsinline
+          autoplay
+          muted
+          loop
+          preload="metadata"
+        />
+      ) : (
+        <img src={image} alt={imageAlt} class="w-full h-auto" />
+      )
+    }
   </div>
 </div>

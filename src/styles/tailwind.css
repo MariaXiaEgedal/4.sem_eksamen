@@ -115,6 +115,7 @@
 
   /* SEMANTIC TOKENS */
   --color-background-primary: var(--color-base);
+  --color-background-secondary: var(--color-primary-red);
 
   --color-text-dark: var(--color-primary-red);
   --color-text-light: var(--color-primary-beige);

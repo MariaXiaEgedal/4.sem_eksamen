@@ -2,22 +2,26 @@
 const { currentPage = "Side", show = true } = Astro.props;
 ---
 
-{
-  show && (
-    <nav aria-label="breadcrumbs" class="px-2xs md:px-xl pt-4 md:pt-6">
-      <ol class="flex items-center gap-2 text-sm md:text-dark text-text-dark">
-        <li>
-          <a href="/" class="hover:underline">
-            Home
-          </a>
-        </li>
-        <li aria-hidden="true" class="text-text-dark/40">
-          ›
-        </li>
-        <li aria-current="page" class="font-medium text-text-dark">
-          {currentPage}
-        </li>
-      </ol>
-    </nav>
-  )
-}
+<nav
+  hidden={!show}
+  aria-label="breadcrumbs"
+  class="px-2xs md:px-xl pt-4 md:pt-6"
+>
+  <ol class="flex items-center gap-2 text-sm md:text-xl text-text-dark">
+    <li>
+      <a
+        href="/"
+        class="hover:underline decoration-current decoration-2 underline-offset-4"
+      >
+        Home
+      </a>
+    </li>
+    <li aria-hidden="true" class="text-text-dark/40">›</li>
+    <li
+      aria-current="page"
+      class="text-text-dark underline decoration-current decoration-2 underline-offset-4"
+    >
+      {currentPage}
+    </li>
+  </ol>
+</nav>

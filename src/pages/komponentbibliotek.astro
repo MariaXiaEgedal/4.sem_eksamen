@@ -15,6 +15,7 @@ import SectionDivider from "../components/SectionDivider.astro";
 import Calendar from "../components/Calendar.astro";
 import EventBookingOverlay from "../components/EventBookingOverlay.astro";
 import BookingOverlay from "../components/BookingOverlay.astro";
+import TTOverlay from "../components/TT-Overlay.astro";
 
 const Test = [
   { heading: "Underkategori" },
@@ -108,7 +109,8 @@ const Test = [
         <div class="flex items-center gap-2xs flex-wrap bg-blue-800">
           <Button variant="primary" size="medium">Primær CTA</Button>
           <Button variant="secondary" size="medium">Sekundær CTA</Button>
-          <Button variant="outline" size="medium">Udvendig CTA</Button>
+          <Button variant="outline_light" size="medium">Lys outline CTA</Button>
+          <Button variant="outline_dark" size="medium">Mørk outline CTA</Button>
         </div>
       </section>
     </div>
@@ -123,9 +125,28 @@ const Test = [
         stylingclasses="mt-12 mb-4 text-text-dark"
         >Overlays: (Tryk på knapperne for at se dem i aktion)
       </Heading>
+      <Heading
+        htmlheading="h5"
+        size="xsmallbold"
+        stylingclasses="mb-4 text-text-dark">Event Booking Overlay</Heading
+      >
       <EventBookingOverlay />
+      <Heading
+        htmlheading="h5"
+        size="xsmallbold"
+        stylingclasses="mb-4 text-text-dark mt-8">Booking Overlay</Heading
+      >
       <div class="mt-8">
         <BookingOverlay />
+      </div>
+      <Heading
+        htmlheading="h5"
+        size="xsmallbold"
+        stylingclasses="mb-4 text-text-dark mt-8"
+        >Tuesday's Tournament Overlay</Heading
+      >
+      <div class="mt-8">
+        <TTOverlay />
       </div>
     </div>
     <!-- ***************************** End Overlays  ***************************** -->

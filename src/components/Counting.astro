@@ -1,20 +1,31 @@
 ---
 import Text from "./Text.astro";
-const { id = undefined, name = "people", value = 1 } = Astro.props;
+const {
+  id = undefined,
+  name = "people",
+  value = 1,
+  theme = "dark",
+} = Astro.props;
 
 const MIN = 1;
 const MAX = 12;
 const uid = id || `counting-${Math.random().toString(36).slice(2, 9)}`;
 let startValue = Math.min(MAX, Math.max(MIN, Number(value) || MIN));
+
+const isLightTheme = theme === "light";
+const textColorClass = isLightTheme ? "text-primary-red" : "text-text-light";
+const borderColorClass = isLightTheme
+  ? "border-primary-red"
+  : "border-primary-beige";
 ---
 
-<div id={uid} class="flex flex-col items-center text-text-light">
+<div id={uid} class={`flex flex-col items-center ${textColorClass}`}>
   <div class="flex items-center gap-4">
     <button
       type="button"
       aria-label="Decrease"
       data-action="decrement"
-      class="text-3xl w-9 h-9 rounded-full border border-primary-beige flex items-center justify-center text-text-light"
+      class={`text-3xl w-9 h-9 rounded-full border ${borderColorClass} flex items-center justify-center ${textColorClass}`}
       ><span class="leading-none align-middle relative -top-px">−</span></button
     >
 
@@ -26,7 +37,7 @@ let startValue = Math.min(MAX, Math.max(MIN, Number(value) || MIN));
       type="button"
       aria-label="Increase"
       data-action="increment"
-      class="text-3xl w-9 h-9 rounded-full border border-primary-beige flex items-center justify-center text-text-light"
+      class={`text-3xl w-9 h-9 rounded-full border ${borderColorClass} flex items-center justify-center ${textColorClass}`}
       ><span class="leading-none align-middle relative -top-px">+</span></button
     >
   </div>
@@ -34,7 +45,7 @@ let startValue = Math.min(MAX, Math.max(MIN, Number(value) || MIN));
   <input type="hidden" name={name} value={startValue} data-input />
 
   <div
-    class="mt-2 border-t border-primary-beige"
+    class={`mt-2 border-t ${borderColorClass}`}
     style="width: 120px; display: block;"
     aria-hidden="true"
   >

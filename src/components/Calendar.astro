@@ -1,6 +1,14 @@
 ---
 import Text from "./Text.astro";
 import Button from "./Button.astro";
+
+const { theme = "dark" } = Astro.props;
+const isLightTheme = theme === "light";
+const summaryButtonVariant = isLightTheme ? "outline_dark" : "outline_light";
+const summaryArrowSrc = isLightTheme ? "/img/arrow.svg" : "/img/arrow-hvid.svg";
+const calendarClasses = isLightTheme
+  ? "calendar mt-5xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full border-2 border-primary-red"
+  : "calendar mt-5xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full";
 ---
 
 <div class="calendar-root w-full">
@@ -8,11 +16,11 @@ import Button from "./Button.astro";
     <!-- PICK DATE BUTTON -->
     <summary class="list-none cursor-pointer">
       <div class="pointer-events-none">
-        <Button variant="outline" class="w-full">
+        <Button variant={summaryButtonVariant} class="w-full">
           <span class="relative w-full flex items-center">
             <span class="absolute inset-x-0 text-center">Pick your date</span>
             <img
-              src="/img/arrow-hvid.svg"
+              src={summaryArrowSrc}
               alt="Arrow icon"
               class="calendar-toggle-arrow w-5 h-5 ml-auto relative z-10"
             />
@@ -22,9 +30,7 @@ import Button from "./Button.astro";
     </summary>
 
     <!-- CALENDAR -->
-    <div
-      class="calendar mt-5xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full"
-    >
+    <div class={calendarClasses}>
       <div class="grid grid-cols-[1fr_auto] items-center mb-xs">
         <Text teksttype="brødtekst_bold">
           <span class="month-title"></span>
@@ -69,7 +75,7 @@ import Button from "./Button.astro";
   </details>
 </div>
 
-<script>
+<script define:vars={{ isLightTheme }}>
   document.querySelectorAll(".calendar-root").forEach((root) => {
     const rootEl = root instanceof HTMLElement ? root : null;
     if (!rootEl) return;
@@ -242,7 +248,7 @@ import Button from "./Button.astro";
     renderCalendar();
     updateNavButtons();
 
-    // Toggle arrow color based on open state
+    // Toggle arrow color based on theme + open state
     const detailsEl = rootEl.querySelector("details");
     const toggleArrow = rootEl.querySelector(".calendar-toggle-arrow");
 
@@ -251,7 +257,13 @@ import Button from "./Button.astro";
       if (arrowEl) {
         const setArrowState = (open) => {
           if (arrowEl instanceof HTMLImageElement) {
-            arrowEl.src = open ? "/img/arrow.svg" : "/img/arrow-hvid.svg";
+            arrowEl.src = isLightTheme
+              ? open
+                ? "/img/arrow-hvid.svg"
+                : "/img/arrow.svg"
+              : open
+                ? "/img/arrow.svg"
+                : "/img/arrow-hvid.svg";
           }
         };
 

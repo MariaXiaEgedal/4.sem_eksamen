@@ -1,0 +1,123 @@
+---
+import Button from "./Button.astro";
+import Heading from "./Heading.astro";
+import Text from "./Text.astro";
+import Calendar from "./Calendar.astro";
+import Counting from "./Counting.astro";
+---
+
+<div class="eventbooking-root">
+  <!-- Page content -->
+  <div>
+    <Button class="eventbooking-open" variant="primary" size="medium"
+      >Save you spot</Button
+    >
+  </div>
+
+  <div class="eventbooking-portal">
+    <!-- Overlay -->
+    <div
+      class="eventbooking-overlay fixed inset-0 z-[1000] bg-black/50 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
+    >
+    </div>
+
+    <!-- Sidebar -->
+    <div
+      class="eventbooking-side bg-background-primary fixed right-0 top-0 h-full w-full md:w-1/2 pt-s px-2xs md:px-m lg:px-l z-[1010] transform translate-x-full transition-transform duration-500 ease-in-out overflow-y-auto"
+    >
+      <!-- Topbar: centered logo with close button on same line -->
+      <div class="relative mb-xs md:mb-s">
+        <button
+          class="eventbooking-close absolute right-0 top-0 text-3xl text-text-dark"
+          type="button">✕</button
+        >
+        <div class="flex justify-center">
+          <img
+            src="/img/logo-pool-rod.svg"
+            alt="Pool Logo"
+            class="h-14 w-auto"
+          />
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <Heading
+        htmlheading="h4"
+        size="xsmall"
+        stylingclasses="text-text-dark mb-2xs md:mb-xs"
+        >Tuesday’s Tournament</Heading
+      >
+
+      <!-- Calendar -->
+      <div class="mb-xs md:mb-m">
+        <Calendar theme="light" />
+      </div>
+
+      <!-- Guests & Time -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-2xs mb-xs md:mb-m"
+      >
+        <!-- Guests -->
+        <div class="min-w-0 mb-2xs lg:mb-0">
+          <Heading
+            htmlheading="h5"
+            size="xsmallbold"
+            stylingclasses="text-text-dark">Guests</Heading
+          >
+          <Text teksttype="brødtekst" stylingclasses="text-text-dark mb-5xs">
+            Select number of guests
+          </Text>
+          <Text
+            teksttype="brødtekst-lille"
+            stylingclasses="text-text-dark mb-4xs md:mb-2xs"
+          >
+            (For more than 12 guests, please contact us)
+          </Text>
+          <div class="flex justify-start">
+            <Counting theme="light" />
+          </div>
+        </div>
+
+        <!-- Time -->
+        <div class="">
+          <Heading
+            htmlheading="h5"
+            size="xsmallbold"
+            stylingclasses="text-text-dark mb-5xs">Time</Heading
+          >
+          <Text
+            teksttype="brødtekst"
+            stylingclasses="text-text-dark mb-2xs md:mb-xs"
+          >
+            Available times:
+          </Text>
+          <div>
+            <Button variant="outline_dark" size="small">20:00</Button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Continue Booking Button -->
+      <div class="mb-xs md:mb-m">
+        <Button class="w-full gap-2xs" variant="primary" size="mediumOverlay">
+          <span>Continue Booking</span>
+          <img src="/img/piltilvenstre-hvid.svg" alt="" aria-hidden="true" />
+        </Button>
+      </div>
+
+      <!-- Images Grid - Two columns on desktop, one on mobile -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2xs">
+        <img
+          src="/img/overlay-tuesday-tournament1.png"
+          alt="Event Image 1"
+          class="w-full h-full object-cover"
+        />
+        <img
+          src="/img/overlay-tuesday-tournament2.png"
+          alt="Event Image 2"
+          class="hidden md:block w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</div>

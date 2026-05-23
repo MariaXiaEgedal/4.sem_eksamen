@@ -8,7 +8,7 @@ const {
 } = Astro.props;
 const variantKey = String(variant);
 const sizeKey = String(size);
-const isToggleVariant = variantKey === "outline";
+const isToggleVariant = variantKey.startsWith("outline");
 
 // Basale styling (fælles for alle varianter og størrelser)
 const base =
@@ -20,8 +20,10 @@ const variantClasses = {
     "bg-cta-primary text-text-light px-xs py-4xs hover:px-m hover:shadow-lg",
   secondary:
     "bg-cta-secondary text-text-dark px-xs py-4xs hover:px-m hover:shadow-lg",
-  outline:
+  outline_light:
     "bg-transparent border-2 border-cta-secondary text-text-light px-xs py-4xs [&.active]:bg-cta-secondary [&.active]:text-text-dark",
+  outline_dark:
+    "bg-transparent border-2 border-cta-primary text-text-dark px-xs py-4xs [&.active]:bg-cta-primary [&.active]:text-text-light",
 };
 
 const selectedVariant = variantClasses[variantKey] || variantClasses.primary;

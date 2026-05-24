@@ -9,6 +9,7 @@ const {
   imageAlt = "",
   logo = "/img/logo-pool-rod.svg",
   logoAlt = "Pool Cph logo",
+  showLogo = true,
 } = Astro.props;
 
 const isVideo = /\.(mov)$/i.test(image);
@@ -23,12 +24,10 @@ const isVideo = /\.(mov)$/i.test(image);
       {text}
     </Text>
 
-    <img src={logo} alt={logoAlt} class="mt-2xs h-8" />
+    {showLogo ? <img src={logo} alt={logoAlt} class="mt-2xs h-8" /> : null}
   </div>
 
-  <div
-    class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end mt-2xs md:mt-0"
-  >
+  <div class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end">
     {
       isVideo ? (
         <video

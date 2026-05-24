@@ -11,26 +11,20 @@ import Bookingoverlay from "../components/Bookingoverlay.astro";
 ---
 
 <MainLayout title="Pool CPH">
-  <!-- Denne linje under betyder gappet mellem sektioner 40px/mobil og 80px/desktop (Jeg har lavet den)-->
-  <!-- flex flex-col gap-s md:gap-l  -->
-
-  <!-- Denne linje under betyder padding på x-aksen 20px/mobil og 100px/desktop (Jeg har lavet den) -->
-  <!-- px-2xs md:px-xl -->
-
-  <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
-  <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="mb-s md:mb-l">
     <div class="flex flex-col gap-s md:gap-xl">
       <!-- ***************************** Start Hero ***************************** -->
       <section class="px-0 md:px-0 relative">
+        <!-- Video mobil -->
         <video
-          class="block md:hidden w-full min-h-[550px] h-auto object-cover relative z-0"
+          class="block md:hidden w-full h-[560px] object-cover relative z-0"
           src="/img/heromobilvideo.mov"
           autoplay
           muted
           loop
           playsinline></video>
 
+        <!-- Video desktop -->
         <video
           class="hidden md:block w-full min-h-[600px] lg:max-h-[750px] h-auto object-cover relative z-0"
           src="/img/herovideo.mov"
@@ -74,6 +68,7 @@ import Bookingoverlay from "../components/Bookingoverlay.astro";
           heading="Prices"
           text={`Whether you’re up for a quick game or a longer evening with friends, you can choose between 30, 60, 90 or 120 minutes.`}
           ctaLabel="Book pool table"
+          buttonType="overlay"
           image="/img/tavlenvideo.gif"
           imageAlt="Price tavle"
         />
@@ -172,7 +167,8 @@ import Bookingoverlay from "../components/Bookingoverlay.astro";
           text={`Take a look at what we have to offer. From classic cocktails to refreshing drinks and everything in between, our menu is made to match the vibe. Whether you're in the mood for something light or something bold, there's something for everyone. 
           
           Explore the full menu below.`}
-          ctaOnClickHref="/menu"
+          buttonType="link"
+          href="/menu"
           ctaLabel="Go to menu"
         />
       </section>

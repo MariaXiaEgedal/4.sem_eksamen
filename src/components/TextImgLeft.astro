@@ -1,5 +1,6 @@
 ---
 import Button from "./Button.astro";
+import Bookingoverlay from "./Bookingoverlay.astro";
 import Text from "./Text.astro";
 import Heading from "./Heading.astro";
 
@@ -9,6 +10,8 @@ const {
   heading = "Overskrift",
   text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   ctaLabel = "CTA primary",
+  buttonType = null,
+  href = null,
   ctaHref = null,
   ctaOnClickHref = null,
   mapSrc = null,
@@ -17,6 +20,19 @@ const {
 } = Astro.props;
 
 const isVideo = /\.(mov)$/i.test(image);
+
+const resolvedButtonType =
+  buttonType ||
+  (ctaOnClickHref
+    ? "link"
+    : ctaHref === "mailto:info@poolcph.dk"
+      ? "email"
+      : ctaHref
+        ? "link"
+        : "button");
+const resolvedHref = href || ctaOnClickHref || ctaHref || "";
+const buttonLinkClasses =
+  "rounded-xs transition-all duration-300 ease-out inline-flex items-center justify-center bg-cta-primary text-text-light px-xs py-4xs hover:px-m hover:shadow-lg text-[16px] md:text-[22px]";
 ---
 
 <div
@@ -60,19 +76,17 @@ const isVideo = /\.(mov)$/i.test(image);
 
     <div class="mt-2xs md:mt-xs">
       {
-        ctaLabel ? (
-          ctaOnClickHref ? (
-            <Button
-              variant="primary"
-              size="medium"
-              onClickHref={ctaOnClickHref}
-            >
+        resolvedButtonType === "overlay" ? (
+          <Bookingoverlay openButtonText={ctaLabel} />
+        ) : ctaLabel ? (
+          resolvedButtonType === "email" ? (
+            <a href="mailto:info@poolcph.dk" class={buttonLinkClasses}>
               {ctaLabel}
-            </Button>
-          ) : ctaHref ? (
-            <Button variant="primary" size="medium" href={ctaHref}>
+            </a>
+          ) : resolvedButtonType === "link" ? (
+            <a href={resolvedHref} class={buttonLinkClasses}>
               {ctaLabel}
-            </Button>
+            </a>
           ) : (
             <Button variant="primary" size="medium">
               {ctaLabel}

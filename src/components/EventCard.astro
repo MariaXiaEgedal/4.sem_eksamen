@@ -11,8 +11,8 @@ const {
   description = "Info om eventet: lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati neque quam animi nihil sequi officiis inventore nisi odit maiores? Quibusdam excepturi laboriosam!",
   buttonText = "Knap for deltagelse",
   buttonHref = null,
-  imageSrc = "/img/event.png",
-  imageSrcMobile = "/img/mobil-event.png",
+  imageSrc = "/img/event.webp",
+  imageSrcMobile = "/img/mobil-event.webp",
   imageAlt = "Event billede",
   smallVersion = false,
   noBorder = false,
@@ -27,7 +27,8 @@ const resolvedOverlayProps = {
   openButtonText: buttonText,
   ...(overlayProps || {}),
 };
-const isExternalButtonHref = typeof buttonHref === "string" && /^https?:\/\//.test(buttonHref);
+const isExternalButtonHref =
+  typeof buttonHref === "string" && /^https?:\/\//.test(buttonHref);
 ---
 
 <div

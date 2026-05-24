@@ -1,7 +1,5 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Link from "../components/Link.astro";
-import { Image } from "astro:assets";
 import Heading from "../components/Heading.astro";
 import Text from "../components/Text.astro";
 import Button from "../components/Button.astro";
@@ -12,16 +10,9 @@ import SectionDivider from "../components/SectionDivider.astro";
 ---
 
 <MainLayout title="Event">
-  <!-- Denne linje under betyder gappet mellem sektioner 40px/mobil og 80px/desktop (Jeg har lavet den)-->
-  <!-- flex flex-col gap-s md:gap-l  -->
-
-  <!-- Denne linje under betyder padding på x-aksen 20px/mobil og 100px/desktop (Jeg har lavet den) -->
-  <!-- px-2xs md:px-xl -->
-
-  <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
-  <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="my-s md:my-l">
     <div class="flex flex-col gap-s md:gap-xl">
+      <!-- ***************************** Start Event Intro ***************************** -->
       <section class="px-2xs md:px-xl">
         <div
           class="grid grid-cols-4 md:grid-cols-12 gap-2xs items-start md:items-center"
@@ -58,9 +49,11 @@ import SectionDivider from "../components/SectionDivider.astro";
           </div>
         </div>
       </section>
+      <!-- ***************************** End Event Intro ***************************** -->
 
       <SectionDivider />
 
+      <!-- ***************************** Start Events ***************************** -->
       <section class="px-2xs md:px-xl flex flex-col gap-2xs md:gap-2xs">
         <!-- TT - Tirdags tunering -->
         <EventCard
@@ -70,25 +63,25 @@ import SectionDivider from "../components/SectionDivider.astro";
           description="Join our weekly pool tournament. Every Tuesday at 20:00. Sign up with a teammate and play for fun (and nice prizes!) All levels are welcome."
           buttonText="Save Your Spot"
           overlayType="tt"
-          imageSrc="/img/event1.png"
-          imageSrcMobile="/img/mobil-event1.png"
+          imageSrc="/img/event1.webp"
+          imageSrcMobile="/img/mobil-event1.webp"
           imageAlt="Tuesday’s Tournament"
         />
         <!-- Summerparty -->
         <EventCard
-          class="relative z-[30] -translate-y-20 intersect-half intersect:translate-y-0 transition-transform duration-700 ease-out intersect-once"
+          class="relative z-[30] -translate-y-5 md:-translate-y-20 intersect-half intersect:translate-y-0 transition-transform duration-700 ease-out intersect-once"
           title="Summerparty"
           date="19. June 2026 / 16:00-00:00 / Free entry"
           description="Join us at Pool Cph for a summer party with great vibes, cold drinks, and a DJ all night. Everybody is welcome. Bring your friends and celebrate summer with us."
           buttonText="See Facebook Event"
           buttonHref="https://www.facebook.com/poolcph"
-          imageSrc="/img/event2.png"
-          imageSrcMobile="/img/mobil-event2.png"
+          imageSrc="/img/event2.webp"
+          imageSrcMobile="/img/mobil-event2.webp"
           imageAlt="Summerparty"
         />
         <!-- Girls Night -->
         <EventCard
-          class="relative z-[20] -translate-y-20 intersect-half intersect:translate-y-0 transition-transform duration-700 ease-out intersect-once"
+          class="relative z-[20] -translate-y-5 md:-translate-y-20 intersect-half intersect:translate-y-0 transition-transform duration-700 ease-out intersect-once"
           title="Girls Night"
           date="3. July 2026 / 20:00-00:00 / 100 kr per person"
           description="Join us at Pool Cph for a girls night filled with great vibes, cocktails, and good company. Grab your girls, dress up, and come enjoy a fun night out."
@@ -98,18 +91,18 @@ import SectionDivider from "../components/SectionDivider.astro";
             heading: "Join Our Girls Night",
             bodyText:
               "Girls Night starts at 20:00. Spend the evening at Pool CPH with welcome drinks, light snacks including olives, nuts and chips, free access to the pool tables all night and great music in the perfect atmosphere.",
-            img1Src: "/img/overlay-girls-night1.png",
+            img1Src: "/img/overlay-girls-night1.webp",
             img1Alt: "Girls Night",
-            img2Src: "/img/overlay-girls-night2.png",
+            img2Src: "/img/overlay-girls-night2.webp",
             img2Alt: "Girls Night",
           }}
-          imageSrc="/img/event3.png"
-          imageSrcMobile="/img/mobil-event3.png"
+          imageSrc="/img/event3.webp"
+          imageSrcMobile="/img/mobil-event3.webp"
           imageAlt="Girls Night"
         />
         <!-- Dinner date -->
         <EventCard
-          class="relative z-[10] -translate-y-20 intersect-half intersect:translate-y-0 transition-transform duration-700 ease-out intersect-once"
+          class="relative z-[10] -translate-y-5 md:-translate-y-20 intersect-half intersect:translate-y-0 transition-transform duration-700 ease-out intersect-once"
           title="Dinner date"
           date="7. July 2026 / 19:00-23:00 / 350 kr. per person"
           description="Join us at Pool Cph for an unforgettable dinner date with delicious food, great vibes, and even better company. Take a seat at our long table, enjoy a served dinner, and spend the evening socializing with friends, family, or meeting new people in a warm and welcoming atmosphere."
@@ -119,19 +112,21 @@ import SectionDivider from "../components/SectionDivider.astro";
             heading: "Join Our Dinner Date",
             bodyText:
               "Enjoy a cozy evening from 19:00–23:00 with delicious pasta dishes served with sides, tiramisu for dessert, and one glass of red wine included in the price. Additional drinks will be available for purchase throughout the evening.",
-            img1Src: "/img/overlay-dinner-date1.png",
+            img1Src: "/img/overlay-dinner-date1.webp",
             img1Alt: "Dinner date",
-            img2Src: "/img/overlay-dinner-date2.png",
+            img2Src: "/img/overlay-dinner-date2.webp",
             img2Alt: "Dinner date",
           }}
-          imageSrc="/img/event4.png"
-          imageSrcMobile="/img/mobil-event4.png"
+          imageSrc="/img/event4.webp"
+          imageSrcMobile="/img/mobil-event4.webp"
           imageAlt="Dinner date"
         />
       </section>
+      <!-- ***************************** End Events ***************************** -->
 
       <!-- <SectionDivider /> -->
 
+      <!-- ***************************** Start Host Event ***************************** -->
       <section class="px-2xs md:px-xl whitespace-pre-line">
         <TextImgLeft
           heading="Looking to host an event?"
@@ -144,10 +139,13 @@ import SectionDivider from "../components/SectionDivider.astro";
           ctaHref="mailto:hello@poolcph.dk"
         />
       </section>
+      <!-- ***************************** End Host Event ***************************** -->
 
+      <!-- ***************************** Start FAQ ***************************** -->
       <section class="px-2xs md:px-xl">
         <Faq />
       </section>
+      <!-- ***************************** End FAQ ***************************** -->
     </div>
   </main>
 </MainLayout>

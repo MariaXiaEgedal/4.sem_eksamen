@@ -223,6 +223,7 @@ const snacks = [
 <MainLayout title="Menu">
   <main class="my-s md:my-l">
     <div class="flex flex-col gap-s md:gap-xl">
+      <!-- ************************************** Start Menu Intro ************************************** -->
       <section class="px-2xs md:px-xl">
         <TextImgRight
           heading="Menu"
@@ -233,44 +234,52 @@ const snacks = [
           imageAlt="Menu image"
         />
       </section>
+      <!-- ************************************** End Menu Intro ************************************** -->
 
+      <!-- ************************************** Start Menu Cards ************************************** -->
       <section class="px-2xs md:px-xl">
+        <!-- Cocktails -->
         <MenuCard
           title="Cocktails"
           items={cocktails}
-          imageSrc="/img/menu-cocktails.png"
+          imageSrc="/img/menu-cocktails.webp"
           imageAlt="Cocktail-udvalg"
           isOpen={false}
         />
+        <!-- Wine -->
         <MenuCard
           title="Wine"
           items={wines}
-          imageSrc="/img/menu-wine.png"
+          imageSrc="/img/menu-wine.webp"
           imageAlt="Wine selection"
           isOpen={false}
         />
+        <!-- Beer, longdrinks & Other -->
         <MenuCard
           title="Beer, longdrinks & Other"
           items={beers}
-          imageSrc="/img/menu-beer.png"
+          imageSrc="/img/menu-beer.webp"
           imageAlt="Beer selection"
           isOpen={false}
         />
+        <!-- Alcohol free -->
         <MenuCard
           title="Alcohol free"
           items={alcoholFree}
-          imageSrc="/img/menu-alcohol-free.png"
+          imageSrc="/img/menu-alcohol-free.webp"
           imageAlt="Alcohol free selection"
           isOpen={false}
         />
+        <!-- Snacks -->
         <MenuCard
           title="Snacks"
           items={snacks}
-          imageSrc="/img/menu-snacks.png"
+          imageSrc="/img/menu-snacks.webp"
           imageAlt="Snacks selection"
           isOpen={false}
         />
       </section>
+      <!-- ************************************** End Menu Cards ************************************** -->
     </div>
   </main>
 </MainLayout>

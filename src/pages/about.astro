@@ -11,19 +11,12 @@ import SectionDivider from "../components/SectionDivider.astro";
 ---
 
 <MainLayout title="About us">
-  <!-- Denne linje under betyder gappet mellem sektioner 40px/mobil og 80px/desktop (Jeg har lavet den)-->
-  <!-- flex flex-col gap-s md:gap-l  -->
-
-  <!-- Denne linje under betyder padding på x-aksen 20px/mobil og 100px/desktop (Jeg har lavet den) -->
-  <!-- px-2xs md:px-xl -->
-
-  <!-- Denne linje under betyder grid til mobil (4 kolonner) og desktop (12 kolonner) og begge med 20px mellemrum (den skal i bruge hvis designet følger vores grid) -->
-  <!-- grid grid-cols-4 md:grid-cols-12 gap-2xs -->
   <main class="my-s md:my-l">
     <div class="flex flex-col gap-s md:gap-xl">
+      <!-- ***************************** Start About Us ***************************** -->
       <section class="px-2xs md:px-xl whitespace-pre-line">
         <TextImgRight
-          image="/img/aboutusbillede.svg"
+          image="/img/aboutusbillede.webp"
           imageAlt="About us billede"
           heading="About us"
           text={`At Pool Cph, everything is created with intention. From the interior and overall visual identity to the bar and what’s being served, every detail has been carefully considered. Nothing is random, everything is chosen to support the feeling of the place. 
@@ -31,9 +24,11 @@ import SectionDivider from "../components/SectionDivider.astro";
           Our goal is to create the perfect setting for great nights. Whether you're here to play pool, have a drink, or just hang out, Pool Cph is designed to bring people together and make every visit feel special.`}
         />
       </section>
+      <!-- ***************************** End About Us ***************************** -->
 
       <SectionDivider />
 
+      <!-- ***************************** Start History ***************************** -->
       <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h2"
@@ -42,9 +37,11 @@ import SectionDivider from "../components/SectionDivider.astro";
         >
         <TimeLine />
       </section>
+      <!-- ***************************** End History ***************************** -->
 
       <SectionDivider />
 
+      <!-- ***************************** Start Vision and Mission ***************************** -->
       <section class="px-2xs md:px-xl">
         <Heading
           htmlheading="h2"
@@ -57,7 +54,7 @@ import SectionDivider from "../components/SectionDivider.astro";
           <div class="scrollzoom flex flex-col gap-2xs overflow-clip">
             <div class="w-full aspect-[16/9] overflow-hidden">
               <img
-                src="/img/ourvision.png"
+                src="/img/ourvision.webp"
                 alt="Our Vision"
                 class="scrollzoomimg w-full h-full object-cover"
               />
@@ -85,7 +82,7 @@ import SectionDivider from "../components/SectionDivider.astro";
           <div class="scrollzoom flex flex-col gap-2xs overflow-clip">
             <div class="w-full aspect-[16/9] overflow-hidden">
               <img
-                src="/img/ourmission.png"
+                src="/img/ourmission.webp"
                 alt="Our Mission"
                 class="scrollzoomimg w-full h-full object-cover"
               />
@@ -106,11 +103,15 @@ import SectionDivider from "../components/SectionDivider.astro";
           </div>
         </div>
       </section>
+      <!-- ***************************** End Vision and Mission ***************************** -->
 
+      <!-- ***************************** Start FAQ ***************************** -->
       <section class="px-2xs md:px-xl">
         <Faq />
       </section>
+      <!-- ***************************** End FAQ ***************************** -->
 
+      <!-- ***************************** Start Location ***************************** -->
       <section class="px-2xs md:px-xl whitespace-pre-line no-border">
         <TextImgLeft
           heading="Location"
@@ -122,12 +123,15 @@ import SectionDivider from "../components/SectionDivider.astro";
           mapTitle="POOL Cph - Gothersgade 8C"
         />
       </section>
+      <!-- ***************************** End Location ***************************** -->
 
       <SectionDivider />
 
+      <!-- ***************************** Start Socials ***************************** -->
       <section>
         <Socials />
       </section>
+      <!-- ***************************** End Socials ***************************** -->
     </div>
   </main>
 </MainLayout>

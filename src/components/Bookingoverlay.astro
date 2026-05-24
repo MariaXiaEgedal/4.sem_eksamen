@@ -4,13 +4,15 @@ import Heading from "./Heading.astro";
 import Text from "./Text.astro";
 import Calendar from "./Calendar.astro";
 import Counting from "./Counting.astro";
+
+const { openButtonText = "Book pool table" } = Astro.props;
 ---
 
 <div class="eventbooking-root">
   <!-- Page content -->
   <div>
     <Button class="eventbooking-open" variant="primary" size="medium"
-      >Book a table</Button
+      >{openButtonText}</Button
     >
   </div>
 

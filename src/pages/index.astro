@@ -98,59 +98,93 @@ import Bookingoverlay from "../components/Bookingoverlay.astro";
         </a>
 
         <div
-          class="pr-2xs lg:pr-0 flex items-start gap-2xs overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-6 lg:gap-m :overflow-visible"
+          class="pr-2xs lg:pr-0 flex items-stretch gap-0 overflow-x-auto snap-x snap-mandatory lg:relative :overflow-visible"
         >
-          <!-- TT - Tirdags tunering -->
-          <EventCard
-            class="shrink-0 basis-6/8 snap-start md:col-span-2 opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-100 intersect-once"
-            smallVersion={true}
-            noBorder={true}
-            title="Tuesday’s Tournament"
-            date="Every Tuesday / 20:00-22:00 / 50 kr."
-            description="Join our weekly pool tournament. Every Tuesday at 20:00. Sign up with a teammate and play for fun, good vibes, and prizes! All levels are welcome."
-            buttonText="Save Your Spot"
-            overlayType="tt"
-            imageSrc="/img/event1.webp"
-            imageSrcMobile="/img/mobil-event1.webp"
-            imageAlt="Tuesday’s Tournament"
-          />
-          <!-- Summerparty -->
-          <EventCard
-            class="shrink-0 basis-6/8 snap-start md:col-span-2 opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-200 intersect-once"
-            smallVersion={true}
-            noBorder={true}
-            title="Summerparty"
-            date="19. June 2026 / 16:00-00:00 / Free entry"
-            description="Join us at Pool Cph for a summer party with great vibes, cold drinks, and a DJ. Everybody is welcome. Bring your friends and celebrate summer with us."
-            buttonText="See Facebook Event"
-            buttonHref="https://www.facebook.com/poolcph"
-            imageSrc="/img/event2.webp"
-            imageSrcMobile="/img/mobil-event2.webp"
-            imageAlt="Summerparty"
-          />
-          <!-- Girls Night -->
-          <EventCard
-            class="shrink-0 basis-6/8 snap-start md:col-span-2 opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-300 intersect-once"
-            smallVersion={true}
-            noBorder={true}
-            title="Girls Night"
-            date="3. July 2026 / 20:00-00:00 / 100 kr."
-            description="Join us at Pool Cph for a girls night filled with great vibes, cocktails, and good company. Grab your girls, dress up, and come enjoy a fun night out."
-            buttonText="Save The Date"
-            overlayProps={{
-              submitButtonText: "Book nu",
-              heading: "Join Our Girls Night",
-              bodyText:
-                "Girls Night starts at 20:00. Spend the evening at Pool CPH with welcome drinks, light snacks including olives, nuts and chips, free access to the pool tables all night and great music in the perfect atmosphere. ",
-              img1Src: "/img/overlay-girls-night1.webp",
-              img1Alt: "Girls Night",
-              img2Src: "/img/overlay-girls-night2.webp",
-              img2Alt: "Girls Night",
-            }}
-            imageSrc="/img/event3.webp"
-            imageSrcMobile="/img/mobil-event3.webp"
-            imageAlt="Girls Night"
-          />
+          <div
+            class="shrink-0 basis-6/8 snap-start lg:flex-1 lg:basis-0 lg:min-w-0"
+          >
+            <!-- TT - Tirdags tunering -->
+            <EventCard
+              class="w-full opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-100 intersect-once"
+              smallVersion={true}
+              noBorder={true}
+              title="Tuesday’s Tournament"
+              date="Every Tuesday / 20:00-22:00 / 50 kr."
+              description="Join our weekly pool tournament. Every Tuesday at 20:00. Sign up with a teammate and play for fun, good vibes, and prizes! All levels are welcome."
+              buttonText="Save Your Spot"
+              overlayType="tt"
+              imageSrc="/img/event1.webp"
+              imageSrcMobile="/img/mobil-event1.webp"
+              imageAlt="Tuesday’s Tournament"
+            />
+          </div>
+
+          <div
+            class="shrink-0 flex items-stretch justify-center pointer-events-none w-2xs lg:w-[var(--spacing-m)]"
+          >
+            <div
+              class="h-full w-0 border-primary-line"
+              style="border-right-width: var(--stroke-xs);"
+            >
+            </div>
+          </div>
+
+          <div
+            class="shrink-0 basis-6/8 snap-start lg:flex-1 lg:basis-0 lg:min-w-0"
+          >
+            <!-- Summerparty -->
+            <EventCard
+              class="w-full opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-200 intersect-once"
+              smallVersion={true}
+              noBorder={true}
+              title="Summerparty"
+              date="19. June 2026 / 16:00-00:00 / Free entry"
+              description="Join us at Pool Cph for a summer party with great vibes, cold drinks, and a DJ. Everybody is welcome. Bring your friends and celebrate summer with us."
+              buttonText="See Facebook Event"
+              buttonHref="https://www.facebook.com/poolcph"
+              imageSrc="/img/event2.webp"
+              imageSrcMobile="/img/mobil-event2.webp"
+              imageAlt="Summerparty"
+            />
+          </div>
+
+          <div
+            class="shrink-0 flex items-stretch justify-center pointer-events-none w-2xs lg:w-[var(--spacing-m)]"
+          >
+            <div
+              class="h-full w-0 border-primary-line"
+              style="border-right-width: var(--stroke-xs);"
+            >
+            </div>
+          </div>
+
+          <div
+            class="shrink-0 basis-6/8 snap-start lg:flex-1 lg:basis-0 lg:min-w-0"
+          >
+            <!-- Girls Night -->
+            <EventCard
+              class="w-full opacity-0 intersect:opacity-100 intersect:animate-fade-right intersect:animate-delay-300 intersect-once"
+              smallVersion={true}
+              noBorder={true}
+              title="Girls Night"
+              date="3. July 2026 / 20:00-00:00 / 100 kr."
+              description="Join us at Pool Cph for a girls night filled with great vibes, cocktails, and good company. Grab your girls, dress up, and come enjoy a fun night out."
+              buttonText="Save The Date"
+              overlayProps={{
+                submitButtonText: "Book nu",
+                heading: "Join Our Girls Night",
+                bodyText:
+                  "Girls Night starts at 20:00. Spend the evening at Pool CPH with welcome drinks, light snacks including olives, nuts and chips, free access to the pool tables all night and great music in the perfect atmosphere. ",
+                img1Src: "/img/overlay-girls-night1.webp",
+                img1Alt: "Girls Night",
+                img2Src: "/img/overlay-girls-night2.webp",
+                img2Alt: "Girls Night",
+              }}
+              imageSrc="/img/event3.webp"
+              imageSrcMobile="/img/mobil-event3.webp"
+              imageAlt="Girls Night"
+            />
+          </div>
         </div>
       </section>
       <!-- ***************************** End Events ***************************** -->

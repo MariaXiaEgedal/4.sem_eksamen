@@ -1,153 +1,198 @@
 ---
 import Heading from "./Heading.astro";
 import Text from "./Text.astro";
-import Button from "./Button.astro";
 import Bookingoverlay from "./Bookingoverlay.astro";
 ---
 
 <header
-  class="bg-header text-text-dark border-b border-primary-line sticky top-0 z-50"
+  class="bg-header text-text-dark border-b border-primary-line sticky top-0 z-50 py-2xs px-2xs md:px-m lg:px-xl"
 >
   <input id="menu-toggle" type="checkbox" class="hidden peer" />
-  <input id="booking-toggle" type="checkbox" class="hidden peer/booking" />
 
   <!-- Desktop navbar -->
-  <div
-    class="hidden lg:flex items-center justify-center gap-xl pt-2xs pb-2xs relative"
-  >
-    <!-- Wrapper for at flytte indholdet -->
-    <div class="flex items-center gap-xl translate-x-[60px]">
-      <a href="/event" class="relative group">
-        <Text teksttype="brødtekst_bold">Event</Text>
-        <span
-          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-red transition-all duration-300 group-hover:w-full"
-        ></span>
-      </a>
-
-      <a href="/menu" class="relative group">
-        <Text teksttype="brødtekst_bold">Menu card</Text>
-        <span
-          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-red transition-all duration-300 group-hover:w-full"
-        ></span>
-      </a>
-
-      <a href="/">
+  <div class="hidden lg:flex items-center relative">
+    <div class="flex items-center justify-between w-full">
+      <!-- Logo left -->
+      <a href="/" class="flex items-center">
         <img
           src="/img/logo-pool-rod.svg"
           alt="Pool CPH logo"
-          class="w-[160px]"
+          class="w-[120px] md:w-[160px]"
         />
       </a>
 
-      <a href="/about" class="relative group">
-        <Text teksttype="brødtekst_bold">About us</Text>
-        <span
-          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-red transition-all duration-300 group-hover:w-full"
-        ></span>
-      </a>
+      <!-- Nav + booking right -->
+      <div class="flex items-center gap-[80px]">
+        <a href="/event" class="relative group">
+          <Text
+            teksttype="brødtekst_bold"
+            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl">Event</Text
+          >
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-line transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
 
-      <Bookingoverlay />
+        <a href="/menu" class="relative group">
+          <Text
+            teksttype="brødtekst_bold"
+            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl">Menu card</Text
+          >
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-line transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+
+        <a href="/about" class="relative group">
+          <Text
+            teksttype="brødtekst_bold"
+            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl">About us</Text
+          >
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-line transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+
+        <div class="relative shrink-0">
+          <span
+            aria-hidden="true"
+            class="invisible pointer-events-none inline-flex items-center justify-center whitespace-nowrap px-m py-4xs text-[16px] md:text-[22px]"
+          >
+            Book pool table
+          </span>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <Bookingoverlay />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Mobile + tablet navbar -->
-  <div
-    class="flex lg:hidden items-center justify-between pl-2xs pr-2xs pt-2xs pb-2xs"
-  >
+  <div class="flex lg:hidden items-center justify-between">
     <a href="/">
-      <img src="/img/logo-pool-rod.svg" alt="Pool CPH logo" class="w-[160px]" />
+      <img
+        src="/img/logo-pool-rod.svg"
+        alt="Pool CPH logo"
+        class="w-[120px] md:w-[160px]"
+      />
     </a>
 
     <label for="menu-toggle" class="cursor-pointer" aria-label="Open menu">
-      <span class="block w-[48px] h-[4px] bg-primary-red mb-4xs"></span>
-      <span class="block w-[48px] h-[4px] bg-primary-red mb-4xs"></span>
-      <span class="block w-[48px] h-[4px] bg-primary-red"></span>
+      <span
+        class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-primary-line mb-4xs"
+      ></span>
+      <span
+        class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-primary-line mb-4xs"
+      ></span>
+      <span class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-primary-line"
+      ></span>
     </label>
   </div>
 
   <!-- Mobile + tablet overlay -->
   <nav
-    class="fixed top-0 right-0 z-50 h-screen w-full bg-primary-red text-text-light translate-x-full peer-checked:translate-x-0 transition-transform duration-300 pl-2xs pr-2xs pt-s pb-s flex flex-col lg:hidden"
+    class="fixed top-0 right-0 z-50 h-screen w-full bg-primary-red text-text-light translate-x-full peer-checked:translate-x-0 transition-transform duration-300 py-2xs px-2xs md:px-m flex flex-col lg:hidden"
   >
     <div class="flex items-center justify-between">
       <a href="/">
         <img
           src="/img/logo-pool-hvid.svg"
           alt="Pool CPH logo"
-          class="w-[160px]"
+          class="w-[120px] md:w-[160px]"
         />
       </a>
 
-      <label for="menu-toggle" class="cursor-pointer" aria-label="Close menu">
+      <label
+        for="menu-toggle"
+        class="cursor-pointer py-2xs"
+        aria-label="Close menu"
+      >
         <span
-          class="block w-[60px] h-[4px] bg-primary-beige rotate-45 translate-y-[2px]"
+          class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-text-light rotate-45 translate-y-[2px]"
         ></span>
         <span
-          class="block w-[60px] h-[4px] bg-primary-beige -rotate-45 -translate-y-[2px]"
+          class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-text-light -rotate-45 -translate-y-[2px]"
         ></span>
       </label>
     </div>
 
-    <div class="flex flex-col items-center mt-xl gap-l">
-      <a href="/event" class="relative group">
-        <Heading htmlheading="h5" size="xsmallbold">Event</Heading>
-        <span
-          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-beige transition-all duration-300 group-hover:w-full"
-        ></span>
-      </a>
-
-      <a href="/menu" class="relative group">
-        <Heading htmlheading="h5" size="xsmallbold">Menu card</Heading>
-        <span
-          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-beige transition-all duration-300 group-hover:w-full"
-        ></span>
-      </a>
-
-      <a href="/about" class="relative group">
-        <Heading htmlheading="h5" size="xsmallbold">About us</Heading>
-        <span
-          class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-beige transition-all duration-300 group-hover:w-full"
-        ></span>
-      </a>
-
-      <div class="mt-m">
-        <Bookingoverlay openButtonVariant="secondary" />
-      </div>
-    </div>
-
-    <div class="mt-m flex flex-col items-center">
-      <div class="mb-4xs">
-        <Text teksttype="brødtekst">+45 31 26 91 81</Text>
-      </div>
-
-      <div class="mb-s">
-        <Text teksttype="brødtekst">info@poolcph.dk</Text>
-      </div>
-
-      <div class="flex gap-2xs">
-        <a
-          href="https://www.instagram.com/poolcph/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/img/icon-instagram-hvid.svg"
-            alt="Instagram"
-            class="w-[40px]"
-          />
+    <div class="flex-1 flex flex-col">
+      <div class="flex-1 flex flex-col items-center justify-center gap-l">
+        <a href="/event" class="relative group">
+          <Heading
+            htmlheading="h5"
+            size="xsmallbold"
+            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl">Event</Heading
+          >
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-text-light transition-all duration-300 group-hover:w-full"
+          ></span>
         </a>
 
-        <a
-          href="https://www.facebook.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/img/icon-facebook-hvid.svg"
-            alt="Facebook"
-            class="w-[40px]"
-          />
+        <a href="/menu" class="relative group">
+          <Heading
+            htmlheading="h5"
+            size="xsmallbold"
+            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl"
+            >Menu card</Heading
+          >
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-text-light transition-all duration-300 group-hover:w-full"
+          ></span>
         </a>
+
+        <a href="/about" class="relative group">
+          <Heading
+            htmlheading="h5"
+            size="xsmallbold"
+            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl"
+            >About us</Heading
+          >
+          <span
+            class="absolute bottom-0 left-0 w-0 h-[2px] bg-text-light transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+
+        <Bookingoverlay responsiveInBurger openButtonVariant="primary" />
+      </div>
+
+      <div class="mt-auto flex flex-col items-center pb-2xs">
+        <div class="flex flex-col items-center">
+          <div class="mb-4xs">
+            <Text teksttype="brødtekst">+45 31 26 91 81</Text>
+          </div>
+
+          <div class="mb-s">
+            <Text teksttype="brødtekst">info@poolcph.dk</Text>
+          </div>
+
+          <div class="flex gap-2xs">
+            <a
+              href="https://www.instagram.com/poolcph/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/img/icon-instagram-hvid.svg"
+                alt="Instagram"
+                class="w-[40px]"
+              />
+            </a>
+
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/img/icon-facebook-hvid.svg"
+                alt="Facebook"
+                class="w-[40px]"
+              />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>

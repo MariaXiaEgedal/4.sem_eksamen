@@ -5,15 +5,32 @@ import Text from "./Text.astro";
 import Calendar from "./Calendar.astro";
 import Counting from "./Counting.astro";
 
-const { openButtonText = "Book pool table" } = Astro.props;
+const {
+  openButtonText = "Book pool table",
+  openButtonVariant = "primary",
+  responsiveInBurger = false,
+} = Astro.props;
 ---
 
 <div class="eventbooking-root">
   <!-- Page content -->
   <div>
-    <Button class="eventbooking-open" variant="primary" size="medium"
-      >{openButtonText}</Button
-    >
+    {responsiveInBurger ? (
+      <>
+        <!-- In burger menu: under lg -> secondary; from lg up -> chosen variant -->
+        <Button class="eventbooking-open lg:hidden" variant="secondary" size="medium">
+          {openButtonText}
+        </Button>
+
+        <Button class="eventbooking-open hidden lg:inline-flex" variant={openButtonVariant} size="medium">
+          {openButtonText}
+        </Button>
+      </>
+    ) : (
+      <Button class="eventbooking-open" variant={openButtonVariant} size="medium">
+        {openButtonText}
+      </Button>
+    )}
   </div>
 
   <div class="eventbooking-portal">
@@ -171,22 +188,14 @@ const { openButtonText = "Book pool table" } = Astro.props;
 </div>
 
 <script>
-  const p = document.querySelector(".eventbooking-portal"),
-    o = p?.querySelector(".eventbooking-overlay"),
-    d = p?.querySelector(".eventbooking-side");
-  document.body.appendChild(p);
-  const t = (n) => {
-    o?.classList.toggle("opacity-100", n);
-    o?.classList.toggle("pointer-events-none", !n);
-    d?.classList.toggle("translate-x-0", n);
-    d?.classList.toggle("translate-x-full", !n);
-    document.documentElement.classList.toggle("overflow-hidden", n);
-  };
-  document
-    .querySelector(".eventbooking-open")
-    ?.addEventListener("click", () => t(1));
-  p?.querySelector(".eventbooking-close")?.addEventListener("click", () =>
-    t(0),
-  );
-  o?.addEventListener("click", () => t(0));
+  document.querySelectorAll('.eventbooking-root').forEach(root=>{
+    const portal=root.querySelector('.eventbooking-portal'); if(!portal) return;
+    if(portal.parentElement!==document.body) document.body.appendChild(portal);
+    const overlay=portal.querySelector('.eventbooking-overlay'), drawer=portal.querySelector('.eventbooking-side');
+    const open=()=>{overlay?.classList.remove('pointer-events-none');overlay?.classList.add('opacity-100');drawer?.classList.remove('translate-x-full');drawer?.classList.add('translate-x-0');document.documentElement.classList.add('overflow-hidden')};
+    const close=()=>{overlay?.classList.remove('opacity-100');overlay?.classList.add('pointer-events-none');drawer?.classList.remove('translate-x-0');drawer?.classList.add('translate-x-full');document.documentElement.classList.remove('overflow-hidden')};
+    root.querySelectorAll('.eventbooking-open').forEach(btn=>{if(btn instanceof HTMLElement && !btn.dataset.bs){btn.dataset.bs='1';btn.addEventListener('click',open)}});
+    const closeBtn=portal.querySelector('.eventbooking-close'); if(closeBtn instanceof HTMLElement && !closeBtn.dataset.bs){closeBtn.dataset.bs='1';closeBtn.addEventListener('click',close)}
+    if(overlay instanceof HTMLElement && !overlay.dataset.bs){overlay.dataset.bs='1';overlay.addEventListener('click',close)}
+  })
 </script>

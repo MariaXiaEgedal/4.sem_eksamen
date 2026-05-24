@@ -3,6 +3,7 @@ import Heading from "./Heading.astro";
 import Text from "./Text.astro";
 import Button from "./Button.astro";
 import EventBookingOverlay from "./EventBookingOverlay.astro";
+import TTOverlay from "./TT-Overlay.astro";
 
 const {
   title = "Event overskrift",
@@ -15,13 +16,18 @@ const {
   imageAlt = "Event billede",
   smallVersion = false,
   noBorder = false,
+  overlayType = null,
   overlayProps = null,
   class: className = "",
 } = Astro.props;
 
-const bookingOverlayProps = overlayProps
-  ? { openButtonText: buttonText, ...overlayProps }
-  : null;
+const shouldRenderOverlay = overlayType !== null || overlayProps !== null;
+const OverlayComponent = overlayType === "tt" ? TTOverlay : EventBookingOverlay;
+const resolvedOverlayProps = {
+  openButtonText: buttonText,
+  ...(overlayProps || {}),
+};
+const isExternalButtonHref = typeof buttonHref === "string" && /^https?:\/\//.test(buttonHref);
 ---
 
 <div
@@ -44,11 +50,13 @@ const bookingOverlayProps = overlayProps
     >
     <div class="self-start mb-2xs">
       {
-        bookingOverlayProps ? (
-          <EventBookingOverlay {...bookingOverlayProps} />
+        shouldRenderOverlay ? (
+          <OverlayComponent {...resolvedOverlayProps} />
         ) : buttonHref ? (
           <a
             href={buttonHref}
+            target={isExternalButtonHref ? "_blank" : undefined}
+            rel={isExternalButtonHref ? "noopener noreferrer" : undefined}
             class="inline-block bg-cta-primary text-text-light px-xs py-4xs hover:px-m hover:shadow-lg rounded-xs transition-all duration-300 ease-out text-[16px] md:text-[22px]"
           >
             {buttonText}

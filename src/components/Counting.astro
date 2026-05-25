@@ -10,13 +10,14 @@ const {
 const MIN = 1;
 const MAX = 12;
 const uid = id || `counting-${Math.random().toString(36).slice(2, 9)}`;
-let startValue = Math.min(MAX, Math.max(MIN, Number(value) || MIN));
+const startValue = Math.min(MAX, Math.max(MIN, Number(value) || MIN));
 
 const isLightTheme = theme === "light";
 const textColorClass = isLightTheme ? "text-primary-red" : "text-text-light";
 const borderColorClass = isLightTheme
   ? "border-primary-red"
   : "border-primary-beige";
+const controlButtonClass = `text-3xl w-9 h-9 rounded-full border ${borderColorClass} flex items-center justify-center ${textColorClass}`;
 ---
 
 <div id={uid} class={`flex flex-col items-center ${textColorClass}`}>
@@ -25,11 +26,11 @@ const borderColorClass = isLightTheme
       type="button"
       aria-label="Decrease"
       data-action="decrement"
-      class={`text-3xl w-9 h-9 rounded-full border ${borderColorClass} flex items-center justify-center ${textColorClass}`}
+      class={controlButtonClass}
       ><span class="leading-none align-middle relative -top-px">−</span></button
     >
 
-    <Text teksttype="brødtekst" stylingclasses="">
+    <Text teksttype="brødtekst">
       <span aria-live="polite" data-value>{startValue}</span>
     </Text>
 
@@ -37,7 +38,7 @@ const borderColorClass = isLightTheme
       type="button"
       aria-label="Increase"
       data-action="increment"
-      class={`text-3xl w-9 h-9 rounded-full border ${borderColorClass} flex items-center justify-center ${textColorClass}`}
+      class={controlButtonClass}
       ><span class="leading-none align-middle relative -top-px">+</span></button
     >
   </div>

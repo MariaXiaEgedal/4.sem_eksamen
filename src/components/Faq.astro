@@ -42,9 +42,11 @@ const arrowIcon =
   '<img src="/img/piltilhøjre.svg" alt="" class="w-5 h-5 inline-block" />';
 const plusIcon =
   '<img src="/img/plus.svg" alt="" class="w-5 h-5 inline-block" />';
+const dividerStyle =
+  "border-top-width: 0; border-bottom-width: var(--stroke-xs);";
 ---
 
-<section class="">
+<section>
   <!-- Desktop version -->
   <div class="hidden md:block">
     <div class="flex items-center gap-2xs mb-2xs">
@@ -53,22 +55,14 @@ const plusIcon =
         size="xsmall"
         stylingclasses="whitespace-nowrap text-text-dark">Q.</Heading
       >
-      <div
-        class="flex-1 border-primary-line"
-        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
-      >
-      </div>
+      <div class="flex-1 border-primary-line" style={dividerStyle}></div>
       <Heading
         htmlheading="h4"
         size="xsmall"
         stylingclasses="whitespace-nowrap text-center px-s text-text-dark"
         >FAQ</Heading
       >
-      <div
-        class="flex-1 border-primary-line"
-        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
-      >
-      </div>
+      <div class="flex-1 border-primary-line" style={dividerStyle}></div>
       <Heading
         htmlheading="h4"
         size="xsmall"
@@ -86,7 +80,7 @@ const plusIcon =
             faqs.map((faq, i) => (
               <div
                 class={`faq-item cursor-pointer py-3xs border-primary-line last:border-b-0 flex items-center justify-between ${i === 0 ? "is-active" : ""}`}
-                style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+                style={dividerStyle}
                 data-index={i}
               >
                 <Text
@@ -124,29 +118,21 @@ const plusIcon =
   <!-- Mobil accordion -->
   <div class="md:hidden">
     <div class="flex items-center gap-2xs">
-      <div
-        class="flex-1 border-primary-line"
-        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
-      >
-      </div>
+      <div class="flex-1 border-primary-line" style={dividerStyle}></div>
       <Heading
         htmlheading="h4"
         size="xsmall"
         stylingclasses="whitespace-nowrap text-center px-s text-text-dark"
         >FAQ</Heading
       >
-      <div
-        class="flex-1 border-primary-line"
-        style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
-      >
-      </div>
+      <div class="flex-1 border-primary-line" style={dividerStyle}></div>
     </div>
 
     {
       faqs.map((faq, i) => (
         <div
           class="faq-mobile border-primary-line last:border-b-0"
-          style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
+          style={dividerStyle}
         >
           <button
             class="faq-mobile-btn w-full py-3xs px-0 flex items-center justify-between text-left"
@@ -184,11 +170,7 @@ const plusIcon =
     }
   </div>
   <div class="hidden md:block -mx-2xs px-2xs mt-m">
-    <div
-      class="border-primary-line"
-      style="border-top-width: 0; border-bottom-width: var(--stroke-xs);"
-    >
-    </div>
+    <div class="border-primary-line" style={dividerStyle}></div>
   </div>
 </section>
 

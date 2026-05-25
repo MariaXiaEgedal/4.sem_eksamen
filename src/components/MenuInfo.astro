@@ -12,21 +12,15 @@ const {
 ---
 
 <div class="flex flex-col gap-4xs text-text-dark">
-  <Heading htmlheading="h5" size="xsmallbold" stylingclasses="">
+  <Heading htmlheading="h5" size="xsmallbold">
     {name}
   </Heading>
 
-  {
-    info && (
-      <Text teksttype="brødtekst_lille" stylingclasses="">
-        {info}
-      </Text>
-    )
-  }
+  {info && <Text teksttype="brødtekst_lille">{info}</Text>}
 
   {
     classic && (
-      <Text teksttype="brødtekst_lille" stylingclasses="">
+      <Text teksttype="brødtekst_lille">
         <span class="font-bold">Classic:</span>
         {classic}
       </Text>
@@ -35,12 +29,12 @@ const {
 
   {
     low && (
-      <Text teksttype="brødtekst_lille" stylingclasses="">
+      <Text teksttype="brødtekst_lille">
         <span class="font-bold">Low:</span>
         {low}
       </Text>
     )
   }
 
-  <Text teksttype="brødtekst_bold" stylingclasses=""> {price}</Text>
+  <Text teksttype="brødtekst_bold">{price}</Text>
 </div>

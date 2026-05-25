@@ -29,6 +29,8 @@ const resolvedOverlayProps = {
 };
 const isExternalButtonHref =
   typeof buttonHref === "string" && /^https?:\/\//.test(buttonHref);
+const mobileImageClass = `w-full ${smallVersion ? "" : "md:hidden"}`;
+const desktopImageClass = `w-full hidden ${smallVersion ? "" : "md:block"}`;
 ---
 
 <div
@@ -75,18 +77,12 @@ const isExternalButtonHref =
     class={`col-span-4 flex items-end order-1 ${smallVersion ? "" : "md:col-start-7 md:col-end-13 md:order-2"}`}
   >
     <div class="w-full">
-      <div class="">
-        <img
-          src={imageSrcMobile || imageSrc}
-          alt={imageAlt}
-          class={`w-full ${smallVersion ? "" : "md:hidden"}`}
-        />
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          class={`w-full hidden ${smallVersion ? "" : "md:block"}`}
-        />
-      </div>
+      <img
+        src={imageSrcMobile || imageSrc}
+        alt={imageAlt}
+        class={mobileImageClass}
+      />
+      <img src={imageSrc} alt={imageAlt} class={desktopImageClass} />
     </div>
   </div>
 </div>

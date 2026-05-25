@@ -10,10 +10,11 @@ const images = [
   "/img/some5.webp",
   "/img/some6.webp",
 ];
+const duplicatedImages = [...images, ...images];
 ---
 
 <section class="text-text-dark overflow-hidden pb-s">
-  <div class="ml-2xs mr-2xs md:ml-xl md:mr-xl">
+  <div class="mx-2xs md:mx-xl">
     <Heading htmlheading="h2" size="medium" stylingclasses="mb-4xs md:mb-xs">
       Follow us on instagram
     </Heading>
@@ -31,7 +32,7 @@ const images = [
   <div class="social-carousel overflow-hidden">
     <div class="social-track flex gap-2xs">
       {
-        [...images, ...images].map((image) => (
+        duplicatedImages.map((image) => (
           <a
             href="https://www.instagram.com/pool_cph/"
             target="_blank"

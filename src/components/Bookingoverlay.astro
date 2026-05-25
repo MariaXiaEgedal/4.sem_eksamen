@@ -15,22 +15,35 @@ const {
 <div class="eventbooking-root">
   <!-- Page content -->
   <div>
-    {responsiveInBurger ? (
-      <>
-        <!-- In burger menu: under lg -> secondary; from lg up -> chosen variant -->
-        <Button class="eventbooking-open lg:hidden" variant="secondary" size="medium">
-          {openButtonText}
-        </Button>
+    {
+      responsiveInBurger ? (
+        <>
+          <Button
+            class="eventbooking-open lg:hidden"
+            variant="secondary"
+            size="medium"
+          >
+            {openButtonText}
+          </Button>
 
-        <Button class="eventbooking-open hidden lg:inline-flex" variant={openButtonVariant} size="medium">
+          <Button
+            class="eventbooking-open hidden lg:inline-flex"
+            variant={openButtonVariant}
+            size="medium"
+          >
+            {openButtonText}
+          </Button>
+        </>
+      ) : (
+        <Button
+          class="eventbooking-open"
+          variant={openButtonVariant}
+          size="medium"
+        >
           {openButtonText}
         </Button>
-      </>
-    ) : (
-      <Button class="eventbooking-open" variant={openButtonVariant} size="medium">
-        {openButtonText}
-      </Button>
-    )}
+      )
+    }
   </div>
 
   <div class="eventbooking-portal">
@@ -91,17 +104,17 @@ const {
           Choose how long you’d like to play
         </Text>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-[10px] md:gap-[20px]">
-          <Button class="w-full" variant="outline_light" size="large"
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4xs md:gap-2xs">
+          <Button class="w-full" variant="outline_light" size="small"
             >30 min</Button
           >
-          <Button class="w-full" variant="outline_light" size="large"
+          <Button class="w-full" variant="outline_light" size="small"
             >60 min</Button
           >
-          <Button class="w-full" variant="outline_light" size="large"
+          <Button class="w-full" variant="outline_light" size="small"
             >90 min</Button
           >
-          <Button class="w-full" variant="outline_light" size="large"
+          <Button class="w-full" variant="outline_light" size="small"
             >120 min</Button
           >
         </div>
@@ -144,7 +157,7 @@ const {
           >
             Available times:
           </Text>
-          <div class="grid grid-cols-3 gap-[10px] md:gap-[20px]">
+          <div class="grid grid-cols-3 gap-4xs md:gap-2xs">
             <Button class="w-full" variant="outline_light" size="small"
               >16:00</Button
             >
@@ -188,14 +201,41 @@ const {
 </div>
 
 <script>
-  document.querySelectorAll('.eventbooking-root').forEach(root=>{
-    const portal=root.querySelector('.eventbooking-portal'); if(!portal) return;
-    if(portal.parentElement!==document.body) document.body.appendChild(portal);
-    const overlay=portal.querySelector('.eventbooking-overlay'), drawer=portal.querySelector('.eventbooking-side');
-    const open=()=>{overlay?.classList.remove('pointer-events-none');overlay?.classList.add('opacity-100');drawer?.classList.remove('translate-x-full');drawer?.classList.add('translate-x-0');document.documentElement.classList.add('overflow-hidden')};
-    const close=()=>{overlay?.classList.remove('opacity-100');overlay?.classList.add('pointer-events-none');drawer?.classList.remove('translate-x-0');drawer?.classList.add('translate-x-full');document.documentElement.classList.remove('overflow-hidden')};
-    root.querySelectorAll('.eventbooking-open').forEach(btn=>{if(btn instanceof HTMLElement && !btn.dataset.bs){btn.dataset.bs='1';btn.addEventListener('click',open)}});
-    const closeBtn=portal.querySelector('.eventbooking-close'); if(closeBtn instanceof HTMLElement && !closeBtn.dataset.bs){closeBtn.dataset.bs='1';closeBtn.addEventListener('click',close)}
-    if(overlay instanceof HTMLElement && !overlay.dataset.bs){overlay.dataset.bs='1';overlay.addEventListener('click',close)}
-  })
+  document.querySelectorAll(".eventbooking-root").forEach((root) => {
+    const portal = root.querySelector(".eventbooking-portal");
+    if (!portal) return;
+    if (portal.parentElement !== document.body)
+      document.body.appendChild(portal);
+    const overlay = portal.querySelector(".eventbooking-overlay"),
+      drawer = portal.querySelector(".eventbooking-side");
+    const open = () => {
+      overlay?.classList.remove("pointer-events-none");
+      overlay?.classList.add("opacity-100");
+      drawer?.classList.remove("translate-x-full");
+      drawer?.classList.add("translate-x-0");
+      document.documentElement.classList.add("overflow-hidden");
+    };
+    const close = () => {
+      overlay?.classList.remove("opacity-100");
+      overlay?.classList.add("pointer-events-none");
+      drawer?.classList.remove("translate-x-0");
+      drawer?.classList.add("translate-x-full");
+      document.documentElement.classList.remove("overflow-hidden");
+    };
+    root.querySelectorAll(".eventbooking-open").forEach((btn) => {
+      if (btn instanceof HTMLElement && !btn.dataset.bs) {
+        btn.dataset.bs = "1";
+        btn.addEventListener("click", open);
+      }
+    });
+    const closeBtn = portal.querySelector(".eventbooking-close");
+    if (closeBtn instanceof HTMLElement && !closeBtn.dataset.bs) {
+      closeBtn.dataset.bs = "1";
+      closeBtn.addEventListener("click", close);
+    }
+    if (overlay instanceof HTMLElement && !overlay.dataset.bs) {
+      overlay.dataset.bs = "1";
+      overlay.addEventListener("click", close);
+    }
+  });
 </script>

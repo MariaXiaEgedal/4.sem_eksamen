@@ -6,6 +6,7 @@ import Bookingoverlay from "./Bookingoverlay.astro";
 
 <header
   class="bg-header text-text-dark border-b border-primary-line sticky top-0 z-50 py-2xs px-2xs md:px-m lg:px-xl"
+  style="border-bottom-width: var(--stroke-xs);"
 >
   <input id="menu-toggle" type="checkbox" class="hidden peer" />
 
@@ -26,7 +27,7 @@ import Bookingoverlay from "./Bookingoverlay.astro";
         <a href="/event" class="relative group">
           <Text
             teksttype="brødtekst_bold"
-            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl">Event</Text
+            stylingclasses="!text-2xs md:!text-m lg:!text-lg-xl">Events</Text
           >
           <span
             class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary-line transition-all duration-300 group-hover:w-full"
@@ -85,7 +86,8 @@ import Bookingoverlay from "./Bookingoverlay.astro";
       <span
         class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-primary-line mb-4xs"
       ></span>
-      <span class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-primary-line"
+      <span
+        class="block w-[36px] h-[3px] md:w-[48px] md:h-[4px] bg-primary-line"
       ></span>
     </label>
   </div>

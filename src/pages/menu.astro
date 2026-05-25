@@ -13,8 +13,8 @@ const cocktails = [
   },
   {
     name: "Sportif Tonic",
-    classic: "Vodka, Grape Likør, Tonic",
-    low: "Vodka, Agave sirup, Tonic",
+    classic: "Vodka, Grape Liqueur, Tonic",
+    low: "Vodka, Agave Syrup, Tonic",
     price: "95 kr.",
   },
   {
@@ -49,8 +49,8 @@ const cocktails = [
   },
   {
     name: "Italicus Sour",
-    classic: "Italicz, æggehvider, Lime, Agave sirup",
-    low: "Italicz, Lime, Agave sirup",
+    classic: "Italicus, Egg Whites, Lime, Agave Syrup",
+    low: "Italicus, Lime, Agave Syrup",
     price: "95 kr.",
   },
   {
@@ -61,14 +61,14 @@ const cocktails = [
   },
   {
     name: "Pina Bianca",
-    classic: "Grey Goose Vodka, Tomat juice, Lime, Selleri",
-    low: "ISH Tomato, Lime, Selleri",
+    classic: "Havana Club Añejo 3,  Lime, Pineapple Syrup, Elderflower",
+    low: "Havana Club Añejo 3,  Lime, Pineapple Syrup, Elderflower",
     price: "125 kr.",
   },
   {
     name: "Bloody Mary",
-    classic: "Grey Goose Vodka, Tomat juice, Lime, Selleri",
-    low: "ISH Tomato, Lime, Selleri",
+    classic: "Grey Goose Vodka, Tomato juice, Lime, Celery",
+    low: "ISH Tomato, Lime, Celery",
     price: "125 kr.",
   },
 ];
@@ -76,7 +76,7 @@ const cocktails = [
 
 // ************************************** Start Wine **************************************
 const wines = [
-  { heading: "Bobler" },
+  { heading: "Bubbles" },
   { name: "2024 Orange Pet Nat, Brand Bros, Pfalz", price: "550 kr." },
   {
     name: "NV Tradition Extra Brut 1er cru, Lelarge Pugeot, Champagne",
@@ -84,7 +84,7 @@ const wines = [
   },
   { name: "L’atavique MAGNUM, Mouzon Leroux", price: "1100 kr." },
   { name: "L’atavique, Mouzon Leroux", price: "800 kr." },
-  { heading: "Hvide" },
+  { heading: "Whitewine" },
   { name: "2024 Riesling Free, Brand Bros, Pfalz", price: "510 kr." },
   { name: "2023 Alte Reben, Peter Jakob Kuhn, Rheingau", price: "550 kr." },
   { name: "Terre de 3 anjou blanc, Terra vita vinum", price: "550 kr." },
@@ -116,7 +116,7 @@ const wines = [
     name: "2022 Macabouef #2, Mas Coutelou, Cotes Catalanes",
     price: "585 kr.",
   },
-  { heading: "Rødvin" },
+  { heading: "Redwine" },
   { name: "Morgon Vielles Vignes, GUY BRETON", price: "635 kr." },
   {
     name: "2023 La Madone Fleurie, Justin Dutraive, Beaujolais",
@@ -141,27 +141,27 @@ const wines = [
 // ************************************** Start Beer / Longdrinks / Other **************************************
 const beers = [
   { heading: "Draftbeers" },
-  { name: "“Fløjte” Heineken", price: "1 for 40 kr, 4 for 120 kr" },
+  { name: "“Fløjte” Heineken", price: "1 for 40 kr, 4 for 120 kr." },
   { name: "Royal Blanche", price: "55 kr." },
   { name: "Odense Classic", price: "55 kr." },
   { name: "Birra Moretti", price: "60 kr." },
   { name: "Snuble Juice", price: "60 kr." },
   { heading: "Bottlebeers" },
-  { name: "Heineken", price: "45 kr" },
-  { name: "Birra Moretti", price: "45 kr" },
-  { name: "Odense Pilsner", price: "40 kr" },
-  { name: "Odense Classic", price: "40 kr" },
-  { name: "45 Days Pilsner", price: "45 kr" },
+  { name: "Heineken", price: "45 kr." },
+  { name: "Birra Moretti", price: "45 kr." },
+  { name: "Odense Pilsner", price: "40 k." },
+  { name: "Odense Classic", price: "40 kr." },
+  { name: "45 Days Pilsner", price: "45 kr." },
   { heading: "Longdrinks" },
-  { name: "Gin & Tonic", price: "85 kr" },
-  { name: "Vodka Mate Mate", price: "85 kr" },
-  { name: "Vodka Energi", price: "85 kr" },
-  { name: "Vodka Danskvand", price: "85 kr" },
-  { name: "Rum & Coke", price: "85 kr" },
+  { name: "Gin & Tonic", price: "85 kr." },
+  { name: "Vodka Mate Mate", price: "85 kr." },
+  { name: "Vodka Energy", price: "85 kr." },
+  { name: "Vodka Sparklingwater", price: "85 kr." },
+  { name: "Rum & Coke", price: "85 kr." },
   { heading: "Others" },
-  { name: "Frem Sodavnd", price: "25 kr" },
-  { name: "NB Cider", price: "45 kr" },
-  { name: "Dansevand", price: "45 kr" },
+  { name: "Frem Soda", price: "25 kr." },
+  { name: "NB Cider", price: "45 kr." },
+  { name: "Dansevand", price: "45 kr." },
 ];
 // ************************************** End Beer / Longdrinks / Other **************************************
 
@@ -172,7 +172,7 @@ const alcoholFree = [
   { name: "Vermouth Tonic", info: "Anerperitivo ISH, Tonic", price: "95 kr." },
   {
     name: "Pina Bianca",
-    info: "Carribian Spiced ISH, Lime, Ananas sirup, Hyldeblomst",
+    info: "Caribbean Spiced ISH, Lime, Pineapple Syrup, Elderflower",
     price: "95 kr.",
   },
   {
@@ -197,24 +197,24 @@ const alcoholFree = [
 const snacks = [
   {
     name: "Pool Toast",
-    info: "Landskinke, Manchego & dijonnaise",
-    price: "65 kr",
+    info: "Country ham, Manchego & dijonnaise",
+    price: "65 kr.",
   },
   {
-    name: "Oliven, nødder eller chips",
-    info: "Oliven fra Puglia i Italien",
-    price: "45 kr",
+    name: "Olives, nuts or chips",
+    info: "Olives from Puglia in Italy",
+    price: "45 kr.",
   },
-  { name: "Padrons", info: "Grillet m/ salt og citron", price: "55 kr" },
+  { name: "Padrons", info: "Grilled w/ salt and lemon", price: "55 kr." },
   {
-    name: "Brød m/ Olivenolie",
-    info: "Bagt af Justus hos Helges oste på Østerbro med Olivenolie fra Cibboca",
-    price: "45 kr",
+    name: "Bread w/ Olive Oil",
+    info: "Baked by Justus at Helges Cheese on Østerbro with Olive Oil from Cibboca",
+    price: "45 kr.",
   },
   {
-    name: "Iberico m/ surdejsbrød",
-    info: "Iberico skinke og friskbagt surdejsbrød fra Helges Oste",
-    price: "85 kr",
+    name: "Iberico w/ sourdough bread",
+    info: "Iberico ham and freshly baked sourdough bread from Helges Cheese",
+    price: "85 kr.",
   },
 ];
 // ************************************** End Snacks **************************************

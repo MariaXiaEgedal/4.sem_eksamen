@@ -24,7 +24,7 @@ const isVideo = /\.(mov)$/i.test(image);
       {text}
     </Text>
 
-    {showLogo ? <img src={logo} alt={logoAlt} class="mt-2xs h-8" /> : null}
+    {showLogo && <img src={logo} alt={logoAlt} class="mt-2xs h-8" />}
   </div>
 
   <div class="col-span-4 md:col-span-5 md:col-start-8 flex justify-end">

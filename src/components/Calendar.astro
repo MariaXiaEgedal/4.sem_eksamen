@@ -6,9 +6,9 @@ const { theme = "dark" } = Astro.props;
 const isLightTheme = theme === "light";
 const summaryButtonVariant = isLightTheme ? "outline_dark" : "outline_light";
 const summaryArrowSrc = isLightTheme ? "/img/arrow.svg" : "/img/arrow-hvid.svg";
-const calendarClasses = isLightTheme
-  ? "calendar mt-5xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full border-2 border-primary-red"
-  : "calendar mt-5xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full";
+const calendarClasses = `calendar mt-5xs bg-primary-beige rounded-xs px-xs py-xs text-primary-red w-full${
+  isLightTheme ? " border-[length:var(--stroke-xs)] border-primary-red" : ""
+}`;
 ---
 
 <div class="calendar-root w-full">

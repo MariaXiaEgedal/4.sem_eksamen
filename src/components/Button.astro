@@ -6,9 +6,7 @@ const {
   id,
   class: className = "",
 } = Astro.props;
-const variantKey = String(variant);
-const sizeKey = String(size);
-const isToggleVariant = variantKey.startsWith("outline");
+const isToggleVariant = String(variant).startsWith("outline");
 
 // Basale styling (fælles for alle varianter og størrelser)
 const base =
@@ -26,7 +24,8 @@ const variantClasses = {
     "bg-transparent border-2 border-cta-primary text-text-dark px-xs py-4xs [&.active]:bg-cta-primary [&.active]:text-text-light",
 };
 
-const selectedVariant = variantClasses[variantKey] || variantClasses.primary;
+const selectedVariant =
+  variantClasses[String(variant)] || variantClasses.primary;
 
 // Størrelse (kun tekst-størrelse)
 const sizeClasses = {
@@ -37,7 +36,7 @@ const sizeClasses = {
   small: "text-[16px] md:text-[18px] font-bold",
 };
 
-const selectedSize = sizeClasses[sizeKey] || sizeClasses.medium;
+const selectedSize = sizeClasses[String(size)] || sizeClasses.medium;
 ---
 
 <!-- Sæt classes for den pågældende knap sammen ved hjælp af Astros class:list -->

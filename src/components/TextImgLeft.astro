@@ -22,7 +22,7 @@ const {
 const isVideo = /\.(mov)$/i.test(image);
 
 const resolvedButtonType =
-  buttonType ||
+  buttonType ??
   (ctaOnClickHref
     ? "link"
     : ctaHref === "mailto:info@poolcph.dk"
@@ -30,7 +30,7 @@ const resolvedButtonType =
       : ctaHref
         ? "link"
         : "button");
-const resolvedHref = href || ctaOnClickHref || ctaHref || "";
+const resolvedHref = href ?? ctaOnClickHref ?? ctaHref ?? "";
 const buttonLinkClasses =
   "rounded-xs transition-all duration-300 ease-out inline-flex items-center justify-center bg-cta-primary text-text-light px-xs py-4xs hover:px-m hover:shadow-lg text-[16px] md:text-[22px]";
 ---
@@ -44,7 +44,7 @@ const buttonLinkClasses =
         <iframe
           src={mapSrc}
           title={mapTitle}
-          class="w-full h-[280px] md:h-[360px] "
+          class="w-full h-[280px] md:h-[360px]"
           allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"

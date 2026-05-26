@@ -12,7 +12,7 @@ const {
   showLogo = true,
 } = Astro.props;
 
-const isVideo = /\.(mov)$/i.test(image);
+const isVideo = /\.(mov|mp4|webm|ogg)$/i.test(image);
 ---
 
 <div
@@ -34,10 +34,11 @@ const isVideo = /\.(mov)$/i.test(image);
           src={image}
           class="w-full h-auto"
           playsinline
+          webkit-playsinline
           autoplay
           muted
           loop
-          preload="metadata"
+          preload="auto"
         />
       ) : (
         <img src={image} alt={imageAlt} class="w-full h-auto" />

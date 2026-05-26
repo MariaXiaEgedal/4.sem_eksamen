@@ -31,8 +31,8 @@ const fieldClass =
   <div class="eventbooking-portal">
     <!-- Overlay -->
     <div
-      class="eventbooking-overlay fixed inset-0 z-[1000] opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
-      style="background-color: rgba(0, 0, 0, 0.5);"
+      class="eventbooking-overlay fixed inset-0 z-[1000] bg-black/60 opacity-0 transition-opacity duration-500 ease-out pointer-events-none"
+      style="background-color: rgba(0, 0, 0, 0.6); opacity: 0;"
     >
     </div>
 
@@ -152,6 +152,7 @@ const fieldClass =
     const drawer = portal?.querySelector(".eventbooking-side");
 
     const openDrawer = () => {
+      if (overlay instanceof HTMLElement) overlay.style.opacity = "1";
       overlay?.classList.remove("pointer-events-none");
       overlay?.classList.add("opacity-100");
       drawer?.classList.remove("translate-x-full");
@@ -160,6 +161,7 @@ const fieldClass =
     };
 
     const closeDrawer = () => {
+      if (overlay instanceof HTMLElement) overlay.style.opacity = "0";
       overlay?.classList.remove("opacity-100");
       overlay?.classList.add("pointer-events-none");
       drawer?.classList.remove("translate-x-0");

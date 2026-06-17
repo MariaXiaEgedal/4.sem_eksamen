@@ -2,6 +2,8 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BreadCrumbs from "../components/BreadCrumbs.astro";
+import Heading from "../components/Heading.astro";
+import Text from "../components/Text.astro";
 import "../styles/tailwind.css";
 const { title } = Astro.props;
 ---
@@ -20,11 +22,95 @@ const { title } = Astro.props;
     ></script>
   </head>
   <body class="bg-background-primary">
-    <Header />
-    <BreadCrumbs currentPage={title} show={title !== "Pool CPH"} />
+    <div
+      id="site-gate"
+      class="fixed inset-0 z-[9999] flex items-center justify-center bg-primary-red px-4 text-text-dark"
+    >
+      <div class="w-full max-w-sm rounded-3xl bg-background-primary p-4 md:p-6">
+        <div class="flex flex-col gap-4 text-left">
+          <img
+            src="/img/logo-pool-rod.svg"
+            alt="Pool CPH logo"
+            class="mx-auto h-auto w-35"
+          />
 
-    <slot />
+          <div class="space-y-2">
+            <Heading htmlheading="h1" size="medium"> Eksamensopgave </Heading>
+            <Text as="p" teksttype="brødtekst_lille">
+              Lavet af Maria, Victoria og Jasmin.
+            </Text>
+            <Text as="p" teksttype="brødtekst_lille">
+              Hvis I vil have adgang, så kontakt venligst en af os.
+            </Text>
+          </div>
 
-    <Footer />
+          <form id="site-gate-form" class="w-full space-y-3 pt-1">
+            <label class="block">
+              <span class="mb-2 block text-sm font-medium">Adgangskode:</span>
+              <input
+                id="site-gate-input"
+                type="password"
+                autocomplete="off"
+                class="w-full rounded-2xl border border-beige-200 bg-background-primary px-4 py-3 outline-none placeholder:text-beige-500 focus:border-beige-500"
+                placeholder="Skriv koden her"
+              />
+            </label>
+
+            <button
+              type="submit"
+              class="w-full rounded-2xl bg-cta-primary px-4 py-3 font-semibold text-text-light"
+            >
+              Gå ind på siden
+            </button>
+          </form>
+
+          <p id="site-gate-error" class="min-h-6 text-sm"></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="site-shell" style="display: none;">
+      <Header />
+      <BreadCrumbs currentPage={title} show={title !== "Pool CPH"} />
+
+      <slot />
+
+      <Footer />
+    </div>
+
+    <script is:inline>
+      const accessKey = "poolcph-access-granted";
+      const accessCode = "poolcph2026";
+
+      const gate = document.getElementById("site-gate");
+      const shell = document.getElementById("site-shell");
+      const form = document.getElementById("site-gate-form");
+      const input = document.getElementById("site-gate-input");
+      const error = document.getElementById("site-gate-error");
+
+      const openSite = () => {
+        sessionStorage.setItem(accessKey, "true");
+        gate.style.display = "none";
+        shell.style.display = "block";
+      };
+
+      if (sessionStorage.getItem(accessKey) === "true") {
+        openSite();
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (input.value.trim() === accessCode) {
+          error.textContent = "";
+          openSite();
+          return;
+        }
+
+        error.textContent = "Forkert kode. Prøv igen.";
+        input.value = "";
+        input.focus();
+      });
+    </script>
   </body>
 </html>
